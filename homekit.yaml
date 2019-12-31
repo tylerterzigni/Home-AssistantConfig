@@ -1,0 +1,15 @@
+filter:
+  include_entities:
+    - switch.bathroom_heater
+    - switch.bedroom_air_conditioner
+    - switch.bedroom_box_fan
+    - switch.bedroom_dab_rig
+    - switch.bedroom_heater
+    - switch.bedroom_heater_power
+    - switch.bedroom_tv
+    - switch.dodgers_light
+    - switch.lava_lamp
+    - switch.livingroom_air_conditioner
+    - switch.livingroom_dab_rig
+    - switch.livingroom_fan
+    - switch.samsung_powerbot

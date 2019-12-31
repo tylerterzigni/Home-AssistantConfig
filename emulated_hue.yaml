@@ -1,0 +1,31 @@
+  host_ip: 192.168.55.234
+  listen_port: 80
+  expose_by_default: false
+  entities:
+    input_boolean.morning_tyler:
+      name: "Good Morning Tyler"
+      hidden: false
+    input_boolean.livingroom_air_conditioner:
+      name: "Livingroom Air Conditioner"
+      hidden: false
+    input_boolean.bedroom_air_conditioner:
+      name: "Bedroom Air Conditioner"
+      hidden: false   
+    input_boolean.bedroom_heater:
+      name: "Bedroom Heater"
+      hidden: false
+    switch.switchmate:
+      name: "Bathroom Heater"
+      hidden: false
+    script.tyler_in_bedroom_bright:
+      name: "Tyler in Bedroom Bright"
+      hidden: false
+    script.tyler_in_bedroom_relax:
+      name: "Tyler in Bedroom Relax"
+      hidden: false
+    script.tyler_in_bedroom_dodgers:
+      name: "Tyler in Bedroom Dodgers"
+      hidden: false
+    script.tyler_in_bedroom_lava_lamp:
+      name: "Tyler in Bedroom Lava Lamp"
+      hidden: false

@@ -1,0 +1,5 @@
+  - platform: ping
+    host: 192.168.55.229
+    count: 3
+    scan_interval: 120
+    name: Bedroom PC Ping

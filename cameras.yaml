@@ -1,0 +1,18 @@
+  - platform: generic
+    name: iss
+    still_image_url: !secret iss_still_image_url
+    limit_refetch_to_url_change: true
+
+  - platform: generic
+    name: USPS Mail
+    still_image_url: !secret usps_mail_still_image_url
+    
+  - platform: generic
+    name: Weather
+    still_image_url: !secret weather_still_image_url
+
+  - platform: local_file
+    file_path: /home/homeassistant/.homeassistant/www/images/Camera/video/video/YEPOS/grabs/camera.jpg
+    
+  - platform: ring
+    #scan_interval: 30

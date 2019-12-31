@@ -1,0 +1,226 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: !secret home_elevation
+  # metric for Metric, imperial for Imperial
+  unit_system: imperial
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: !secret time_zone
+  # # User Authentication
+  auth_providers:
+   - type: legacy_api_password
+     api_password: !secret api_password
+   - type: homeassistant
+# Customizations
+  customize: !include customize.yaml
+
+# customizer:
+  # custom_ui: hosted
+
+# Enables the frontend
+frontend: !include frontend.yaml
+
+# Enables configuration UI
+config:
+
+#Enables Map
+map:
+
+mobile_app:
+
+system_log:
+  max_entries: 100  
+  
+http:
+ ssl_certificate: !secret http_ssl_certificate
+ ssl_key: !secret http_ssl_key
+ base_url: !secret http_base_url
+ server_port: 8123
+
+duckdns:
+  domain: !secret duckdns_domain
+  access_token: !secret duckdns_access_token
+
+updater:
+
+  
+# Discover some devices automatically
+discovery: !include discovery.yaml
+
+# allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time.
+history: !include history.yaml
+
+# View all events in a logbook
+logbook: !include logbook.yaml
+
+#recorder
+recorder: !include recorder.yaml
+
+#logger:
+
+# Track the sun
+sun:
+  monitored_conditions:
+    - elevation
+    - max_elevation
+    - daylight
+    - sunrise
+    - sunset
+  scan_interval:
+    minutes: 10   
+
+# Sensors
+sensor: !include sensors.yaml
+
+# Text to speech
+tts:
+  platform: google_translate
+
+# Google  
+google:
+  client_id: !secret google_client_id
+  client_secret: !secret google_client_secret
+  track_new_calendar: true
+
+#  Groups
+group: !include groups.yaml
+
+#Media Players
+media_player: !include media_players.yaml
+
+apple_tv: !include apple_tv.yaml
+#Zones
+zone: !include_dir_list zones
+
+####   Device Tracking
+device_tracker: !include device_trackers.yaml
+
+######  Automation   
+automation: !include automations.yaml
+
+######  Scripts
+script: !include scripts.yaml
+
+#####  Input Boolean
+input_boolean: !include input_boolean.yaml
+
+#####  Input Select
+input_select: !include includes/input_select.yaml
+
+#  Input Number
+input_number: !include includes/input_number.yaml
+
+## Notifications
+notify: !include includes/notify.yaml
+
+# Scenes
+scene: !include scenes.yaml
+
+# Switches
+switch: !include switches.yaml
+
+# iOS
+ios:
+
+### Alexa
+alexa:
+
+### Thermostat
+climate: !include climate.yaml
+
+### Web Links
+weblink: !include web_links.yaml
+
+### IFTTT   
+ifttt: !include ifttt.yaml
+
+## Binary Sensors  
+binary_sensor: !include_dir_merge_list binary_sensor
+
+## Cameras
+camera: !include cameras.yaml
+
+## Remotes
+remote: !include remote.yaml
+  
+#Z-Wave USB
+#zwave: !include zwave.yaml
+
+####MQTT#####
+mqtt: !include mqtt.yaml
+
+#Intent Scripts
+intent_script: !include intent_script.yaml
+
+panel_custom: !include panel_custom.yaml
+
+#System Health  
+system_health:
+
+#Speed Test
+speedtestdotnet: !include speedtestdotnet.yaml
+
+#Shell Commands
+shell_command: !include shell_command.yaml
+
+#Persons
+person: # !include persons.yaml
+
+#Roku Devices 
+roku:
+  - host: !secret roku_host
+  
+#Apple Homekit
+homekit: !include homekit.yaml
+
+#Streams
+stream:
+
+#Image Processing
+image_processing: !include image_processing.yaml
+
+#Amazon Media Players
+alexa_media: !include amazon_media.yaml
+
+hive: !include hive.yaml
+
+ring:
+  username: !secret ring_username
+  password: !secret ring_password
+  scan_interval: 30
+tuya:
+  username: !secret tuya_username
+  password: !secret tuya_password
+  country_code: 1
+  platform: jinvoo_smart
+  
+geo_location:
+  - platform: usgs_earthquakes_feed
+    feed_type: 'past_week_m10_earthquakes'
+    radius: 50
+    minimum_magnitude: 1.0
+    latitude: !secret home_latitude
+    longitude: !secret home_longitude
+    
+timer: !include timers.yaml
+
+# ffmpeg:
+  # # ffmpeg_bin: /usr/bin/ffmpeg
+
+emulated_hue: !include emulated_hue.yaml
+  # host_ip: 192.168.55.234
+  # listen_port: 80
+  # expose_by_default: false
+  # # exposed_domains:
+    # # - input_boolean
+  # entities:
+    # input_boolean.morning_tyler:
+      # name: "Good Morning Tyler"
+      # hidden: false

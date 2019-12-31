@@ -1,0 +1,17 @@
+  # ActivateSceneIntent:
+    # action:
+      # service: scene.turn_on
+      # data_template:
+        # entity_id: scene.{{ Scenes | replace(" ", "_") }}
+    # speech: 
+     # type: plain
+     # text: !include alexa_confirm.yaml
+
+  RunScriptIntent:
+    action:
+      service: script.turn_on
+      data_template:
+        entity_id: script.{{ Scripts | replace(" ", "_") }}
+    speech:
+     type: plain
+     text: !include alexa_confirm.yaml

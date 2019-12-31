@@ -1,0 +1,7 @@
+ accounts:
+   - email: !secret amazon_user
+     password: !secret amazon_password
+     url: amazon.com
+     exclude_devices:
+       - "anthony_s_alexa_apps"
+       - "my_dash"

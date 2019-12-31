@@ -1,0 +1,177 @@
+############################
+############################
+#
+#Input Booleans
+#
+############################
+
+lights_on_in_evening:
+  name: Lights on in the Evening
+  initial: on
+  icon: mdi:lightbulb-on
+  
+lights_off_after_11:
+  name: Lights off after 11 PM
+  initial: on
+  icon: mdi:lightbulb-on
+  
+lights_off_home_empty:
+  name: Lights off if Nobody Home
+  initial: on
+  icon: mdi:lightbulb-on
+ 
+toggle_livingroom_air_conditioner:
+  name: Livingroom A/C
+  initial: off
+  icon: mdi:air-conditioner
+
+livingroom_air_conditioner:
+  name: Livingroom Air Conditioner
+  initial: off
+  icon: mdi:air-conditioner
+  
+night_entrance:
+  name: Night Entrance
+  initial: on
+  icon: mdi:lightbulb-on
+
+livingroom_light_motion:
+  name: Livingroom Light Motion Sensor
+  initial: on
+  icon: mdi:lightbulb-on
+ 
+livingroom_holidays:
+  name: Holiday Lighting
+  initial: on
+  icon: mdi:gift
+  
+dodgers_light:
+  name: Dodgers Light
+  icon: mdi:lightbulb-on
+  
+lava_lamp:
+  name: Lava Lamp
+  icon: mdi:lightbulb-on
+  
+livingroom_fan:
+  name: Livingroom Fan
+  icon: mdi:fan
+
+bathroom_light_motion:
+  name: Bathroom Light Motion Sensor
+  icon: mdi:lightbulb-on
+  initial: on
+  
+bedroom_light_motion:
+  name: Bedroom Light Motion Sensor
+  icon: mdi:lightbulb-on
+  initial: on
+  
+bathroom_heater_mode:
+  name: Bathroom Heater Weekdays
+  icon: mdi:fan
+  initial: on
+  
+bedroom_air_conditioner:
+  name: Bedroom A/C
+  icon: mdi:air-conditioner
+  
+bedroom_box_fan:
+  name: Bedroom Box Fan
+  icon: mdi:fan
+  
+bedroom_fan:
+  name: Bedroom Fan
+  icon: mdi:fan
+  
+bedroom_heater:
+  name: Bedroom Heater
+  icon: mdi:fan
+  initial: off
+
+bedroom_television:
+  name: Bedroom TV Toggle
+  initial: on
+  
+livingroom_heater_weekdays:
+  name: Livingroom Heater Weekdays
+  initial: on
+  
+samsung_powerbot:
+  name: Samsung Powerbot
+  icon: mdi:robot-vacuum-variant
+  initial: off
+
+dab_rigs:
+  name: Dab Rigs
+  icon: mdi:smoking
+  initial: on  
+  
+fansandheater:
+  name: Fans/Heater
+  icon: mdi:fan
+  initial: on
+  
+tyler_in_bedroom_bright:
+  name: Tyler in Bedroom Bright
+  initial: off
+
+margaret_in_bedroom_bright:
+  name: Margaret in Bedroom Bright
+  initial: off
+
+tyler_in_bedroom_relax:
+  name: Tyler in Bedroom Relax
+  initial: off
+
+margaret_in_bedroom_relax:
+  name: Margaret in Bedroom Relax
+  initial: off
+  
+tyler_greeting:
+  name: Tyler Greeting
+  initial: on
+
+tyler_in_bedroom_lava_lamp:
+  name: Tyler in Bedroom Lava Lamp
+  initial: off
+
+margaret_in_bedroom_lava_lamp:
+  name: Margaret in Bedroom Lava Lamp
+  initial: off
+
+tyler_in_bedroom_dodgers:
+  name: Tyler in Bedroom Dodgers
+  initial: off
+
+margaret_in_bedroom_dodgers:
+  name: Margaret in Bedroom Dodgers
+  initial: off
+  
+patio_motion_sensor:
+  name: Patio Motion Sensor
+  initial: on
+  
+patio_light_off:
+  name: Patio Light Off
+  initial: off
+
+red_in_bedroom:
+  name: Red in Bedroom
+  initial: off
+  
+dash_bedroom_dabs:
+  name: Dash Bedroom Dabs
+  initial: off
+  
+chris_home:
+  name: Chris Home
+  initial: off
+  
+front_door_alert_alexa_toggle:
+  name: Front Door Bedroom Alert Toggle
+  initial: off
+
+morning_tyler:
+  name: Good Morning Tyler
+  initial: off

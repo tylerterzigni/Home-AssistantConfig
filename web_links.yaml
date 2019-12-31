@@ -1,0 +1,5 @@
+entities:
+  - name: router_internal
+    url: !secret router_internal_url
+  - name: router_external
+    url: !secret router_external_url

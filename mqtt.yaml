@@ -1,0 +1,14 @@
+  # embedded:
+    # listeners:
+      # default:
+        # max-connections: 500
+        # type: tcp
+        # bind: 127.0.0.1:1888
+  # broker: 127.0.0.1
+  # port: 1888
+  # password: password
+     
+    broker: 192.168.55.234
+    username: !secret mqtt_username
+    password: !secret mqtt_password
+  

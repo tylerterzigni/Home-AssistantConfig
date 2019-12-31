@@ -1,0 +1,10 @@
+  - host: 192.168.55.100
+    login_id: 00000000-0cd3-6d29-37e1-5c2304ef4486
+    name: Bedroom AppleTV
+    start_off: false
+    credentials: 12F6F9C1FEA569A1:B42F782B43EBAE28E21FE490B3848457D3C9DE601F83004609146C75BB31146D
+  - host: 192.168.55.247
+    login_id: 00000000-0cd3-6d29-37e1-5c2304ef4486
+    name: Livingroom AppleTV
+    start_off: false
+    #credentials: CREDENTIALS_2

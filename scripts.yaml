@@ -1,0 +1,501 @@
+##########
+# SCENES #
+##########
+
+#Livingroom Call Dodgers scene 
+dodgers_in_livingroom:
+  sequence:
+    - service: scene.turn_on
+      data:
+         entity_id: scene.dodgers_in_livingroom
+
+#Bedroom Call scene to Lava Lamp Full
+lava_lamp_in_bedroom:
+  sequence:
+    - service: scene.turn_on
+      data:
+        entity_id: scene.lava_lamp_in_bedroom
+        
+#Bedroom Call scene to Red
+red_in_bedroom:
+  sequence:
+    - service: scene.turn_on
+      data:
+        entity_id: scene.red_in_bedroom
+
+#Bedroom Call scene to Lava Lamp Full
+relax_in_bedroom:
+  sequence:
+    - service: scene.turn_on
+      data:
+        entity_id: scene.relax_in_bedroom        
+        
+#Bedroom Call scene to Dodgers
+dodgers_in_bedroom:
+  sequence:
+    - service: scene.turn_on
+      data:
+        entity_id: scene.dodgers_in_bedroom
+        
+#Bedroom Call scene to Bright in bedroom
+bright_in_bedroom:
+  sequence:
+    - service: scene.turn_on
+      data:
+        entity_id: scene.bright_in_bedroom
+        
+#Bedroom Call scene to Bright in Livingroom
+bright_in_livingroom:
+  sequence:
+    - service: scene.turn_on
+      data:
+        entity_id: scene.bright_in_livingroom
+
+#Livingroom Call Warriors Scene
+warriors_in_livingroom:
+  sequence:
+    - service: scene.turn_on
+      data:
+        entity_id: scene.warriors_in_livingroom
+
+#Livingroom Call Cavaliers Scene
+cavaliers_in_livingroom:
+  sequence:
+    - service: scene.turn_on
+      data:
+        entity_id: scene.cavaliers_in_livingroom
+        
+#Livingroom Call Celtics Scene
+celtics_in_livingroom:
+  sequence:
+    - service: scene.turn_on
+      data:
+        entity_id: scene.celtics_in_livingroom
+        
+#Livingroom Night Entrance Scene
+night_entrance_in_livingroom:
+  sequence:
+    - service: scene.turn_on
+      data:
+        entity_id: scene.night_entrance_in_livingroom
+        
+#Livingroom Lakers Scene
+lakers_in_livingroom:
+  sequence:
+    - service: scene.turn_on
+      data:
+        entity_id: scene.lakers_in_livingroom
+        
+#Livingroom Relax Scene
+relax_in_livingroom:
+  sequence:
+    - service: scene.turn_on
+      data:
+        entity_id: scene.relax_in_livingroom
+        
+#Livingroom Dim Night Scene
+dim_in_livingroom:
+  sequence:
+    - service: scene.turn_on
+      data:
+        entity_id: scene.dim_in_livingroom
+        
+#Christmas in Livingroom Scene
+christmas_in_livingroom:
+  sequence:
+    - service: scene.turn_on
+      data:
+        entity_id: scene.christmas_in_livingroom
+        
+#Halloween in Livingroom Scene
+halloween_in_livingroom:
+  sequence:
+    - service: scene.turn_on
+      data:
+        entity_id: scene.halloween_in_livingroom
+        
+#St Pattys Day in Livingroom Scene
+saint_patricks_day_in_livingroom:
+  sequence:
+    - service: scene.turn_on
+      data:
+        entity_id: scene.saint_patricks_day_in_livingroom
+ 
+#Valentines day in Livingroom Scene
+valentines_day_in_livingroom:
+  sequence:
+    - service: scene.turn_on
+      data:
+        entity_id: scene.valentines_day_in_livingroom
+
+#Easter in Livingroom Scene
+easter_in_livingroom:
+  sequence:
+    - service: scene.turn_on
+      data:
+        entity_id: scene.easter_in_livingroom
+
+#Thanksgiving in Livingroom Scene
+thanksgiving_in_livingroom:
+  sequence:
+    - service: scene.turn_on
+      data:
+        entity_id: scene.thanksgiving_in_livingroom       
+ 
+#4th of July in Livingroom Scene
+fourth_of_july_in_livingroom:
+  sequence:
+    - service: scene.turn_on
+      data:
+        entity_id: scene.fourth_of_july_in_livingroom      
+ 
+#Veterans Day in Livingroom Scene
+veterans_day_in_livingroom:
+  sequence:
+    - service: scene.turn_on
+      data:
+        entity_id: scene.veterans_day_in_livingroom      
+ 
+#Memorial Day in Livingroom Scene
+memorial_day_in_livingroom:
+  sequence:
+    - service: scene.turn_on
+      data:
+        entity_id: scene.memorial_day_in_livingroom
+     
+#Memorial Day in Livingroom Scene
+labor_day_in_livingroom:
+  sequence:
+    - service: scene.turn_on
+      data:
+        entity_id: scene.labor_day_in_livingroom      
+   
+  
+#Turn on AC
+livingroom_air_conditioner:
+  sequence:
+    - service: homeassistant.toggle
+      data:
+        entity_id: input_boolean.livingroom_air_conditioner
+      
+#Turn on AC Auto
+toggle_livingroom_air_conditioner:
+  sequence:
+    - service: homeassistant.toggle
+      data:
+        entity_id: input_boolean.toggle_livingroom_air_conditioner
+      
+#Toggle Livingroom Fan
+toggle_livingroom_fan:
+  sequence:
+    - service: homeassistant.toggle
+      data:
+        entity_id: switch.livingroom_fan
+        
+livingroom_fan:
+  sequence:
+    - service: homeassistant.toggle
+      data:
+        entity_id: input_boolean.livingroom_fan
+        
+#Toggle Bedroom Fan
+toggle_bedroom_fan:
+  sequence:
+    - service: homeassistant.toggle
+      data:
+        entity_id: switch.bedroom_fan
+        
+bedroom_fan:
+  sequence:
+    - service: homeassistant.toggle
+      data:
+        entity_id: input_boolean.bedroom_fan
+        
+#Toggle Samsung Powerbot
+toggle_samsung_powerbot:
+  sequence:
+    - service: homeassistant.toggle
+      data:
+        entity_id: switch.samsung_powerbot
+        
+samsung_powerbot:
+  sequence:
+    - service: homeassistant.toggle
+      data:
+        entity_id: input_boolean.samsung_powerbot
+
+#Toggle Bedroom Box Fan
+bedroom_box_fan:
+  sequence:
+    - service: homeassistant.toggle
+      data:
+        entity_id: input_boolean.bedroom_box_fan     
+
+#Toggle Bedroom heater
+bedroom_heater:
+  sequence:
+    - service: homeassistant.toggle
+      data:
+        entity_id: input_boolean.bedroom_heater
+        
+#Toggle Bedroom A/C
+bedroom_air_conditioner:
+  sequence:
+    - service: homeassistant.toggle
+      data:
+        entity_id: input_boolean.bedroom_air_conditioner    
+        
+#Toggle Bathroom Heater
+bathroom_heater:
+  sequence:
+    - service: homeassistant.toggle
+      data:
+        entity_id: switch.bathroom_heater   
+
+#Toggle Dab Rig
+livingroom_dab_rig:
+  sequence:
+    - service: homeassistant.toggle
+      data:
+        entity_id: switch.livingroom_dab_rig
+        
+#Toggle Dab Rig
+bedroom_dab_rig:
+  sequence:
+    - service: homeassistant.toggle
+      data:
+        entity_id: switch.bedroom_dab_rig
+       
+#Toggle Fans and Heater
+fansandheater:
+  sequence:
+    - service: homeassistant.toggle
+      data:
+        entity_id: input_boolean.fansandheater
+        
+#Toggle bedroom tv
+bedroom_tv:
+  sequence:
+    - service: homeassistant.toggle
+      data:
+        entity_id: switch.bedroom_tv
+        
+#Toggle Lava Lamp
+lava_lamp:
+  sequence:
+    - service: homeassistant.toggle
+      data:
+        entity_id: input_boolean.lava_lamp
+        
+#Toggle bedroom motion sensor
+bedroom_light_motion_sensor:
+  sequence:
+    - service: homeassistant.toggle
+      data:
+        entity_id: input_boolean.bedroom_light_motion
+        
+#Toggle bathroom motion sensor
+bathroom_light_motion_sensor:
+  sequence:
+    - service: homeassistant.toggle
+      data:
+        entity_id: input_boolean.bathroom_light_motion
+        
+#Toggle bedroom motion sensor
+livingroom_light_motion_sensor:
+  sequence:
+    - service: homeassistant.toggle
+      data:
+        entity_id: input_boolean.livingroom_light_motion
+                
+#Toggle Tyler in Bedroom Bright
+tyler_in_bedroom_bright:
+  sequence:
+    - service: homeassistant.toggle
+      data:
+        entity_id: input_boolean.tyler_in_bedroom_bright
+        
+# #Toggle Margaret in Bedroom Bright
+# margaret_in_bedroom_bright:
+  # sequence:
+    # - service: homeassistant.toggle
+      # data:
+        # entity_id: input_boolean.margaret_in_bedroom_bright
+        
+#Toggle Tyler in Bedroom relax
+tyler_in_bedroom_relax:
+  sequence:
+    - service: homeassistant.toggle
+      data:
+        entity_id: input_boolean.tyler_in_bedroom_relax
+        
+# #Toggle Margaret in Bedroom relax
+# margaret_in_bedroom_relax:
+  # sequence:
+    # - service: homeassistant.toggle
+      # data:
+        # entity_id: input_boolean.margaret_in_bedroom_relax
+        
+#Toggle Tyler in Bedroom lava lamp
+tyler_in_bedroom_lava_lamp:
+  sequence:
+    - service: homeassistant.toggle
+      data:
+        entity_id: input_boolean.tyler_in_bedroom_lava_lamp
+        
+# #Toggle Margaret in Bedroom lava lamp
+# margaret_in_bedroom_lava_lamp:
+  # sequence:
+    # - service: homeassistant.toggle
+      # data:
+        # entity_id: input_boolean.margaret_in_bedroom_lava_lamp
+        
+#Toggle Tyler in Bedroom dodgers
+tyler_in_bedroom_dodgers:
+  sequence:
+    - service: homeassistant.toggle
+      data:
+        entity_id: input_boolean.tyler_in_bedroom_dodgers
+        
+# #Toggle Margaret in Bedroom dodgers
+# margaret_in_bedroom_dodgers:
+  # sequence:
+    # - service: homeassistant.toggle
+      # data:
+        # entity_id: input_boolean.margaret_in_bedroom_dodgers
+
+patio_motion_sensor:
+  sequence:
+    - service: homeassistant.toggle
+      data:
+        entity_id: input_boolean.patio_motion_sensor
+       
+patio_light_off:
+  sequence:
+    - service: homeassistant.toggle
+      data:
+        entity_id: input_boolean.patio_light_off
+
+                
+##########################################################
+## Harmony Remote
+##########################################################        
+harmony_harmony_hub:
+  alias: "Start activity from input select"
+  sequence:
+      service: remote.turn_on
+      data_template:
+        entity_id: remote.harmony_harmony_hub
+        activity: >
+          {% if is_state("input_select.harmony_harmony_hub", "PowerOff") %}
+              -1
+          {% elif is_state("input_select.harmony_harmony_hub", "Watch AppleTV") %}
+              27861960
+          {% elif is_state("input_select.harmony_harmony_hub", "Watch Netflix") %}
+              27857750
+          {% elif is_state("input_select.harmony_harmony_hub", "Play Xbox") %}
+              27857653
+          {% elif is_state("input_select.harmony_harmony_hub", "Watch Vudu") %}
+              27860122            
+          {% endif %}
+
+dash_livingroom_motion:
+  alias: 'Dash Livingroom Motion'
+  sequence:
+    - service: homeassistant.toggle
+      data:
+        entity_id: input_boolean.livingroom_light_motion
+        
+front_door_alert_alexa_toggle:
+  alias: 'Front Door Bedroom Alert Toggle'
+  sequence:
+    - service: homeassistant.toggle
+      data:
+        entity_id: input_boolean.front_door_alert_alexa_toggle
+        
+dash_bedroom_dabs:
+  alias: 'Dash Bedroom Dabs'
+  sequence:
+    - service: homeassistant.toggle
+      data:
+        entity_id: input_boolean.dash_bedroom_dabs
+        
+dash_bedroom_motion:
+  alias: 'Dash Bedroom Motion'
+  sequence:
+    - service: homeassistant.toggle
+      data:
+        entity_id: input_boolean.bedroom_light_motion
+        
+welcome_home_tyler:
+     alias: Welcome Home Tyler
+     sequence:
+       - service: notify.alexa_media
+         data:
+           target: 
+             - media_player.bedroom_echo_show
+           #title: "My title for Echo show"
+           data:
+             type: tts
+          #method: all
+           message: -> 'Welcome Home Tyler, it is {{ as_timestamp(now()) | timestamp_custom("%I %M %p") }} on {{ as_timestamp(now()) | timestamp_custom("%A") }} {{ states("sensor.date") }}. The temperature outside feels like {{ states("sensor.dark_sky_apparent_temperature")}} degrees. Your bedroom temperature is {{ states("sensor.bedroom_motion_sensor_temperature_measurement") }} degrees. Your livingroom temperature is {{ states("sensor.livingroom_motion_sensor_temperature_measurement") }} degrees. The probability of rain for the hour is {{ states("sensor.dark_sky_precip_probability") }} percent.'
+           
+front_door_alert_alexa:
+     alias: Front Door Alert Alexa
+     sequence:
+       - service: notify.alexa_media
+         data:
+           target: 
+             - media_player.bedroom_echo_show
+           #  - media_player.kitchen_dot
+           #title: "My title for Echo show"
+           data:
+             type: tts
+          #method: all
+           message: !include front_door_alert_alexa.yaml
+           
+           
+alexa_set_volume_bedroom:
+  sequence:
+    - service: media_player.volume_set
+      data_template: 
+        entity_id: '{{ states.sensor.last_alexa.state }}' 
+        volume_level: >
+          {% if is_state("sensor.last_alexa", "media_player.bedroom_echo_show") %}
+            0.5
+          {% else %}
+            0.3
+          {% endif %}
+
+alexa_set_volume_livingroom:
+  sequence:
+    - service: media_player.volume_set
+      data_template: 
+        entity_id: '{{ states.sensor.last_alexa.state }}' 
+        volume_level: >
+          {% if is_state("sensor.last_alexa", "media_player.livingroom_echo dot") %}
+            0.5
+          {% else %}
+            0.3
+          {% endif %} 
+
+good_morning_toggle:
+  alias: 'Good Morning Toggle'
+  sequence:
+    - service: homeassistant.toggle
+      data:
+        entity_id: input_boolean.announcement_good_morning
+          
+morning_tyler:
+  alias: Good Morning Tyler
+  sequence:
+    - service: notify.alexa_media
+      data:
+        target: 
+          - media_player.bedroom_echo_show
+        #  - media_player.kitchen_dot
+        #title: "My title for Echo show"
+        data:
+          type: tts
+       #method: all
+        message: -> 'Good morning Tyler, it is {{ as_timestamp(now()) | timestamp_custom("%I %M %p") }} on {{ as_timestamp(now()) | timestamp_custom("%A") }} {{ states("sensor.date") }}. The temperature outside feels like {{ states("sensor.dark_sky_apparent_temperature")}} degrees. Your bedroom temperature is {{ states("sensor.bedroom_motion_sensor_temperature_measurement") }} degrees. Your livingroom temperature is {{ states("sensor.livingroom_motion_sensor_temperature_measurement") }} degrees. The probability of rain for the hour is {{ states("sensor.dark_sky_precip_probability") }} percent. It looks like it will take you {{ states("sensor.current_to_work") }} minutes to get to work.'

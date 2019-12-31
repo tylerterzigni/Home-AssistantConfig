@@ -1,0 +1,93 @@
+  themes:
+    red:
+      primary-color: "#f44336"
+    pink:
+      primary-color: "#e91e63"
+    purple:
+      primary-color: "#9c27b0"
+    deep-purple:
+      primary-color: "#673ab7"
+    indigo:
+      primary-color: "#3f51b5"
+    blue:
+      primary-color: "#2196f3"
+    light-blue:
+      primary-color: "#03a9f4"
+    cyan:
+      primary-color: "#00bcd4"
+    teal:
+      primary-color: "#009688"
+    green:
+      primary-color: "#4caf50"
+    light-green:
+      primary-color: "#8bc34a"
+    lime:
+      primary-color: "#cddc39"
+    yellow:
+      primary-color: "#ffeb3b"
+    amber:
+      primary-color: "#ffc107"
+    orange:
+      primary-color: "#ff9800"
+    deep-orange:
+      primary-color: "#ff5722"
+    brown:
+      primary-color: "#795548"
+    grey:
+      primary-color: "#9e9e9e"
+    blue-grey:
+      primary-color: "#607d8b"
+     
+    minimal: 
+      dark-primary-color: "#192231"
+      primary-color: "#98878f"
+      light-primary-color: "#98878f"
+      paper-toggle-button-checked-ink-color: "#494e6b"
+      paper-toggle-button-checked-button-color: "#494e6b"
+      paper-toggle-button-checked-bar-color: "#494e6b"
+      paper-slider-knob-color: "#494e6b"
+      paper-slider-knob-start-color: "#494e6b"
+      paper-slider-pin-color: "#494e6b"
+      paper-slider-active-color: "#494e6b"
+    stormy_hues:
+      dark-primary-color: "#192231"
+      primary-color: "#98878f"
+      light-primary-color: "#98878f"
+      paper-toggle-button-checked-ink-color: "#494e6b"
+      paper-toggle-button-checked-button-color: "#494e6b"
+      paper-toggle-button-checked-bar-color: "#494e6b"
+      paper-slider-knob-color: "#494e6b"
+      paper-slider-knob-start-color: "#494e6b"
+      paper-slider-pin-color: "#494e6b"
+      paper-slider-active-color: "#494e6b"
+    vintage:
+      dark-primary-color: "#373f27"
+      primary-color: "#636b46"
+      light-primary-color: "#e9e7da"
+      paper-toggle-button-checked-ink-color: "#cda34f"
+      paper-toggle-button-checked-button-color: "#cda34f"
+      paper-toggle-button-checked-bar-color: "#cda34f"
+      paper-slider-knob-color: "#cda34f"
+      paper-slider-knob-start-color: "#cda34f"
+      paper-slider-pin-color: "#cda34f"
+      paper-slider-active-color: "#cda34f"
+    done1:
+      dark-primary-color: "#565656"
+      primary-color: "#C09F80"
+      light-primary-color: "#D7CEC7"
+      paper-toggle-button-checked-ink-color: "#76323F"
+      paper-toggle-button-checked-button-color: "#76323F"
+      paper-toggle-button-checked-bar-color: "#76323F"
+      paper-slider-knob-color: "#76323F"
+      paper-slider-knob-start-color: "#76323F"
+      paper-slider-pin-color: "#76323F"
+      paper-slider-active-color: "#76323F"
+      paper-slider-secondary-color: "#FFE0B2"
+  javascript_version: latest
+  extra_html_url:
+    - /local/custom_ui/state-card-floorplan.html
+#    - https://raw.githubusercontent.com/andrey-git/home-assistant-custom-ui/master/state-card-custom-ui.html
+  
+  extra_html_url_es5:
+    - /local/custom_ui/state-card-floorplan.html 
+#    - https://raw.githubusercontent.com/andrey-git/home-assistant-custom-ui/master/state-card-custom-ui-es5.html

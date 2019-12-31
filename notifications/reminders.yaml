@@ -1,0 +1,4 @@
+notify:
+  - name: Reminders
+    platform: pushbullet
+    api_key: !secret pushbullet_api_key

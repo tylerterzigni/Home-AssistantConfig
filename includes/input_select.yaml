@@ -1,0 +1,68 @@
+############################################################
+#
+# Home Assistant Input Selects
+#
+############################################################
+
+harmony_harmony_hub:
+  name: Living Room TV
+  options:
+    - PowerOff
+    - Watch AppleTV
+    - Watch Vudu
+    - Watch Netflix
+    - Play Xbox
+  initial: PowerOff
+  icon: mdi:monitor
+  
+holiday:
+  name: Holiday Lighting
+  icon: mdi:gift
+  options:
+    - None
+    - Valentine's Day
+    - St. Patrick's Day
+    - Easter
+    - Memorial Day
+    - 4th of July
+    - Labor Day
+    - Halloween
+    - Veterans Day
+    - Thanksgiving
+    - Christmas
+ 
+themes:
+  name: Current Theme
+  icon: mdi:theme-light-dark
+  options:
+    - Minimal
+    - Stormy
+    - Vintage
+    - Red
+    - Pink
+    - Purple
+    - Deep Purple
+    - Indigo
+    - Light Blue
+    - Blue
+    - Light Blue
+    - Cyan
+    - Teal
+    - Green
+    - Light Green
+    - Lime
+    - Yellow
+    - Amber
+    - Orange
+    - Deep Orange
+    - Brown
+    - Grey
+    - Blue Grey
+    - Other
+        
+speedtest_graph:
+  options:
+    - Hour
+    - Day
+    - Week
+    - Month

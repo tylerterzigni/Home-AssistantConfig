@@ -1,0 +1,703 @@
+# Dark Sky Weather
+- platform: darksky
+  api_key: !secret darksky_api_key
+  forecast:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+  monitored_conditions:
+    - icon
+    - summary
+    - nearest_storm_distance
+    - nearest_storm_bearing
+    - humidity
+    - hourly_summary
+    - temperature
+    - temperature_high
+    - temperature_low
+    - apparent_temperature
+    - apparent_temperature_high
+    - apparent_temperature_low
+    - wind_speed
+    - wind_bearing
+    - precip_type
+    - precip_probability
+    - precip_accumulation
+    - precip_intensity
+    - precip_intensity_max
+    - uv_index
+    - daily_summary
+    - pressure
+    - visibility
+  scan_interval:
+    minutes: 5
+
+- platform: template
+  sensors:
+    dark_sky_current_text:
+      value_template: >-
+        {% if is_state("sensor.dark_sky_icon","clear-day") %} Clear 
+        {% elif is_state("sensor.dark_sky_icon","clear-night") %} Clear 
+        {% elif is_state("sensor.dark_sky_icon","rain") %} Rain
+        {% elif is_state("sensor.dark_sky_icon","snow") %} Snowy
+        {% elif is_state("sensor.dark_sky_icon","fog") %} Foggy
+        {% elif is_state("sensor.dark_sky_icon","sleet") %} Sleet
+        {% elif is_state("sensor.dark_sky_icon","wind") %} Windy
+        {% elif is_state("sensor.dark_sky_icon","cloudy") %} Cloudy
+        {% elif is_state("sensor.dark_sky_icon","partly-cloudy-day") %} Partly Cloudy
+        {% elif is_state("sensor.dark_sky_icon","partly-cloudy-night") %} Partly Cloudy
+        {% elif is_state("sensor.dark_sky_icon","hail") %} Hailing
+        {% elif is_state("sensor.dark_sky_icon","lightning") %} Lightning
+        {% elif is_state("sensor.dark_sky_icon","thunderstorm") %} Thunderstorm
+        {% endif %}
+- platform: template                         
+  sensors:
+    dark_sky_alt_wind:
+      value_template: >-
+                      {% set winddir = ['North','North-Northeast','Northeast','East-Northeast','East','East-Southeast','Southeast','South-Southeast','South','South-Southwest','Southwest','West-Southwest','West','West-Northwest','Northwest','North-Northwest','North'] %}
+                      {{ states('sensor.dark_sky_wind_speed') | round }} mi/h from the {{ winddir[((states('sensor.dark_sky_wind_bearing') | float / 360)*16) | round]}}
+
+# - platform: fedex
+  # name: fedex
+  # username: !secret fedex_username
+  # password: !secret fedex_password
+  # scan_interval:
+    # minutes: 10
+
+- platform: moon
+
+- platform: template
+  sensors:
+    moon_phase:
+      friendly_name: "Moon Phase"
+      value_template: >
+        {% if is_state('sensor.moon', 'new_moon') %}
+           'New Moon'
+        {% elif is_state('sensor.moon', 'waning_crescent') %}
+           'Waning Crescent'     
+        {%elif is_state('sensor.moon', 'waxing_crescent') %}
+           'Waxing Crescent'
+        {%elif is_state('sensor.moon', 'first_quarter') %}
+           'First quarter'
+        {%elif is_state('sensor.moon', 'waxing_gibbous') %}
+           'Waxing gibbous'
+        {%elif is_state('sensor.moon', 'full_moon') %}
+           'Full moon'
+        {%elif is_state('sensor.moon', 'last_quarter') %}
+           'Last quarter'
+        {%elif is_state('sensor.moon', 'waning_gibbous') %}
+           'Waning gibbous'
+           {% endif %}
+      entity_picture_template: >
+        {% if is_state('sensor.moon', 'new_moon') %}
+           /local/images/new-moon1.jpg
+        {% elif is_state('sensor.moon', 'waning_crescent') %}
+           /local/images/waning-crescent1.jpg
+        {%elif is_state('sensor.moon', 'waxing_crescent') %}
+          /local/images/waxing-crescent-moon1.jpg
+        {%elif is_state('sensor.moon', 'first_quarter') %}
+          /local/images/first-quarter-moon1.jpg
+        {%elif is_state('sensor.moon', 'waxing_gibbous') %}
+          /local/images/waxing_gibbous1.jpg
+        {%elif is_state('sensor.moon', 'full_moon') %}
+          /local/images/MoonFull2.jpg
+        {%elif is_state('sensor.moon', 'waning_gibbous') %}
+          /local/images/Waning-gibbous-moon1.jpg
+        {%elif is_state('sensor.moon', 'last_quarter') %}
+          /local/images/last_quarter1.jpg
+          {% endif %}
+
+     
+        
+- platform: ups
+  name: UPS
+  username: !secret ups_username
+  password: !secret ups_password
+  scan_interval:
+    minutes: 10
+- platform: template
+  sensors:
+    packages_in_transit:
+      friendly_name: "Packages in Transit"
+      value_template: >
+        {% macro in_transit(sensor) %}
+          {{sensor.state|int - delivered(sensor)|int}}
+        {% endmacro %}
+        {% macro delivered(sensor) %}
+          {% if 'delivered' in sensor.attributes %}
+            {{sensor.attributes.delivered}}
+          {% else %}
+             0
+          {% endif %}
+        {% endmacro %}
+        {{in_transit(states.sensor.ups)}}
+    deliveries_today:
+      friendly_name: "Today's Deliveries"
+      value_template: >
+        {% macro delivered(sensor) %}
+          {% if 'delivered' in sensor.attributes %}
+            {{sensor.attributes.delivered}}
+          {% else %}
+             0
+          {% endif %}
+        {% endmacro %}
+        {{delivered(states.sensor.ups)|int + delivered(states.sensor.fedex)|int}}
+    
+# - platform: template
+  # sensors:
+    # battery_iphone:
+      # unit_of_measurement: '%'
+      # value_template: >-
+          # {%- if states.sensor.tylers_iphone_battery_level.attributes.state %}
+              # {{ states.sensor.tylers_iphone_battery_level.attributes.state|round }}
+          # {% else %}
+              # {{ states.sensor.tylers_iphone_battery_level.state }}
+          # {%- endif %}
+      # icon_template: >
+          # {% set battery_level = states.sensor.tylers_iphone_battery_level.state|default(0)|int %}
+          # {% set battery_round = (battery_level / 10) |int * 10 %}
+          # {% if battery_round >= 100 %}
+            # mdi:battery
+          # {% elif battery_round > 0 %}
+            # mdi:battery-{{ battery_round }}
+          # {% else %}
+            # mdi:battery-alert
+          # {% endif %}
+# - platform: template
+  # sensors:
+    # battery_ipad:
+      # unit_of_measurement: '%'
+      # value_template: >-
+          # {%- if states.sensor.tylers_ipad_battery_level.state %}
+              # {{ states.sensor.tylers_ipad_battery_level.state|round }}
+          # {% else %}
+              # {{ states.sensor.tylers_ipad_battery_level.state }}
+          # {%- endif %}
+      # icon_template: >
+          # {% set battery_level = states.sensor.tylers_ipad_battery_level.state|default(0)|int %}
+          # {% set battery_round = (battery_level / 10) |int * 10 %}
+          # {% if battery_round >= 100 %}
+            # mdi:battery
+          # {% elif battery_round > 0 %}
+            # mdi:battery-{{ battery_round }}
+          # {% else %}
+            # mdi:battery-alert
+          # {% endif %}
+# - platform: template
+  # sensors:
+    # battery_ipad_mini:
+      # unit_of_measurement: '%'
+      # value_template: >-
+          # {%- if states.sensor.tylers_ipad_mini_battery_level.state %}
+              # {{ states.sensor.tylers_ipad_mini_battery_level.state|round }}
+          # {% else %}
+              # {{ states.sensor.tylers_ipad_mini_battery_level.state }}
+          # {%- endif %}
+      # icon_template: >
+          # {% set battery_level = states.sensor.tylers_ipad_mini_battery_level.state|default(0)|int %}
+          # {% set battery_round = (battery_level / 10) |int * 10 %}
+          # {% if battery_round >= 100 %}
+            # mdi:battery
+          # {% elif battery_round > 0 %}
+            # mdi:battery-{{ battery_round }}
+          # {% else %}
+            # mdi:battery-alert
+          # {% endif %}
+
+- platform: template
+  sensors:
+    tyler_iphone_distance:
+      value_template: '{{float(state_attr("device_tracker.tylers_iphone","waze_distance"))}}'
+      unit_of_measurement: 'mi'   
+
+- platform: template
+  sensors:
+    iss_next_rise:
+      value_template: '{% set nextrise = as_timestamp(states.binary_sensor.iss.attributes.next_rise) | timestamp_custom("%a %d at %H:%M") %} {{ nextrise }}'
+      friendly_name: 'Next Visible'
+      
+- platform: template
+  sensors:
+    current_activity:
+      friendly_name: 'Current Activity'
+      value_template: '{{ states.remote.harmony_harmony_hub.attributes.current_activity }}'
+      
+- platform: template
+  sensors:
+    holidays_calendar:
+      friendly_name: 'Holiday'
+      value_template: '{{ states.calendar.holidays_in_united_states.attributes.message }}'
+    
+- platform: template
+  sensors:
+    multisensor_6_motion_bedroom:
+      friendly_name: Bedroom Sensor
+      value_template: >-
+        {% if is_state("binary_sensor.bedroom_motion_sensor_motion", "on") %}
+        Motion
+        {% else %}
+        No Motion
+        {% endif %}
+      icon_template: >-
+        {% if is_state("binary_sensor.bedroom_motion_sensor_motion", "on") %}
+          mdi:run-fast
+        {% else %}
+          mdi:run
+        {% endif %}
+        
+- platform: template
+  sensors:
+    multisensor_6_motion_livingroom:
+      friendly_name: Livingroom Sensor
+      value_template: >-
+        {% if is_state("binary_sensor.livingroom_motion_sensor_motion", "on") %}
+        Motion
+        {% else %}
+        No Motion
+        {% endif %}
+      icon_template: >-
+        {% if is_state("binary_sensor.livingroom_motion_sensor_motion", "on") %}
+          mdi:run-fast
+        {% else %}
+          mdi:run
+        {% endif %}
+        
+- platform: template
+  sensors:
+    dining_room_motion_sensor:
+      friendly_name: "Dining Room Motion Sensor"
+      value_template: >-
+        {% if is_state('binary_sensor.dining_room_motion_sensor_motion', 'on') %}
+          Motion
+        {% else %}
+          No Motion
+        {% endif %}
+      icon_template: >-
+        {% if is_state("binary_sensor.livingroom_motion_sensor_motion", "on") %}
+          mdi:run-fast
+        {% else %}
+          mdi:run
+        {% endif %}
+        
+- platform: template
+  sensors:
+    multisensor_6_motion_bathroom:
+      friendly_name: Bathroom Sensor
+      value_template: >-
+        {% if is_state("binary_sensor.bathroom_motion_sensor_motion", "on") %}
+        Motion
+        {% else %}
+        No Motion
+        {% endif %}
+      icon_template: >-
+        {% if is_state("binary_sensor.bathroom_motion_sensor_motion", "on") %}
+          mdi:run-fast
+        {% else %}
+          mdi:run
+        {% endif %}
+
+        
+- platform: template
+  sensors:
+    front_door_sensor:
+      value_template: '{% if is_state("binary_sensor.front_door_contact", "off") %}Closed{% else %}Open{% endif %}'
+      friendly_name: 'Front Door Sensor'
+      icon_template: >-
+        {% if is_state("binary_sensor.front_door_contact", "off") %}
+          mdi:lock
+        {% else %}
+          mdi:lock-open-outline
+        {% endif %}
+        
+
+
+- platform: time_date
+  display_options:
+    - 'time'
+    - 'date'
+    - 'date_time'
+    - 'date_time_iso'
+    - 'time_date'
+    - 'time_utc'
+    - 'beat'
+      
+- platform: template
+  sensors:
+    weather_summary1:
+      value_template: '{{ (states.sensor.dark_sky_hourly_summary.state | wordwrap(44, true,"§")).split("§")[0]}}'
+      friendly_name: Weather Summary1
+
+- platform: template
+  sensors:
+    weather_summary2:
+      value_template: '{{ (states.sensor.dark_sky_hourly_summary.state | wordwrap(44, true,"§")).split("§")[1]}}'
+      friendly_name: Weather Summary2
+      
+- platform: template
+  sensors:
+    current_activity1:
+      value_template: '{{ (states.sensor.current_activity.state | wordwrap(14, true,"§")).split("§")[0]}}'
+      friendly_name: Current Activity 1
+
+- platform: template
+  sensors:
+    current_activity2:
+      value_template: '{{ (states.sensor.current_activity.state | wordwrap(14, true,"§")).split("§")[1]}}'
+      friendly_name: Current Activity 2
+      
+- platform: template
+  sensors:
+    current_activity3:
+      value_template: '{{ (states.sensor.current_activity.state | wordwrap(14, true,"§")).split("§")[2]}}'
+      friendly_name: Current Activity 3
+      
+- platform: template
+  sensors:
+    dodgers_light_red:
+      friendly_name: "Dodgers Light Red"
+      value_template: >-
+        {% if is_state('switch.dodgers_light', 'on') %}
+          on
+        {% else %}
+          off
+        {% endif %}
+        
+- platform: template
+  sensors:
+    dodgers_light_blue:
+      friendly_name: "Dodgers Light Blue"
+      value_template: >-
+        {% if is_state('switch.dodgers_light', 'on') %}
+          on
+        {% else %}
+          off
+        {% endif %}
+          
+- platform: template
+  sensors:
+    livingroom_heater:
+      friendly_name: "Livingroom Heater"
+      value_template: >-
+        {% if is_state('climate.home', 'on') %}
+          on
+        {% else %}
+          off
+        {% endif %}
+        
+- platform: template
+  sensors:
+    bathroom_main_light:
+      friendly_name: "Bathroom Main Light"
+      value_template: >-
+                {% if (states.sensor.bathroom_motion_sensor_illuminance.state|float > 45) %}
+                   on
+                {% else %}
+                   off
+                {% endif %}
+                
+- platform: template
+  sensors:
+    bathroom_humidity_73:
+      friendly_name: "Bathroom Humidity Above 73"
+      value_template: >-
+                {% if (states.sensor.bathroom_motion_sensor_relative_humidity_measurement.state|float > 73) %}
+                   above
+                {% else %}
+                   below
+                {% endif %}
+                
+- platform: template
+  sensors:
+    overnight_low_60:
+      friendly_name: "Overnight Low Below 60"
+      value_template: >-
+                {% if (states.sensor.dark_sky_overnight_low_apparent_temperature_0d.state|float < 60) %}
+                   below
+                {% else %}
+                   above
+                {% endif %}
+
+- platform: template
+  sensors:
+    bedroom_heater_watts:
+      value_template: '{{ states.switch.bedroom_heater_2.attributes["current_power_w"] | replace(" W", "") | float }}'
+      unit_of_measurement: 'W'
+                
+- platform: template
+  sensors:
+    bedroom_heater_on:
+      friendly_name: "Bedroom Heater On"
+      value_template: >-
+                {% if (states.sensor.bedroom_heater_watts.state|float > 100) %}
+                   on
+                {% else %}
+                   off
+                {% endif %}
+
+- platform: template
+  sensors:
+    front_door_sensor_low_battery:
+      friendly_name: "Front Door Sensor Low Battery Alert"
+      value_template: >-
+                {% if (states.sensor.front_door_battery.state|float < 20) %}
+                   low battery
+                {% else %}
+                   charged
+                {% endif %}
+                
+- platform: mqtt
+  name: 'USPS Mail'
+  state_topic: '/usps/mails'
+  value_template: "{{ value }}"
+
+- platform: mqtt
+  name: USPS Packages
+  state_topic: '/usps/packages'
+  value_template: "{{ value }}"
+
+ 
+- platform: xbox_live
+  scan_interval: 90
+  api_key: !secret xbox_api_key
+  xuid:
+      - !secret xbox_xuid
+
+- platform: template 
+  sensors:
+    xboxapi_current:
+      friendly_name: Current Xbox Activity
+      value_template: '{% if is_state("sensor.sleepysostoney", "Offline") %}{% else %}{{ states.sensor.sleepysostoney.attributes["XboxOne Full"] }}{% endif %}'
+      icon_template: >-
+        {% if is_state("sensor.sleepysostoney", "Offline") %}
+          mdi:xbox-controller-off
+        {% else %}
+          mdi:xbox
+        {% endif %}
+
+
+    
+- platform: command_line
+  name: SSL cert expiry
+  unit_of_measurement: days
+  scan_interval: 10800
+  command: !secret ssl_command
+  
+- platform: template 
+  sensors:
+    powerbot_state:
+      friendly_name: Current Powerbot State
+      value_template: >-
+        {% if is_state('input_boolean.samsung_powerbot', 'on') %}
+          Cleaning
+        {% else %}
+          Charging
+        {% endif %}
+
+    
+- platform: airvisual
+  api_key: !secret airvisual_api_key
+  monitored_conditions:
+    - us
+  show_on_map: false
+  scan_interval: 600
+  # Configure by latitude/longitude:
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+    
+# Pollen
+- platform: rest
+  name: pollen_percentage
+  resource: https://www.pollen.com/api/forecast/current/pollen/91361
+  value_template: "{{value_json.Location.periods[1].Index}}"
+  scan_interval: 10800
+  headers:
+     Referer: "https://www.pollen.com"
+- platform: template
+  sensors:
+    pollen_level:
+      friendly_name: 'Pollen Level'
+      value_template: >
+        {% if states.sensor.pollen_percentage.state|float <= 2.4 %}Low
+        {% elif states.sensor.pollen_percentage.state|float <= 4.8 %}Low to Medium
+        {% elif states.sensor.pollen_percentage.state|float <= 7.2 %}Medium
+        {% elif states.sensor.pollen_percentage.state|float <= 9.6 %}Medium to High
+        {% elif states.sensor.pollen_percentage.state|float <= 12.0 %}High
+        {% else %}Unknown
+        {% endif %}
+    
+- platform: flunearyou
+
+- platform: untappd
+  username: !secret untappd_username
+  id: !secret untappd_id
+  secret: !secret untappd_secret
+    
+- platform: waze_travel_time
+  name: Current to Work
+  origin: device_tracker.tylers_iphone
+  destination: zone.work
+  region: 'US'
+  
+- platform: waze_travel_time
+  name: Current to Home
+  origin: device_tracker.tylers_iphone
+  destination: zone.home
+  region: 'US'
+  
+# - platform: waze_travel_time
+  # name: Margaret to work
+  # origin: zone.home
+  # destination: zone.margaret_work
+  # region: 'US'
+  
+# - platform: waze_travel_time
+  # name: Margaret to Home
+  # origin: zone.margaret_work
+  # destination: zone.home
+  # region: 'US'
+  
+- platform: steam_online
+  api_key: !secret steam_api_key
+  accounts:
+    - !secret tyler_steam
+    - !secret ryan_steam
+    - !secret ian_steam
+
+- platform: template
+  sensors:
+    steam_ryan_playing:
+      friendly_name: "Ryan Game"
+      value_template: "{{ states.sensor.steam_76561198000002056.attributes.game }}"
+      
+- platform: template
+  sensors:
+    steam_tyler_playing:
+      friendly_name: "Tyler Game"
+      value_template: "{{ states.sensor.steam_76561198935964396.attributes.game }}"
+      
+- platform: template
+  sensors:
+    steam_ian_playing:
+      friendly_name: "Ian Game"
+      value_template: "{{ states.sensor.steam_76561197992123896.attributes.game }}"
+
+- platform: template
+  sensors:
+    last_alexa:
+      entity_id:
+        - media_player.bedroom
+        - media_player.everywhere
+        - media_player.livingroom
+        - media_player.this_device
+      value_template: >
+        {{ states.media_player | selectattr('attributes.last_called','eq',True) | map(attribute='entity_id') | first }}
+
+- platform: brewdog
+
+- platform: template
+  sensors:
+    untappd_badge:
+     value_template: "Recent Badge: {{ states.sensor.untappd_last_badge_sleepysostoney.attributes.badge }} (Level {{ states.sensor.untappd_last_badge_sleepysostoney.attributes.level }})"
+
+- platform: template
+  sensors:
+    untappd_beer:
+     value_template: "Recent Beer: {{ states.sensor.untappd_last_check_in_sleepysostoney.attributes.beer }} ({{ states.sensor.untappd_last_check_in_sleepysostoney.attributes.abv }})"
+
+- platform: template
+  sensors:
+    untappd_followings:
+    #unit_of_measurement: followers
+     value_template: "{{ states.sensor.untappd_last_check_in_sleepysostoney.attributes.followings }}"
+     entity_picture_template: >
+          /local/images/followers.png
+- platform: template
+  sensors:
+    untappd_checked:
+    # unit_of_measurement: checkins
+     value_template: "{{ states.sensor.untappd_last_check_in_sleepysostoney.attributes.checkins }}"
+     entity_picture_template: >
+          /local/images/check.png
+- platform: template
+  sensors:
+    untappd_total_beers:
+     #unit_of_measurement: beers
+     value_template: "{{ states.sensor.untappd_last_check_in_sleepysostoney.attributes.total_beers }}"
+     entity_picture_template: >
+          /local/images/cheers.png
+- platform: template
+  sensors:
+    untappd_total_badges:
+     #unit_of_measurement: badges
+     value_template: "{{ states.sensor.untappd_last_check_in_sleepysostoney.attributes.total_badges }}"
+     entity_picture_template: >
+          /local/images/badge.png
+### RING ###
+- platform: ring
+
+###Home Assistant Uptime ###
+- platform: uptime
+  name: HA Uptime
+  
+
+  unit_of_measurement: hours
+- platform: systemmonitor
+  resources:
+    - type: disk_use_percent
+      arg: /home
+    - type: memory_free
+    - type: disk_use
+      arg: /home
+    - type: disk_free
+      arg: /home
+    - type: memory_use
+    - type: processor_use
+    - type: last_boot
+    - type: network_in
+      arg: eth0
+    - type: network_out
+      arg: eth0
+      
+- platform: template
+  sensors:
+    fire_tv_current:
+     value_template: "{{ state_attr('media_player.firetv', 'app_name') }}"
+
+- platform: template
+  sensors:
+    bedroom_appletv_history:
+     value_template: "{{ state_attr('media_player.bedroom_3', 'media_title') }}"
+     
+- platform: template
+  sensors:
+    livingroom_appletv_history:
+     value_template: "{{ state_attr('media_player.living_room_apple_tv', 'media_title') }}"
+     
+- platform: mold_indicator
+  indoor_temp_sensor: sensor.bedroom_motion_sensor_temperature_measurement
+  indoor_humidity_sensor: sensor.bedroom_motion_sensor_relative_humidity_measurement
+  outdoor_temp_sensor: sensor.dark_sky_apparent_temperature
+  calibration_factor: 1.5
+
+- platform: broadlink
+  scan_interval: 60
+  host: !secret broadlink_livingroom_host
+  mac: !secret broadlink_livingroom_mac
+  name: Livingroom Broadlink Temp
+  monitored_conditions:
+    - temperature
+
+- platform: broadlink
+  scan_interval: 60
+  host: !secret broadlink_bedroom_host
+  mac: !secret broadlink_bedroom_mac
+  name: Bedroom Broadlink Temp
+  monitored_conditions:
+    - temperature
+    
+- platform: nhl_api
+  team_id: 26
+  

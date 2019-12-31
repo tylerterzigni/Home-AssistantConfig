@@ -1,0 +1,5 @@
+  - platform: ping
+    host: 192.168.55.146
+    count: 3
+    scan_interval: 120
+    name: Livingroom PC Ping

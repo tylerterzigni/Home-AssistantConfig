@@ -1,0 +1,467 @@
+default_view:
+  view: true
+  name: Home
+  icon: mdi:home
+  entities:
+  - group.homedevices
+  - group.motion_detection
+  - group.travel
+  - group.temperature 
+  - group.livingroom_harmony
+  - group.weather_map
+  - group.weather
+  - group.samsung_powerbot
+
+lights_view:
+  view: true
+  icon: mdi:lightbulb
+  entities:
+  - group.living_room_lights
+  - group.dining_room_lights
+  - group.bedroom_lights
+  - group.more_lights
+  - group.bathroom_lights
+  - group.room_numbers
+  
+weather_view:
+  view: true
+  icon: mdi:weather-lightning-rainy
+  entities:  
+  - group.weather
+  - group.weather_map
+  - group.cold_and_flu
+  - group.pollen_levels
+  - group.open_uv_time_in_sun
+
+scenes_view:
+  name: Automation Override
+  icon: mdi:theme-light-dark
+  view: true
+  entities:
+  - group.livingroom_scenes
+  - group.bedroom_scenes
+  - group.holiday_modes
+  
+automation_override_view:
+  name: Automation Override
+  icon: mdi:robot
+  view: true
+  entities:
+  - group.automation_override
+
+media_players_view:
+  name: Media Players
+  view: true
+  icon: mdi:television-guide
+  entities:
+  - group.bedroom_tv_controls
+  - group.livingroom_tv_controls
+  - group.xbox_controls
+  - media_player.spotify
+  - media_player.kodi
+  - media_player.chris_tv
+  - media_player.firetv
+shipping_view:
+  name: Shipping View
+  view: true
+  icon: mdi:truck-delivery
+  entities:
+  - group.shipping
+
+misc_info_view:
+  name: Misc Information
+  view: true
+  icon: mdi:information-outline
+  entities:
+  - group.battery_info
+  - group.links
+  - group.speed_test
+  - group.wake_on_lan
+
+zones_view:
+  name: Zones
+  view: true
+  icon: mdi:floor-plan
+  entities:
+  - group.zones
+
+fun_view:
+  view: true
+  icon: mdi:earth
+  entities:
+  - group.iss
+  - group.moon
+
+livingroom_lights:
+  view: false
+  name: Living Room
+  entities:
+  - light.dining_kitchen
+  - light.dining_window
+  - light.livingroom_tv_right
+  - light.livingroom_tv_left
+  - light.livingroom_back_left
+
+  
+dining_room_lights:
+  view: false
+  name: Dining Room
+  entities:
+  - light.dining_kitchen
+  - light.dining_window
+
+bedroom_lights:
+  view: false
+  name: Tyler Bedroom
+  entities:
+  - light.bedroom_lamp_left
+  - light.bedroom_lamp_right
+  - light.bedroom_lamp_middle
+
+more_lights:
+  view: false
+  name: Accessory Lighting
+  entities:
+  - input_boolean.lava_lamp 
+  
+bathroom_lights:
+  view: false
+  name: Bathroom Light
+  entities:
+  - light.bathroom_light
+  
+room_numbers:
+  view: false
+  name: Room Brightness
+  entities:
+  - input_number.living_room_lights  
+  - input_number.dining_room_lights
+  - input_number.bedroom_lights
+  - input_number.bathroom_light
+
+all_lights:
+  view: false
+  name: All Lights
+  entities:
+  - light.bedroom_lamp_left
+  - light.bedroom_lamp_right
+  - light.dining_kitchen
+  - light.dining_window
+  - light.livingroom_tv_right
+  - light.livingroom_back_left
+  - light.livingroom_tv_left
+  - light.bedroom_lamp_middle
+  - light.bathroom_light
+
+homedevices:
+  name: Who's Home
+  view: false
+  icon: mdi:home-map-marker
+  entities:
+  - device_tracker.debbies_iphone_lan
+  - device_tracker.stevenmrsiphone_lan
+  - device_tracker.samiam_10
+  - device_tracker.tylers_iphone
+  - device_tracker.chris
+bedroomdevices:
+  name: Bedroom Devices
+  view: false
+  entities:
+  - device_tracker.tylers_iphone
+roommatedevices:
+  name: Roommate Devices
+  view: false
+  entities:
+  - device_tracker.tylers_iphone
+  - device_tracker.chris
+
+travel:
+  name: Traffic
+  view: false
+  entities:
+  # - sensor.home_to_work
+  # - sensor.work_to_home
+  - sensor.tyler_to_home
+  - sensor.tyler_to_work
+
+bedroom_scenes:
+  name: Bedroom Scenes
+  control: hidden
+  view: false
+  entities:
+  - script.relax_in_bedroom
+  - script.lava_lamp_in_bedroom
+  - script.dodgers_in_bedroom
+  - script.bright_in_bedroom
+
+livingroom_scenes:
+  name: Livingroom Scenes
+  control: hidden
+  view: false
+  entities:
+  - script.relax_in_livingroom
+  - script.bright_in_livingroom
+  - script.night_entrance_in_livingroom
+  - script.dodgers_in_livingroom
+  - script.lakers_in_livingroom
+  - script.warriors_in_livingroom
+  - script.cavaliers_in_livingroom
+  - script.celtics_in_livingroom
+  - script.dim_in_livingroom
+  - script.christmas_in_livingroom
+  - script.halloween_in_livingroom
+  - script.saint_patricks_day_in_livingroom
+  - script.valentines_day_in_livingroom
+  - script.easter_in_livingroom
+  - script.thanksgiving_in_livingroom
+  - script.fourth_of_july_in_livingroom
+  - script.labor_day_in_livingroom
+  - script.veterans_day_in_livingroom
+  - script.memorial_day_in_livingroom
+  
+automation_override:
+  view: false
+  name: Automation Override
+  entities:
+  - input_boolean.lights_on_in_evening
+  - input_boolean.lights_off_after_11
+  - input_boolean.lights_off_home_empty
+  - input_boolean.night_entrance
+  - input_boolean.bathroom_light_motion
+  - input_boolean.bedroom_light_motion
+  - input_boolean.livingroom_light_motion
+  - input_boolean.bathroom_heater_mode
+  - input_boolean.dab_rigs
+  
+bedroom_sensor_override:
+  view: false
+  name: Bedroom Sensor Override
+  entities:
+  - input_boolean.tyler_in_bedroom_bright
+  - input_boolean.tyler_in_bedroom_relax
+  - input_boolean.tyler_in_bedroom_lava_lamp
+  - input_boolean.tyler_in_bedroom_dodgers
+  - input_boolean.margaret_in_bedroom_bright
+  - input_boolean.margaret_in_bedroom_relax
+  - input_boolean.margaret_in_bedroom_lava_lamp
+  - input_boolean.margaret_in_bedroom_dodgers
+ 
+temperature:
+  name: Thermostat
+  view: false
+  icon: mdi:thermometer
+  control: hidden
+  entities:
+  - sensor.livingroom_multi_sensor_temperature
+  - climate.home
+  - input_boolean.livingroom_air_conditioner
+  - input_boolean.livingroom_fan
+  - sensor.bedroom_multi_sensor_temperature
+  - input_boolean.bedroom_air_conditioner
+  - input_boolean.bedroom_box_fan
+  - input_boolean.bedroom_fan
+  - input_boolean.bedroom_heater
+  - sensor.bathroom_multi_sensor_temperature
+  
+livingroom_harmony:
+  name: Harmony
+  view: false
+  entities:
+  - sensor.current_activity
+  - input_select.harmony_harmony_hub
+
+bedroom_tv_controls:
+  name: Bedroom TV
+  view: false
+  control: hidden
+  entities:
+  - switch.bedroom_tv
+  - media_player.samsung_tv_remote
+  - media_player.roku_yh00cx395648
+  - media_player.bedroom_apple_tv
+  - media_player.bedroom_apple_tv_2
+  - media_player.bedroom_apple_tv_3
+  - media_player.bedroom_apple_tv_4
+  - media_player.bedroom_apple_tv_5
+  - media_player.bedroom_apple_tv_6
+  - media_player.bedroom_apple_tv_7
+livingroom_tv_controls:
+  name: Livingroom TV Controls
+  view: false
+  entities:
+  - media_player.livingroom_tv
+  - media_player.living_room_apple_tv
+  #- media_player.roku_yk003c328511
+  
+xbox_controls:
+  name: Xbox Status
+  view: false
+  entities:
+  - sensor.sleepysostoney
+  - sensor.xboxapi_current
+
+shipping:
+  name: Deliveries
+  view: false
+  entities:
+  - sensor.usps_mail
+  - sensor.usps_packages
+  - camera.usps_mail
+  - sensor.ups
+  - sensor.fedex
+  - sensor.deliveries_today
+  - sensor.packages_in_transit
+
+weather_map:
+  name: Weather Map
+  view: false
+  entities:
+  - camera.weather
+  
+weather:
+  name: Weather Summary
+  view: false
+  entities:
+  - sun.sun
+  - sensor.weather_summary
+  - sensor.weather_temperature
+  - sensor.weather_precip_probability
+  - sensor.weather_wind_speed
+  - sensor.weather_humidity
+  - sensor.weather_daily_summary
+  - sensor.weather_hourly_summary
+  - sensor.us_air_pollution_level
+
+battery_info:
+  name: Battery
+  view: false
+  entities:
+  - sensor.battery_iphone
+  - sensor.battery_ipad
+  - sensor.battery_ipad_mini
+
+speed_test:
+  name: Speed Test
+  view: false
+  entities:
+  - sensor.speedtest_ping
+  - sensor.speedtest_download
+  - sensor.speedtest_upload
+  
+links:
+  name: Links
+  view: false
+  entities:
+  - weblink.router_internal
+  - weblink.router_external
+
+iss:
+  name: International Space Station
+  view: false
+  entities:
+  - sensor.iss_next_rise
+  - camera.iss
+
+moon:  
+  name: Moon
+  view: false
+  entities:
+  - sensor.moon_phase
+  
+holiday_modes:
+  name: Holiday Lighting
+  view: false
+  entities:
+  - sensor.holidays_calendar
+  - input_select.holiday
+  - input_boolean.livingroom_holidays
+
+calendars:
+- calendar.holidays_in_united_states
+
+zones:
+  name: Zones
+  view: false
+  entities:
+  - binary_sensor.floorplan
+
+motion_detection:
+  name: Motion Detection
+  view: false
+  entities:
+  - sensor.front_door_sensor  
+  - sensor.multisensor_6_motion_bedroom
+  - sensor.multisensor_6_motion_livingroom 
+  - sensor.multisensor_6_motion_bathroom
+  
+samsung_powerbot:
+  name:  Samsung Powerbot
+  view: false
+  entities:
+  - input_boolean.samsung_powerbot
+  
+wake_on_lan:
+  name:  Wake on LAN
+  view: false
+  entities:
+  -  switch.wake_on_lan
+  
+open_uv_time_in_sun:
+  name: Time in Sun
+  view: false
+  entities:
+  - sensor.skin_type_3_safe_exposure_time
+  - sensor.skin_type_4_safe_exposure_time
+  
+cold_and_flu:
+  name: Cold & Flu
+  view: false
+  entities:
+  - sensor.cold_flu_percentage
+  - sensor.cold_flu_risk
+
+
+pollen_levels:
+  name: Pollen Levels
+  view: false
+  entities:
+  - sensor.pollen_percentage
+  - sensor.pollen_level
+
+dab_rigs:
+  name: Dab Rigs
+  view: false
+  entities:
+  - switch.livingroom_dab_rig
+  - switch.bedroom_dab_rig
+  
+fansandheater:
+  name: Fans and Heater
+  view: false
+  entities:
+  - switch.bedroom_box_fan
+  - switch.livingroom_fan
+  - switch.bedroom_heater_2
+  - switch.bathroom_fan
+  
+date_and_time:
+   view: yes
+   icon: mdi:home 
+   entities:
+     - group.date_time
+date_time:
+  name: Date and Time
+  entities:
+    - sensor.time
+    - sensor.date
+    - sensor.date_time
+    - sensor.time_date
+    - sensor.time_utc
+    - sensor.beat
+    
+livingroom_motion_sensors:
+  view: false
+  name: Livingroom Motion Sensors
+  entities:
+  - binary_sensor.livingroom_motion_sensor_motion
+  - binary_sensor.dining_room_motion_sensor_motion

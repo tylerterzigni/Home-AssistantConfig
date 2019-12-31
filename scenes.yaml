@@ -1,0 +1,540 @@
+####################
+#
+#     Scenes
+#
+####################
+ 
+#####  Tyler Bedroom relax #####
+
+ - name: relax_in_bedroom
+   entities:
+     light.bedroom_lamp_right:
+       state: on
+       rgb_color: [243, 179, 80]
+       brightness: 144
+     light.bedroom_lamp_left:
+       state: on
+       rgb_color: [243, 179, 80]
+       brightness: 144
+     light.bedroom_lamp_middle:
+       state: on
+       rgb_color: [243, 179, 80]
+       brightness: 144
+
+#####  Tyler Bedroom red #####
+
+ - name: red_in_bedroom
+   entities:
+     light.bedroom_lamp_right:
+       state: on
+       rgb_color: [255, 69, 6]
+       brightness: 50
+     light.bedroom_lamp_left:
+       state: on
+       rgb_color: [255, 69, 6]
+       brightness: 50
+     light.bedroom_lamp_middle:
+       state: on
+       rgb_color: [255, 69, 6]
+       brightness: 50       
+
+#####  Tyler Bedroom Lava Lamp #####
+
+ - name: lava_lamp_in_bedroom
+   entities:
+     light.bedroom_lamp_right:
+       state: on
+       rgb_color: [104, 215, 172]
+       brightness: 132
+     light.bedroom_lamp_left:
+       state: on
+       rgb_color: [104, 215, 172]
+       brightness: 132
+     light.bedroom_lamp_middle:
+       state: on
+       rgb_color: [160, 223, 116]
+       brightness: 154
+     switch.lava_lamp:
+       state: on
+       
+#####  Dodgers in Bedroom #####
+
+ - name: dodgers_in_bedroom
+   entities:
+     light.bedroom_lamp_right:
+       state: on
+       rgb_color: [62, 79, 255]
+       brightness: 170
+     light.bedroom_lamp_left:
+       state: on
+       rgb_color: [62, 79, 255]
+       brightness: 170
+     light.bedroom_lamp_middle:
+       state: on
+       rgb_color: [194, 199, 188]
+       brightness: 180
+
+
+#####  Bright in Bedroom #####
+
+ - name: bright_in_bedroom
+   entities:
+     light.bedroom_lamp_right:
+       state: on
+       rgb_color: [255, 205, 120]
+       brightness: 254
+     light.bedroom_lamp_left:
+       state: on
+       rgb_color: [255, 205, 120]
+       brightness: 254
+     light.bedroom_lamp_middle:
+       state: on
+       rgb_color: [255, 205, 120]
+       brightness: 254
+
+
+#####  Relax in Livingroom #####
+
+ - name: relax_in_livingroom
+   entities:
+     light.dining_kitchen:
+       state: on
+       rgb_color: [243, 179, 80]
+       brightness: 200
+     light.dining_window:
+       state: on
+       rgb_color: [243, 179, 80]
+       brightness: 150
+     light.livingroom_back_left:
+       state: on
+       rgb_color: [243, 179, 80]
+       brightness: 200
+     light.livingroom_tv_right:
+       state: on
+       rgb_color: [243, 179, 80]
+       brightness: 200
+     light.livingroom_tv_left:
+       state: on
+       rgb_color: [243, 179, 80]
+       brightness: 200
+       
+#####  Livingroom Dim Night #####
+
+ - name: dim_in_livingroom
+   entities:
+     light.dining_kitchen:
+       state: on
+       rgb_color: [174, 140, 79]
+       brightness: 50
+     light.dining_window:
+       state: on
+       rgb_color: [174, 140, 79]
+       brightness: 50
+     light.livingroom_back_left:
+       state: on
+       rgb_color: [174, 140, 79]
+       brightness: 50
+     light.livingroom_tv_right:
+       state: on
+       rgb_color: [174, 140, 79]
+       brightness: 50
+     light.livingroom_tv_left:
+       state: on
+       rgb_color: [174, 140, 79]
+       brightness: 50
+       
+#####  Livingroom Bright #####
+
+ - name: bright_in_livingroom
+   entities:
+     light.dining_kitchen:
+       state: on
+       rgb_color: [255, 205, 120]
+       brightness: 254
+     light.dining_window:
+       state: on
+       rgb_color: [255, 205, 120]
+       brightness: 254
+     light.livingroom_back_left:
+       state: on
+       rgb_color: [255, 205, 120]
+       brightness: 254
+     light.livingroom_tv_right:
+       state: on
+       rgb_color: [255, 205, 120]
+       brightness: 254
+     light.livingroom_tv_left:
+       state: on
+       rgb_color: [255, 205, 120]
+       brightness: 254      
+       
+#####  Livingroom Dodgers #####
+
+ - name: dodgers_in_livingroom
+   entities:
+     light.dining_kitchen:
+       state: on
+       rgb_color: [62, 79, 255]
+       brightness: 180
+     light.dining_window:
+       state: on
+       rgb_color: [62, 79, 255]
+       brightness: 180
+     light.livingroom_back_left:
+       state: on
+       rgb_color: [62, 79, 255]
+       brightness: 180
+     light.livingroom_tv_right:
+       state: on
+       rgb_color: [194, 199, 188]
+       brightness: 170
+     light.livingroom_tv_left:
+       state: on
+       rgb_color: [194, 199, 188]
+       brightness: 170
+     switch.dodgers_light_switch:
+       state: on
+     switch.livingroom_pc:
+       state: on
+       
+#####  Livingroom Warriors #####
+
+ - name: warriors_in_livingroom
+   entities:
+     light.dining_kitchen:
+       state: on
+       rgb_color: [253, 185, 39]
+       brightness: 254
+     light.dining_window:
+       state: on
+       rgb_color: [0, 107, 182]
+       brightness: 101
+     light.livingroom_back_left:
+       state: on
+       rgb_color: [0, 107, 182]
+       brightness: 133
+     light.livingroom_tv_right:
+       state: on
+       rgb_color: [253, 185, 39]
+       brightness: 229
+     light.livingroom_tv_left:
+       state: on
+       rgb_color: [253, 185, 39]
+       brightness: 229
+       
+#####  Livingroom Cavaliers #####
+
+ - name: cavaliers_in_livingroom
+   entities:
+     light.dining_kitchen:
+       state: on
+       rgb_color: [237, 183, 42]
+       brightness: 143
+     light.dining_window:
+       state: on
+       rgb_color: [255, 40, 71]
+       brightness: 101
+     light.livingroom_back_left:
+       state: on
+       rgb_color: [255, 43, 60]
+       brightness: 235
+     light.livingroom_tv_right:
+       state: on
+       rgb_color: [255, 198, 48]
+       brightness: 254
+     light.livingroom_tv_left:
+       state: on
+       rgb_color: [253, 198, 48]
+       brightness: 254
+       
+#####  Livingroom Celtics #####
+
+ - name: celtics_in_livingroom
+   entities:
+     light.dining_kitchen:
+       state: on
+       rgb_color: [187, 151, 83]
+       brightness: 254
+     light.dining_window:
+       state: on
+       rgb_color: [0, 131, 72]
+       brightness: 101
+     light.livingroom_back_left:
+       state: on
+       rgb_color: [0, 131, 72]
+       brightness: 133
+     light.livingroom_tv_right:
+       state: on
+       rgb_color: [187, 151, 83]
+       brightness: 229
+     light.livingroom_tv_left:
+       state: on
+       rgb_color: [187, 151, 83]
+       brightness: 229
+       
+#####  Livingroom Night Entrance #####
+ - name: night_entrance_in_livingroom
+   entities:
+     light.livingroom_back_left:
+       state: on
+       rgb_color: [66, 52, 26]
+       brightness: 20
+     light.livingroom_tv_left:
+       state: on
+       rgb_color: [69, 54, 27]
+       brightness: 30
+       
+#####  Livingroom Lakers #####
+
+ - name: lakers_in_livingroom
+   entities:
+     light.dining_kitchen:
+       state: on
+       rgb_color: [112, 47, 138]
+       brightness: 254
+     light.dining_window:
+       state: on
+       rgb_color: [112, 47, 138]
+       brightness: 254
+     light.livingroom_back_left:
+       state: on
+       rgb_color: [112, 47, 138]
+       brightness: 254
+     light.livingroom_tv_right:
+       state: on
+       rgb_color: [255, 199, 44]
+       brightness: 254
+     light.livingroom_tv_left:
+       state: on
+       rgb_color: [255, 199, 44]
+       brightness: 254
+
+ - name: christmas_in_livingroom
+   entities:
+     light.dining_kitchen:
+       state: on
+       brightness: 255
+       color_name: green
+     light.dining_window:
+       state: on
+       brightness: 255
+       color_name: red
+     light.livingroom_back_left:
+       state: on
+       brightness: 255
+       color_name: green
+     light.livingroom_tv_left:
+       state: on
+       brightness: 255
+       color_name: red
+     light.livingroom_tv_right:
+       state: on
+       brightness: 255
+       color_name: green
+        
+ - name: halloween_in_livingroom
+   entities:
+     light.dining_kitchen:      
+       state: on
+       brightness: 255
+       xy_color: [ 0.6164, 0.3645 ]
+     light.dining_window:
+       state: on
+       brightness: 255
+       color_name: red
+     light.livingroom_back_left:
+       state: on
+       brightness: 255
+       xy_color: [ 0.6164, 0.3645 ]
+     light.livingroom_tv_left:
+       state: on
+       brightness: 255
+       xy_color: [ 0.6164, 0.3645 ]
+     light.livingroom_tv_right:
+       state: on
+       brightness: 255
+       xy_color: [ 0.6164, 0.3645 ]
+        
+ - name: saint_patricks_day_in_livingroom
+   entities:
+     light.dining_kitchen:
+       state: on
+       brightness: 255
+       color_name: green
+     light.dining_window:
+       state: on
+       brightness: 255
+       color_name: green
+     light.livingroom_back_left:
+       state: on
+       brightness: 255
+       color_name: green
+     light.livingroom_tv_left:
+       state: on
+       brightness: 255
+       color_name: green
+     light.livingroom_tv_right:
+       state: on
+       brightness: 255
+       color_name: green
+        
+ - name: valentines_day_in_livingroom
+   entities:
+     light.dining_kitchen:
+       state: on
+       brightness: 255
+       color_name: "hot pink"
+     light.dining_window:
+       state: on
+       brightness: 255
+       color_name: "hot pink"
+     light.livingroom_back_left:
+       state: on
+       brightness: 255
+       color_name: "hot pink"
+     light.livingroom_tv_left:
+       state: on
+       brightness: 255
+       color_name: "hot pink"
+     light.livingroom_tv_right:
+       state: on
+       brightness: 255
+       color_name: "hot pink"
+        
+ - name: easter_in_livingroom
+   entities:
+     light.dining_kitchen:
+       state: on
+       brightness: 255
+       color_name: indigo
+     light.dining_window:
+       state: on
+       brightness: 255
+       xy_color: [ 0.4283, 0.2298 ]
+     light.livingroom_back_left:
+       state: on
+       brightness: 255
+       color_name: indigo
+     light.livingroom_tv_left:
+       state: on
+       brightness: 255
+       xy_color: [ 0.4283, 0.2298 ]
+     light.livingroom_tv_right:
+       state: on
+       brightness: 255
+       color_name: indigo
+      
+ - name: thanksgiving_in_livingroom
+   entities:
+     light.dining_kitchen:
+       state: on
+       brightness: 255
+       xy_color: [ 0.5781, 0.3921 ]
+     light.dining_window:
+       state: on
+       brightness: 255
+       xy_color: [ 0.4862, 0.4599 ]
+     light.livingroom_back_left:
+       state: on
+       brightness: 255
+       xy_color: [ 0.5781, 0.3921 ]
+     light.livingroom_tv_left:
+       state: on
+       brightness: 255
+       xy_color: [ 0.4862, 0.4599 ]
+     light.livingroom_tv_right:
+       state: on
+       brightness: 255
+       xy_color: [ 0.5781, 0.3921 ]
+      
+ - name: fourth_of_july_in_livingroom
+   entities:
+     light.dining_kitchen:
+       state: on
+       brightness: 255
+       color_name: blue
+     light.dining_window:
+       state: on
+       brightness: 255
+       color_name: blue
+     light.livingroom_back_left:
+       state: on
+       brightness: 255
+       color_name: red
+     light.livingroom_tv_left:
+       state: on
+       brightness: 255
+       color_name: white
+     light.livingroom_tv_right:
+       state: on
+       brightness: 255
+       color_name: white
+        
+ - name: labor_day_in_livingroom
+   entities:
+     light.dining_kitchen:
+       state: on
+       brightness: 255
+       color_name: blue
+     light.dining_window:
+       state: on
+       brightness: 255
+       color_name: blue
+     light.livingroom_back_left:
+       state: on
+       brightness: 255
+       color_name: red
+     light.livingroom_tv_left:
+       state: on
+       brightness: 255
+       color_name: white
+     light.livingroom_tv_right:
+       state: on
+       brightness: 255
+       color_name: white
+        
+ - name: veterans_day_in_livingroom
+   entities:
+     light.dining_kitchen:
+       state: on
+       brightness: 255
+       color_name: blue
+     light.dining_window:
+       state: on
+       brightness: 255
+       color_name: blue
+     light.livingroom_back_left:
+       state: on
+       brightness: 255
+       color_name: red
+     light.livingroom_tv_left:
+       state: on
+       brightness: 255
+       color_name: white
+     light.livingroom_tv_right:
+       state: on
+       brightness: 255
+       color_name: white
+        
+ - name: memorial_day_in_livingroom
+   entities:
+     light.dining_kitchen:
+       state: on
+       brightness: 255
+       color_name: blue
+     light.dining_window:
+       state: on
+       brightness: 255
+       color_name: blue
+     light.livingroom_back_left:
+       state: on
+       brightness: 255
+       color_name: red
+     light.livingroom_tv_left:
+       state: on
+       brightness: 255
+       color_name: white
+     light.livingroom_tv_right:
+       state: on
+       brightness: 255
+       color_name: white

@@ -1,0 +1,4 @@
+          >
+          {{ [
+          "Someone opened the front door!"
+          ] | random }} 

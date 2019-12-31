@@ -1,0 +1,33 @@
+# #DEVICE TRACKERS
+  # - platform: netgear
+    # host: !secret netgear_host
+    # username: !secret netgear_username
+    # password: !secret netgear_password
+    # interval_seconds: 12
+    # consider_home: 300
+    # track_new_devices: yes   
+
+  - platform: nmap_tracker
+    hosts: !secret nmap_tracker_hosts
+    home_interval: 300
+    interval_seconds: 10
+  #  exclude:
+  #  - !secret nmap_tracker_exclude    
+
+  
+  - platform: iphonedetect
+    consider_home: 60
+    hosts:
+      chris: 192.168.55.137
+    
+  - platform: icloud3
+    #account_name: Tylerterzigni
+    username: !secret icloud_username
+    password: !secret icloud_password
+    #consider_home: 5
+    inzone_interval: 3
+    waze_realtime: true
+    tracking_method: iosapp
+    entity_registry_file_name: '/home/homeassistant/.homeassistant/.storage/core.entity_registry'
+    track_devices:
+      - tylers_iphone_3 > /local/images/tyler.jpg

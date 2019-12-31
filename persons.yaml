@@ -1,0 +1,9 @@
+  - name: Tyler
+    id: a4de59861b164cc182fd3451cdfebcc6
+    device_trackers:
+      - device_tracker.tylersiphone
+      
+  - name: Chris
+    id: 944ee29fab664d5a92c00e5a7adffd86
+    device_trackers:
+      - device_tracker.thisisphone

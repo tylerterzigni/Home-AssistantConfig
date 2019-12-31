@@ -1,0 +1,530 @@
+sensor.weather_precip_probability:
+  icon: mdi:weather-rainy
+  friendly_name: Rain Probability
+sensor.weather_temperature:
+  icon: mdi:thermometer
+  friendly_name: Temperature
+sensor.weather_wind_speed:
+  icon: mdi:weather-windy
+  friendly_name: Wind Speed
+sensor.weather_humidity:
+  icon: mdi:weather-fog
+  friendly_name: Humidity
+sensor.weather_hourly_summary:
+  icon: mdi:clock
+  friendly_name: Hourly Summary
+sensor.weather_daily_summary:
+  icon: mdi:calendar-clock
+  friendly_name: Daily Summary
+climate.honeywell_zwave_thermostat_dry_air:
+  friendly_name: Livingroom Heater
+media_player.living_room:
+  icon: mdi:apple
+  friendly_name: Livingroom Apple TV
+media_player.samsung_tv_remote:
+  friendly_name: Bedroom Television
+  icon: mdi:television
+device_tracker.chris:
+  entity_picture: /local/images/chris.jpg
+  friendly_name: Chris
+  icon: mdi:cellphone-iphone
+device_tracker.this_is_phone_lan:
+  entity_picture: /local/images/chris.jpg
+  friendly_name: Chris
+  icon: mdi:cellphone-iphone
+device_tracker.tylers_iphone:
+  entity_picture: /local/images/tyler.jpg
+  friendly_name: Tyler
+device_tracker.tylers_iphone_2:
+  entity_picture: /local/images/tyler.jpg
+  friendly_name: Tyler iPhone Wifi
+device_tracker.tylersiphone:
+  entity_picture: /local/images/tyler.jpg
+  friendly_name: Tyler
+device_tracker.tylers_iphone_3:
+  entity_picture: /local/images/tyler.jpg
+  friendly_name: Tyler
+device_tracker.samiams8:
+  friendly_name: Coz Phone
+  entity_picture: /local/images/coz1.jpg
+weblink.router_internal:
+  friendly_name: Router Internal
+  icon: mdi:router-wireless
+weblink.router_external:
+  friendly_name: Router External
+  icon: mdi:router-wireless
+sensor.home_to_work:
+  friendly_name: Home to Work
+  icon: mdi:car
+  hidden: true
+sensor.work_to_home:
+  friendly_name: Work to Home
+  icon: mdi:car
+  hidden: true
+sensor.tyler_to_home:
+  friendly_name: Tyler to Home
+  icon: mdi:car
+sensor.tyler_to_work:
+  friendly_name: Tyler to Work
+  icon: mdi:car
+sensor.fedex:
+  friendly_name: Fedex
+  icon: mdi:package-variant-closed
+sensor.usps_mail:
+  friendly_name: USPS Mail
+  icon: mdi:package-variant-closed
+sensor.usps_packages:
+  friendly_name: USPS Packages
+sensor.ups:
+  friendly_name: UPS
+  icon: mdi:package-variant-closed
+sensor.battery_level_2:
+  friendly_name: Tyler's iPhone Battery
+sensor.battery_ipad:
+  friendly_name: Tyler's iPad
+sensor.battery_ipad_mini:
+  friendly_name: Tyler's iPad Mini
+sensor.current_activity:
+  hidden: false
+  entity_picture: /local/images/harmony.png
+  friendly_name: Current Activity
+sensor.holidays_calendar:
+  icon: mdi:calendar
+  friendly_name: Upcoming Holiday
+binary_sensor.floorplan:
+  custom_ui_state_card: state-card-floorplan
+  config:
+    name: Floorplan
+    image: /local/custom_ui/floorplan/floorplan.svg
+    stylesheet: /local/custom_ui/floorplan/floorplan.css
+    pan_zoom:
+    groups:
+    - name: Cameras
+      entities:
+      - camera.front_door
+      - camera.local_file
+    - name: Temp Sensor
+      entities:
+      - sensor.dark_sky_temperature
+      - sensor.sensor.aeotec_multisensor_6_temperature_4
+      - sensor.sensor.aeotec_multisensor_6_temperature_3
+      - sensor.sensor.aeotec_multisensor_6_temperature
+      text_template: '${entity.state ? (entity.state) + "°F": ""}'
+    - name: Humidity/Rain Sensor
+      entities:
+      - sensor.dark_sky_humidity
+      - sensor.dark_sky_precip_probability
+      - sensor.aeotec_multisensor_6_relative_humidity_4
+      - sensor.aeotec_multisensor_6_relative_humidity
+      - sensor.aeotec_multisensor_6_relative_humidity_3
+      text_template: '${entity.state ? (entity.state) + "%": ""}'
+    - name: Hourly Weather Sensors
+      entities:
+      - sensor.weather_summary1
+      - sensor.weather_summary2
+      text_template: '${entity.state ? entity.state : ""}'
+    - name: Livingroom Lights
+      entities:
+      - light.dining_kitchen
+      - light.dining_window
+      - light.livingroom_back_left
+      - light.livingroom_tv_left
+      - light.livingroom_tv_right
+      states:
+      - state: 'on'
+        class: light-on
+      - state: 'off'
+        class: light-off
+      action:
+        domain: homeassistant
+        service: toggle
+    - name: Bedroom Lights
+      entities:
+      - light.bedroom_lamp_left
+      - light.bedroom_lamp_middle
+      - light.bedroom_lamp_right
+      states:
+      - state: 'on'
+        class: light-on
+      - state: 'off'
+        class: light-off
+      action:
+        domain: homeassistant
+        service: toggle
+    - name: Bathroom Light
+      entities:
+      - light.bathroom_light
+      states:
+      - state: 'on'
+        class: light-on
+      - state: 'off'
+        class: light-off
+      action:
+        domain: homeassistant
+        service: toggle
+    - name: Chris Light
+      entities:
+      - light.chris_bedroom_light
+      states:
+      - state: 'on'
+        class: light-on
+      - state: 'off'
+        class: light-off
+      action:
+        domain: homeassistant
+        service: toggle
+    - name: Dodgers Light Red
+      entities:
+      - sensor.dodgers_light_red
+      states:
+      - state: 'on'
+        class: dodgers-light-on-red
+      - state: 'off'
+        class: dodgers-light-off-red
+      action:
+        domain: homeassistant
+        service: toggle
+    - name: Dodgers Light
+      entities:
+      - switch.dodgers_light_switch
+      states:
+      - state: 'off'
+        class: dodgers-light-off-red
+      action:
+        domain: homeassistant
+        service: toggle
+    - name: Dodgers Light Blue
+      entities:
+      - sensor.dodgers_light_blue
+      states:
+      - state: 'on'
+        class: dodgers-light-on-blue
+      - state: 'off'
+        class: dodgers-light-off-blue
+      action:
+        domain: homeassistant
+        service: toggle
+    - name: Climate/Heat
+      entities:
+      - climate.home
+      - input_boolean.bedroom_heater
+      - sensor.livingroom_heater
+      - switch.livingroom_dab_rig
+      - switch.bedroom_dab_rig
+      states:
+      - state: 'on'
+        class: heat-on
+      - state: 'off'
+        class: heat-off
+    - name: Climate/Cool
+      entities:
+      - input_boolean.toggle_livingroom_air_conditioner
+      - input_boolean.bedroom_air_conditioner
+      states:
+      - state: 'on'
+        class: ac-on
+      - state: 'off'
+        class: ac-off
+    - name: Mail
+      entities:
+      - camera.usps_mail
+    - name: Media Players
+      entities:
+      - media_player.livingroom_tv
+      - media_player.samsung_tv_remote
+      - media_player.bedroom_3
+      - media_player.chris_tv
+      - switch.bedroom_tv
+      - media_player.roku_bedroom
+      states:
+      - state: 'on'
+        class: media-on
+      - state: 'off'
+        class: media-off
+    - name: Xbox
+      entities:
+      - sensor.sleepysostoney
+      states:
+      - state: online
+        class: xbox-on
+      - state: offline
+        class: xbox-off
+    - name: Switches
+      entities:
+      - switch.lava_lamp
+      states:
+      - state: 'on'
+        class: media-on
+      - state: 'off'
+        class: media-off
+    - name: Fan Switches
+      entities:
+      - switch.bedroom_box_fan
+      - switch.livingroom_fan
+      - switch.bathroom_fan
+      states:
+      - state: 'on'
+        class: fan-on
+      - state: 'off'
+        class: fan-off
+    - name: Z-Wave
+      entities:
+      - zwave.aeotec_z_stick_gen5
+    - name: Harmony
+      entities:
+      - input_select.harmony_harmony_hub
+    - name: Harmony Activity
+      entities:
+      - sensor.current_activity1
+      - sensor.current_activity2
+      - sensor.current_activity3
+      text_template: '${entity.state ? entity.state : ""}'
+    - name: Front Door
+      entities:
+      - sensor.front_door_sensor
+      states:
+      - state: Closed
+        class: door-closed
+      - state: Open
+        class: door-open
+    - name: Vacuum
+      entities:
+      - input_boolean.samsung_powerbot
+      states:
+      - state: 'on'
+        class: vacuum-on
+      - state: 'off'
+        class: vacuum-off
+input_boolean.livingroom_air_conditioner:
+  confirm_controls_show_lock: true
+  custom_ui_state_card: state-card-custom-ui
+input_boolean.livingroom_fan:
+  confirm_controls_show_lock: true
+  custom_ui_state_card: state-card-custom-ui
+input_boolean.bedroom_air_conditioner:
+  confirm_controls_show_lock: true
+  custom_ui_state_card: state-card-custom-ui
+  friendly_name: Bedroom Air Conditioner
+input_boolean.bedroom_box_fan:
+  confirm_controls_show_lock: true
+  custom_ui_state_card: state-card-custom-ui
+input_boolean.bedroom_fan:
+  confirm_controls_show_lock: true
+  custom_ui_state_card: state-card-custom-ui
+input_boolean.bedroom_heater:
+  confirm_controls_show_lock: true
+  custom_ui_state_card: state-card-custom-ui
+  icon: mdi:fire
+switch.bedroom_heater:
+  icon: mdi:fire
+switch.bedroom_heater_power:
+  friendly_name: Bedroom Heater Power
+climate.home:
+  friendly_name: Livingroom Heater
+  icon: mdi:fire
+sensor.sleepysostoney:
+  templates:
+    _stateDisplay: if (state === 'unknown') return 'Offline'; else return state;
+sensor.xboxapi_current:
+  templates:
+    rgb_color: if (state === '') return [255, 0, 0]; else return [16, 124, 16];
+script.dodgers_in_livingroom:
+  friendly_name: Dodgers
+  icon: mdi:lightbulb
+script.lava_lamp_in_bedroom:
+  friendly_name: Lava Lamp
+  icon: mdi:lightbulb
+script.dodgers_in_bedroom:
+  friendly_name: Dodgers
+  icon: mdi:lightbulb
+script.warriors_in_livingroom:
+  friendly_name: Warriors
+  icon: mdi:lightbulb
+script.cavaliers_in_livingroom:
+  friendly_name: Cavaliers
+  icon: mdi:lightbulb
+script.celtics_in_livingroom:
+  friendly_name: Celtics
+  icon: mdi:lightbulb
+script.night_entrance_in_livingroom:
+  friendly_name: Night Entrance
+  icon: mdi:lightbulb
+script.relax_in_livingroom:
+  friendly_name: Relax
+  icon: mdi:lightbulb
+script.relax_in_bedroom:
+  friendly_name: Relax
+  icon: mdi:lightbulb
+script.lakers_in_livingroom:
+  friendly_name: Lakers
+  icon: mdi:lightbulb
+script.dim_in_livingroom:
+  friendly_name: Dim
+  icon: mdi:lightbulb
+script.christmas_in_livingroom:
+  friendly_name: Christmas
+  icon: mdi:lightbulb
+script.halloween_in_livingroom:
+  friendly_name: Halloween
+  icon: mdi:lightbulb
+script.saint_patricks_day_in_livingroom:
+  friendly_name: St. Patty's Day
+  icon: mdi:lightbulb
+script.valentines_day_in_livingroom:
+  friendly_name: Valentine's Day
+  icon: mdi:lightbulb
+script.easter_in_livingroom:
+  friendly_name: Easter
+  icon: mdi:lightbulb
+script.thanksgiving_in_livingroom:
+  friendly_name: Thanksgiving
+  icon: mdi:lightbulb
+script.fourth_of_july_in_livingroom:
+  friendly_name: 4th of July
+  icon: mdi:lightbulb
+script.labor_day_in_livingroom:
+  friendly_name: Labor Day
+  icon: mdi:lightbulb
+script.veterans_day_in_livingroom:
+  friendly_name: Veterans Day
+  icon: mdi:lightbulb
+script.memorial_day_in_livingroom:
+  friendly_name: Memorial Day
+  icon: mdi:lightbulb
+zwave.bathroom_multi_sensor:
+  friendly_name: Bathroom Multi Sensor
+  node_name: Bathroom Multi Sensor
+input_boolean.samsung_powerbot:
+  confirm_controls_show_lock: true
+  custom_ui_state_card: state-card-custom-ui
+  extra_data_template: ${(entities['sensor.powerbot_state'].state)}
+sensor.cold_flu_percentage:
+  friendly_name: Chance of Cold or Flu
+  icon: mdi:needle
+sensor.cold_flu_risk:
+  friendly_name: Cold and Flu Risk
+  icon: mdi:needle
+sensor.pollen_level:
+  friendly_name: Pollen Level
+sensor.pollen_percentage:
+  friendly_name: Pollen Count
+sensor.skin_type_3_safe_exposure_time:
+  friendly_name: Tyler Safe in Sun
+  icon: mdi:sunglasses
+sensor.skin_type_4_safe_exposure_time:
+  friendly_name: Margaret Safe in Sun
+  icon: mdi:sunglasses
+sensor.u_s_air_pollution_level:
+  icon: mdi:blur
+switch.bathroom_heater:
+  icon: mdi:fire
+input_boolean.livingroom_light_motion_sensor:
+  friendly_name: Livingroom Light Motion Sensor
+input_boolean.bedroom_light_motion_sensor:
+  friendly_name: Bedroom Light Motion Sensor
+input_boolean.bathroom_light_motion_sensor:
+  friendly_name: Bathroom Light Motion Sensor
+switch.livingroom_dab_rig:
+  icon: mdi:smoking
+switch.bedroom_dab_rig:
+  icon: mdi:smoking
+input_boolean.bathroom_light_motion:
+  icon: mdi:run
+input_boolean.bedroom_light_motion:
+  icon: mdi:run
+input_boolean.livingroom_light_motion:
+  icon: mdi:run
+device_tracker.stevenmrsiphone:
+  friendly_name: Steven's iPhone
+sensor.tyler_to_debbie:
+  icon: mdi:leaf-maple
+script.bright_in_bedroom:
+  friendly_name: Bright in Bedroom
+  icon: mdi:lightbulb
+script.bright_in_livingroom:
+  friendly_name: Bright in Livingroom
+  icon: mdi:lightbulb
+sensor.steam_76561198020047492:
+  friendly_name: Ryan Flynn
+sensor.steam_76561198000002056:
+  friendly_name: Ryan Flynn
+media_player.this_device:
+  friendly_name: Bedroom Computer Media
+  style_template: if (entities['media_player.this_device'].state === 'standby') return
+    'display:none';
+zwave.aeotec_multisensor_6_3:
+  friendly_name: Bedroom Multi Sensor
+sensor.aeotec_multisensor_6_burglar_2:
+  friendly_name: Bedroom Multi Sensor Burglar 2
+zwave.aeotec_multisensor_6:
+  friendly_name: Bathroom Multi Sensor
+zwave.aeotec_multisensor_6_2:
+  friendly_name: Livingroom Multi Sensor
+sensor.aeotec_multisensor_6_temperature_3:
+  friendly_name: Bedroom Temperature
+sensor.aeotec_multisensor_6_temperature_4:
+  friendly_name: Livingroom Temperature
+sensor.aeotec_multisensor_6_temperature:
+  friendly_name: Bathroom Temperature
+zwave.aeotec_multisensor_6_4:
+  friendly_name: Livingroom Multi Sensor
+media_player.bedroom:
+  friendly_name: Bedroom Apple TV
+sensor.aeotec_unknown_type_0102_id_0070_alarm_level_4:
+  friendly_name: Front Door Sensor
+switch.switchmate:
+  friendly_name: Bathroom Heater
+media_player.bedroom_2:
+  friendly_name: Bedroom Echo
+sensor.robot_vacuum_robot_cleaner_cleaning_mode: {}
+sensor.robot_vacuum_robot_cleaner_movement:
+  friendly_name: Samsung Powerbot Status
+media_player.bedroom_3:
+  friendly_name: Bedroom Apple TV
+device_tracker.justinsiphone2_lan:
+  friendly_name: Justin
+sensor.disk_use_percent_home:
+  friendly_name: Disk use %
+switch.spare_old_lr_dab:
+  friendly_name: 'OLD Livingroom Dab Rig '
+switch.bedroom_heater_2:
+  friendly_name: Bedroom Heater
+switch.bathroom_fan:
+  icon: mdi:fan
+media_player.bedroom_echo_show:
+  friendly_name: Bedroom Echo
+media_player.livingroom:
+  friendly_name: Livingroom Echo
+timer.laundry_dry:
+  icon: mdi:tumble-dryer
+timer.laundry_wash:
+  icon: mdi:washing-machine
+input_boolean.patio_motion_sensor:
+  icon: mdi:run
+sensor.livingroom_motion_sensor_temperature_measurement:
+  friendly_name: Livingroom Temperature
+sensor.bathroom_motion_sensor_temperature_measurement:
+  friendly_name: Bathroom Temperature
+sensor.bathroom_motion_sensor_relative_humidity_measurement:
+  friendly_name: Bathroom Humidity
+sensor.livingroom_motion_sensor_relative_humidity_measurement:
+  friendly_name: Livingroom Humidity
+sensor.bedroom_motion_sensor_temperature_measurement:
+  friendly_name: Bedroom Temperature
+sensor.bedroom_motion_sensor_relative_humidity_measurement:
+  friendly_name: Bedroom Humidity
+switch.bedroom_pc:
+  icon: mdi:desktop-classic
+binary_sensor.ping_binary_sensor:
+  friendly_name: Bedroom PC Status
+device_tracker.stevenmrsiphone_lan:
+  friendly_name: Steven Mehr
+script.red_in_bedroom:
+  friendly_name: Red in Bedroom
+  icon: mdi:lightbulb
+sensor.nhl_sensor:
+  friendly_name: L.A. Kings
+binary_sensor.dining_room_motion_sensor_motion:
+  friendly_name: Dining Room Motion Sensor
+sensor.dining_room_motion_sensor:
+  friendly_name: Dining Room Sensor

@@ -1,0 +1,51 @@
+- platform: broadlink
+  host: !secret broadlink_bedroom_host
+  mac: !secret broadlink_bedroom_mac
+  friendly_name: Broadlink Bedroom
+  type: rm2
+  switches:      
+#Bedroom AC
+    bedroom_air_conditioner:
+      friendly_name: "Bedroom Air Conditioner"
+      command_on: !secret bedroom_air_conditioner_on
+      command_off: !secret bedroom_air_conditioner_off
+      
+#Bedroom Heater
+    bedroom_heater:
+      friendly_name: "Bedroom Heater"
+      command_on: !secret bedroom_heater_on
+      command_off: !secret bedroom_heater_off
+      
+#Bedroom Fan
+    bedroom_fan:
+      friendly_name: "Bedroom fan"
+      command_on: !secret bedroom_fan_on
+      command_off: !secret bedroom_fan_off
+      
+#Bedroom TV
+    bedroom_tv:
+      friendly_name: "Bedroom TV"
+      command_on: !secret bedroom_tv_on
+      #command_off: !secret bedroom_tv_off1
+      command_off: !secret bedroom_tv_off2
+
+- platform: broadlink
+  host: !secret broadlink_livingroom_host
+  mac: !secret broadlink_livingroom_mac
+  friendly_name: Broadlink Livingroom
+  type: rm2
+  switches:
+#Livingroom AC
+    livingroom_air_conditioner:
+      friendly_name: "Livingroom Air Conditioner"
+      command_on: !secret livingroom_air_conditioner_on
+      command_off: !secret livingroom_air_conditioner_off
+      
+#Samsung Powerbot
+    samsung_powerbot:
+      friendly_name: "Samsung Powerbot"
+      command_on: !secret powerbot_on
+      command_off: !secret powerbot_off
+  
+- platform: switchmate
+  mac: !secret switchmate_mac

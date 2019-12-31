@@ -1,0 +1,92 @@
+# input numbers
+
+bedroom_lights:
+  name: Bedroom Brightness
+  initial: 100
+  min: 0
+  max: 255
+  step: 1
+
+livingroom_lights:
+  name: Livingroom Brightness
+  initial: 100
+  min: 0
+  max: 255
+  step: 1
+  
+dining_room_lights:
+  name: Dining Room Brightness
+  initial: 100
+  min: 0
+  max: 255
+  step: 1
+  
+bathroom_light:
+  name: Bathroom Brightness
+  initial: 1
+  min: 0
+  max: 255
+  step: 1
+  
+target_temp:
+  name: Set Target Temp
+  initial: 70
+  min: 65
+  max: 80
+  step: 1
+  
+# bedroom_lamp_left_light:
+  # name: Brightness
+  # initial: 100
+  # min: 1
+  # max: 254
+  # step: 1
+  
+# bedroom_lamp_right_light:
+  # name: Brightness
+  # initial: 100
+  # min: 1
+  # max: 254
+  # step: 1
+
+# bedroom_lamp_middle_light:
+  # name: Brightness
+  # initial: 100
+  # min: 1
+  # max: 254
+  # step: 1
+  
+# dining_kitchen_light:
+  # name: Brightness
+  # initial: 100
+  # min: 1
+  # max: 254
+  # step: 1
+  
+# dining_window_light:
+  # name: Brightness
+  # initial: 100
+  # min: 1
+  # max: 254
+  # step: 1
+
+# livingroom_back_left_light:
+  # name: Brightness
+  # initial: 100
+  # min: 1
+  # max: 254
+  # step: 1
+
+# livingroom_tv_left_light:
+  # name: Brightness
+  # initial: 100
+  # min: 1
+  # max: 254
+  # step: 1
+
+# livingroom_tv_right_light:
+  # name: Brightness
+  # initial: 100
+  # min: 1
+  # max: 254
+  # step: 1

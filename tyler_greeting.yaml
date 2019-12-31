@@ -1,0 +1,7 @@
+          >
+          {{ [
+          "Welcome home Tyler, Today is {{ now().strftime( '%B %d, %Y') }}{{ "\n" }}
+                    {{ "\n" }}
+                    {% if is_state('sensor.holiday', '') %} {% else %}Today is {{ states.sensor.holiday.state}}.{% endif %}{{ "\n" }}
+                    {{ "\n" }}. The temperature outside feels like {{ states("sensor.dark_sky_apparent_temperature")}} degrees. Your bedroom temperature is {{ states("sensor.bedroom_motion_sensor_temperature_measurement") }} degrees. Your livingroom temperature is {{ states("sensor.livingroom_motion_sensor_temperature_measurement") }} degrees. The probability of rain for the hour is {{ states("sensor.dark_sky_precip_probability") }} percent."
+          ] }} 

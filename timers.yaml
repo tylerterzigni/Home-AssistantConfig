@@ -1,0 +1,8 @@
+  laundry_wash_28:
+    duration: '00:28:00'
+
+  laundry_wash_43:
+    duration: '00:43:00'
+    
+  laundry_dry_48:
+    duration: '00:48:00'

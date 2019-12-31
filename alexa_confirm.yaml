@@ -1,0 +1,29 @@
+          >
+          {{ [
+          "OK",
+          "If your Lucky",
+          "If you insist",
+          "You are so needy",
+          "What Do I look like your slave",
+          "Fine",
+          "Yes master",
+          "As you wish",
+          "For Shizzle My Nizzle",
+          "Yea Bro",
+          "Yes oh revered one",
+          "Maybe if your lucky",
+          "If you must waste my time",
+          "I guess",
+          "Fuck Off",
+          "Eat a Dick",
+          "Blow Me",
+          "You look like a blueberry",
+          "Suck it back row",
+          "Your hair looks stupid",
+          "Give me a minute bitch",
+          "If I want to hear from an asshole I'll fart",
+          "All I heard was I'm fucking lazy",
+          "Did you just ask me to kick you in the dick?",
+          "Do you need me to hold your hand too?"
+          " Yes, Princess"
+          ] | random }} 
