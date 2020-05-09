@@ -15,6 +15,7 @@ homeassistant:
    - type: legacy_api_password
      api_password: !secret api_password
    - type: homeassistant
+
 # Customizations
   customize: !include customize.yaml
 
@@ -26,6 +27,8 @@ frontend: !include frontend.yaml
 
 # Enables configuration UI
 config:
+
+ffmpeg:
 
 #Enables Map
 map:
@@ -47,7 +50,6 @@ duckdns:
 
 updater:
 
-  
 # Discover some devices automatically
 discovery: !include discovery.yaml
 
@@ -62,8 +64,6 @@ logbook: !include logbook.yaml
 
 #recorder
 recorder: !include recorder.yaml
-
-#logger:
 
 # Track the sun
 sun:
@@ -96,8 +96,6 @@ group: !include groups.yaml
 media_player: !include media_players.yaml
 
 apple_tv: !include apple_tv.yaml
-#Zones
-zone: !include_dir_list zones
 
 ####   Device Tracking
 device_tracker: !include device_trackers.yaml
@@ -135,9 +133,6 @@ alexa:
 ### Thermostat
 climate: !include climate.yaml
 
-### Web Links
-weblink: !include web_links.yaml
-
 ### IFTTT   
 ifttt: !include ifttt.yaml
 
@@ -149,9 +144,6 @@ camera: !include cameras.yaml
 
 ## Remotes
 remote: !include remote.yaml
-  
-#Z-Wave USB
-#zwave: !include zwave.yaml
 
 ####MQTT#####
 mqtt: !include mqtt.yaml
@@ -172,10 +164,6 @@ shell_command: !include shell_command.yaml
 
 #Persons
 person: # !include persons.yaml
-
-#Roku Devices 
-roku:
-  - host: !secret roku_host
   
 #Apple Homekit
 homekit: !include homekit.yaml
@@ -186,15 +174,8 @@ stream:
 #Image Processing
 image_processing: !include image_processing.yaml
 
-#Amazon Media Players
-alexa_media: !include amazon_media.yaml
-
 hive: !include hive.yaml
 
-ring:
-  username: !secret ring_username
-  password: !secret ring_password
-  scan_interval: 30
 tuya:
   username: !secret tuya_username
   password: !secret tuya_password
@@ -211,16 +192,24 @@ geo_location:
     
 timer: !include timers.yaml
 
-# ffmpeg:
-  # # ffmpeg_bin: /usr/bin/ffmpeg
-
 emulated_hue: !include emulated_hue.yaml
-  # host_ip: 192.168.55.234
-  # listen_port: 80
-  # expose_by_default: false
-  # # exposed_domains:
-    # # - input_boolean
-  # entities:
-    # input_boolean.morning_tyler:
-      # name: "Good Morning Tyler"
-      # hidden: false
+  
+spotify:
+  client_id: 4b782948981f489fb0859ac09a6252c0
+  client_secret: 04a91f2d488547b3a774fd5004b6ef08
+
+zwave:
+  usb_path: /dev/ttyUSB0
+
+zha:
+  usb_path: /dev/ttyUSB1
+  database_path: /home/homeassistant/.homeassistant/zigbee.db
+
+lovelace: !include lovelace_resources.yaml
+
+airvisual:
+  api_key: !secret airvisual_api_key
+  
+# panasonic_viera:
+  # host: 192.168.55.231
+  # name: Livingroom TV

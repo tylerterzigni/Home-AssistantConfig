@@ -1,0 +1,12 @@
+appdaemon:
+  threads: 10
+  plugins:
+    HASS:
+      type: hass
+      ha_url: https://sleepytreats.duckdns.org
+      token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI4OGE1YjNjNjJjNGU0MzIyYjhmMDJiZWRiNGIwYjQxNyIsImlhdCI6MTU4MDI0ODMzMSwiZXhwIjoxODk1NjA4MzMxfQ.ckiUF39GuOzPwdl5-rE7vQiDGqUXu9kpvw7VxbL3qoM
+  time_zone: America/Los_Angeles
+  latitude: 34.158247
+  longitude: -118.836142
+  elevation: 279.5
+  app_dir: /home/homeassistant/.homeassistant/appdaemon/apps

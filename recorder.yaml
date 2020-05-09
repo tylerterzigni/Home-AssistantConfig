@@ -1,8 +1,7 @@
 #################################################################
 ## Recorder
 #################################################################
-  purge_interval: 1
-  purge_keep_days: 7
+  purge_keep_days: 4
   exclude:
     domains:
       - updater
@@ -210,11 +209,13 @@
       - sensor.cdc_level_2
       - sensor.current_uv_index
       - sensor.current_uv_level
+      - sensor.connection_type
       - sensor.max_uv_index
       - sensor.fedex
       - sensor.deliveries_today
       - sensor.dodgers_light_blue
       - sensor.dodgers_light_red
+      - sensor.geocoded_location
       - sensor.holidays_calendar
       - sensor.home_to_work
       - sensor.honeywell_zwave_thermostat_alarm_level
@@ -223,6 +224,7 @@
       - sensor.honeywell_zwave_thermostat_relative_humidity
       - sensor.honeywell_zwave_thermostat_sourcenodeid
       - sensor.honeywell_zwave_thermostat_temperature
+      - sensor.internet_time
       - sensor.last_update_trigger
       - sensor.livingroom_multi_sensor_alarm_level
       - sensor.livingroom_multi_sensor_alarm_type
@@ -240,40 +242,44 @@
       - sensor.mail_packages
       - sensor.packages_in_transit
       - sensor.powerbot_state
+      - sensor.ssid
+      - sensor.time_utc
+      - sensor.time_date
       - sensor.tyler_to_home
       - sensor.tyler_to_work
       - sensor.tylers_ipad_mini_battery_level
       - sensor.tylers_ipad_mini_battery_state
-      - sensor.tylersiphone_battery
+      - sensor.tylers_iphone_3_battery
       - sensor.tylers_iphone_battery_level
       - sensor.tylers_iphone_battery_state
-      - sensor.tylersiphone_badge
-      - sensor.tylersiphone_calc_distance
-      - sensor.tylersiphone_distance
-      - sensor.tylersiphone_poll_count
-      - sensor.tylersiphone_altitude
-      - sensor.tylersiphone_battery_status
-      - sensor.tylersiphone_dir_of_travel
-      - sensor.tylersiphone_gps_accuracy
-      - sensor.tylersiphone_info
-      - sensor.tylersiphone_interval
-      - sensor.tylersiphone_last_located
-      - sensor.tylersiphone_last_update
-      - sensor.tylersiphone_last_zone
-      - sensor.tylersiphone_last_zone_name1
-      - sensor.tylersiphone_last_zone_name2
-      - sensor.tylersiphone_last_zone_name3
-      - sensor.tylersiphone_next_update
-      - sensor.tylersiphone_speed
-      - sensor.tylersiphone_travel_distance
-      - sensor.tylersiphone_travel_time
-      - sensor.tylersiphone_trigger
-      - sensor.tylersiphone_waze_distance
-      - sensor.tylersiphone_zone
-      - sensor.tylersiphone_zone_name1
-      - sensor.tylersiphone_zone_name2
-      - sensor.tylersiphone_zone_name3
-      - sensor.tylersiphone_zone_timestamp
+      - sensor.tylers_iphone_3_badge
+      - sensor.tylers_iphone_3_calc_distance
+      - sensor.tylers_iphone_3_distance
+      - sensor.tylers_iphone_3_poll_count
+      - sensor.tylers_iphone_3_altitude
+      - sensor.tylers_iphone_3_battery_status
+      - sensor.tylers_iphone_3_dir_of_travel
+      - sensor.tylers_iphone_3_gps_accuracy
+      - sensor.tylers_iphone_3_info
+      - sensor.tylers_iphone_3_interval
+      - sensor.tylers_iphone_3_last_located
+      - sensor.tylers_iphone_3_last_update
+      - sensor.tylers_iphone_3_last_zone
+      - sensor.tylers_iphone_3_last_zone_name1
+      - sensor.tylers_iphone_3_last_zone_name2
+      - sensor.tylers_iphone_3_last_zone_name3
+      - sensor.tylers_iphone_3_next_update
+      - sensor.tylers_iphone_3_speed
+      - sensor.tylers_iphone_3_travel_distance
+      - sensor.tylers_iphone_3_travel_time
+      - sensor.tylers_iphone_3_trigger
+      - sensor.tylers_iphone_3_trigger
+      - sensor.tylers_iphone_3_waze_distance
+      - sensor.tylers_iphone_3_zone
+      - sensor.tylers_iphone_3_zone_name1
+      - sensor.tylers_iphone_3_zone_name2
+      - sensor.tylers_iphone_3_zone_name3
+      - sensor.tylers_iphone_3_zone_timestamp
       - sensor.ups
       - sensor.usps_mail
       - sensor.usps_packages

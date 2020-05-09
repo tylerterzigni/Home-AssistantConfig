@@ -20,14 +20,12 @@
     hosts:
       chris: 192.168.55.137
     
-  - platform: icloud3
-    #account_name: Tylerterzigni
-    username: !secret icloud_username
-    password: !secret icloud_password
-    #consider_home: 5
-    inzone_interval: 3
-    waze_realtime: true
-    tracking_method: iosapp
-    entity_registry_file_name: '/home/homeassistant/.homeassistant/.storage/core.entity_registry'
-    track_devices:
-      - tylers_iphone_3 > /local/images/tyler.jpg
+  # - platform: icloud3
+    # username: !secret icloud_username
+    # password: !secret icloud_password
+    # inzone_interval: 3
+    # waze_realtime: true
+    # tracking_method: iosapp
+    # entity_registry_file_name: '/home/homeassistant/.homeassistant/.storage/core.entity_registry'
+    # track_devices:
+      # - tylers_iphone > /local/images/tyler.jpg

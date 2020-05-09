@@ -1,4 +1,4 @@
-  platform: harmony
-  name: harmony_harmony_hub
-  host: !secret harmony_host
-  port: !secret harmony_port
+ # - platform: harmony
+   # name: harmony_harmony_hub
+   # host: !secret harmony_host
+   # port: !secret harmony_port

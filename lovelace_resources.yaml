@@ -1,0 +1,59 @@
+resources:
+  - type: js
+    url: /local/toggle-lock-entity-row.js
+  - type: js
+    url: /local/mail_card/mail-card.js
+  - type: module
+    url: /community_plugin/lovelace-card-tools/card-tools.js
+  - type: module
+    url: /local/secondaryinfo-entity-row.js
+  - type: module
+    url: /customcards/github/custom-cards/tracker-card.js?track=true
+  - type: module
+    url: /community_plugin/untappd-card/untappd-card.js
+  - type: module
+    url: /local/custom_ui/dark-sky-weather-card.js?v=7.1
+  - type: js
+    url: /local/card-modder.js?v=1
+  - type: module
+    url: /hacsfiles/bar-card/bar-card.js
+  - type: module
+    url: /customcards/github/maykar/compact-custom-header.js?track=true
+  - type: js
+    url: /local/vertical-stack-in-card.js?v=0.1.2
+  - type: module
+    url: /local/mini-media-player-bundle.js?v=1.1.2
+  - type: module
+    url: /local/floorplan/floorplan-card.js?v=1.1.14
+  - type: module
+    url: /local/timer-card.js
+  - type: module
+    url: /community_plugin/sun-card/sun-card.js
+  - type: module
+    url: /local/atomic-calendar.js
+  - type: js
+    url: /community_plugin/fan-control-entity-row/fan-control-entity-row.js
+  - type: js
+    url: /community_plugin/github-card/github-card.js
+  - type: module
+    url: /community_plugin/spotify-card/spotify-card.js
+  - type: module
+    url: /community_plugin/banner-card/banner-card.js
+  - type: module
+    url: /community_plugin/button-card/button-card.js
+  - type: module
+    url: /community_plugin/button-entity-row/button-entity-row.js
+  - type: module
+    url: /community_plugin/decluttering-card/decluttering-card.js
+  - type: js
+    url: /community_plugin/entity-attributes-card/entity-attributes-card.js
+  - type: js
+    url: /community_plugin/state-attribute-element/state-attribute-element.js
+  - type: js
+    url: /community_plugin/vertical-stack-in-card/vertical-stack-in-card.js
+  - type: module
+    url: /community_plugin/mini-graph-card/mini-graph-card-bundle.js
+  - type: module
+    url: /community_plugin/lovelace-card-tools/card-tools.js
+  - type: js
+    url: /local/path/lovelace-card-preloader.js

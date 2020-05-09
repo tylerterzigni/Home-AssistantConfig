@@ -1,0 +1,41 @@
+{
+    "device_type": "unk",
+    "ieee": "00:0d:6f:00:0b:3d:57:cf",
+    "lqi": null,
+    "manufacturer": "Silicon Labs",
+    "model": "EZSP",
+    "neighbours": [
+        {
+            "depth": 1,
+            "device_type": "End_Device",
+            "ieee": "00:17:88:01:08:06:6a:42",
+            "lqi": 255,
+            "manufacturer": "Philips",
+            "model": "RWL020",
+            "new_joins_accepted": "Not_Accepting",
+            "nwk": "0xad10",
+            "offline": false,
+            "pan_id": "6a:21:c8:51:03:6a:92:f3",
+            "relation": "Child",
+            "rx_on_when_idle": "Off",
+            "supported": true
+        },
+        {
+            "depth": 1,
+            "device_type": "End_Device",
+            "ieee": "28:6d:97:00:01:0c:8e:64",
+            "lqi": 255,
+            "manufacturer": "Samjin",
+            "model": "button",
+            "new_joins_accepted": "Not_Accepting",
+            "nwk": "0xcbe0",
+            "offline": false,
+            "pan_id": "6a:21:c8:51:03:6a:92:f3",
+            "relation": "Child",
+            "rx_on_when_idle": "Off",
+            "supported": true
+        }
+    ],
+    "nwk": "0x0000",
+    "offline": false
+}

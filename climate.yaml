@@ -1,3 +1,11 @@
-  platform: radiotherm
-  host:
-    - !secret radiotherm_host
+ - platform: radiotherm
+   host:
+     - !secret radiotherm_host
+
+ # - platform: smartir
+   # name: Bedroom AC
+   # unique_id: bedroom_ac
+   # device_code: 2040
+   # controller_data: 192.168.55.111
+   # temperature_sensor: sensor.bedroom_motion_sensor_temperature_measurement
+   # humidity_sensor: sensor.bedroom_motion_sensor_relative_humidity_measurement

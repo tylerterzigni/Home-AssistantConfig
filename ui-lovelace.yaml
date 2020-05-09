@@ -1,64 +1,1265 @@
-title: Tyler LoveLace
-# Include external resources
+mode: yaml
 resources:
-  - url: /local/my-custom-card.js
-    type: js
-  - url: /local/my-webfont.css
-    type: css
-
-# Optional background for all views. Check https://developer.mozilla.org/en-US/docs/Web/CSS/background for more examples.
-background: center / cover no-repeat url("/background.png") fixed
-# Exclude entities from "Unused entities" view
-excluded_entities:
-  - weblink.router
+  - type: js
+    url: /local/toggle-lock-entity-row.js
+  - type: js
+    url: /local/mail_card/mail-card.js
+  - type: module
+    url: /community_plugin/lovelace-card-tools/card-tools.js
+  - type: module
+    url: /local/secondaryinfo-entity-row.js
+  - type: module
+    url: /customcards/github/custom-cards/tracker-card.js?track=true
+  - type: module
+    url: /community_plugin/untappd-card/untappd-card.js
+  - type: module
+    url: /local/custom_ui/dark-sky-weather-card.js?v=7.1
+  - type: js
+    url: /local/card-modder.js?v=1
+  - type: module
+    url: /hacsfiles/bar-card/bar-card.js
+  - type: module
+    url: /customcards/github/maykar/compact-custom-header.js?track=true
+  - type: js
+    url: /local/vertical-stack-in-card.js?v=0.1.2
+  - type: module
+    url: /local/mini-media-player-bundle.js?v=1.1.2
+  - type: module
+    url: /local/floorplan/floorplan-card.js?v=1.1.14
+  - type: module
+    url: /local/timer-card.js
+  - type: module
+    url: /community_plugin/sun-card/sun-card.js
+  - type: module
+    url: /local/atomic-calendar.js
+  - type: js
+    url: /community_plugin/fan-control-entity-row/fan-control-entity-row.js
+  - type: js
+    url: /community_plugin/github-card/github-card.js
+  - type: module
+    url: /community_plugin/spotify-card/spotify-card.js
+  - type: module
+    url: /community_plugin/banner-card/banner-card.js
+  - type: module
+    url: /community_plugin/button-card/button-card.js
+  - type: module
+    url: /community_plugin/button-entity-row/button-entity-row.js
+  - type: module
+    url: /community_plugin/decluttering-card/decluttering-card.js
+  - type: js
+    url: /community_plugin/entity-attributes-card/entity-attributes-card.js
+  - type: js
+    url: /community_plugin/state-attribute-element/state-attribute-element.js
+  - type: js
+    url: /community_plugin/vertical-stack-in-card/vertical-stack-in-card.js
+  - type: module
+    url: /community_plugin/mini-graph-card/mini-graph-card-bundle.js
+  - type: module
+    url: /community_plugin/lovelace-card-tools/card-tools.js
+title: Home
 views:
-    # View tab title.
-  - title: Example
-    # Optional unique id for direct access /lovelace/${id}
-    id: example
-    # Optional background (overwrites the global background).
-    background: radial-gradient(crimson, skyblue)
-    # Each view can have a different theme applied. Theme should be defined in the frontend.
-    theme: dark-mode
-    # The cards to show on this view.
+  - badges: []
     cards:
-        # The filter card will filter entities for their state
-      - type: entity-filter
-        entities:
-          - device_tracker.paulus
-          - device_tracker.anne_there
-        state_filter:
-          - 'home'
-        card:
+      - card:
           type: glance
-          title: People that are home
-
-        # The picture entity card will represent an entity with a picture
-      - type: picture-entity
-        image: https://www.home-assistant.io/images/default-social.png
-        entity: light.bed_light
-
-    # Specify a tab icon if you want the view tab to be an icon.
-  - icon: mdi:home-assistant
-    # Title of the view. Will be used as the tooltip for tab icon
-    title: Second view
-    cards:
-        # Entities card will take a list of entities and show their state.
-      - type: entities
-        # Title of the entities card
-        title: Example
-        # The entities here will be shown in the same order as specified.
-        # Each entry is an entity ID or a map with extra options.
         entities:
-          - light.kitchen
-          - switch.ac
-          - entity: light.living_room
-            # Override the name to use
-            name: LR Lights
-
-        # The markdown card will render markdown text.
-      - type: markdown
-        title: Lovelace
-        content: >
-          Welcome to your **Lovelace UI**.
-
+          - entity: device_tracker.tylers_iphone
+            secondary_info: last-changed
+          - entity: device_tracker.chris
+            secondary_info: last-changed
+        state_filter:
+          - home
+          - work
+          - Work
+          - Home
+          - away
+          - Away
+          - not_home
+          - Grow
+        type: entities
+      - card:
+          type: glance
+        entities:
+          - device_tracker.justinsiphonex_lan
+          - device_tracker.margaretsiphone_lan
+          - device_tracker.android24f06918a2bffcf8
+          - device_tracker.windowsphone
+          - device_tracker.0025004f4b12
+          - device_tracker.alvarosiphone
+          - device_tracker.emilionosiphone
+          - device_tracker.e8617e0033eb
+          - device_tracker.rachelsiphone
+          - device_tracker.iphone
+          - device_tracker.0013b60a05d0
+          - device_tracker.rachelsiphone_2
+          - device_tracker.samiams8
+          - device_tracker.skylers_iphone
+          - device_tracker.stevensair
+          - device_tracker.ipad
+          - device_tracker.karlasiphone
+          - device_tracker.saharsiphone
+          - device_tracker.powerbot
+          - device_tracker.justinsiphone_2
+          - device_tracker.stevenmrsiphone_lan
+          - device_tracker.paulas_iphone
+          - device_tracker.debbies_iphone_lan
+        id: 4302f5d2622845c992e997ac0e7e8973
+        state_filter:
+          - home
+          - Home
+        type: entity-filter
+      - entities:
+          - entity: sensor.multisensor_6_motion_bedroom
+            secondary_info: last-changed
+          - entity: sensor.multisensor_6_motion_bathroom
+            secondary_info: last-changed
+          - entity: sensor.multisensor_6_motion_livingroom
+            secondary_info: last-changed
+          - entity: sensor.diningroom_motion_sensor
+            secondary_info: last-changed
+        show_header_toggle: false
+        title: Motion Detection
+        type: entities
+      - entities:
+          - entity: sensor.front_door_sensor
+            secondary_info: last-changed
+          - entity: sensor.sliding_door_sensor
+            secondary_info: last-changed
+          - entity: sensor.livingroom_window_sensor
+            secondary_info: last-changed
+        show_header_toggle: false
+        title: Doors/Windows
+        type: entities
+      - entities:
+          - entity: sensor.livingroom_motion_sensor_temperature_measurement
+            secondary_info: >-
+              Humidity [[
+              sensor.livingroom_motion_sensor_relative_humidity_measurement.state
+              ]]%
+            type: 'custom:secondaryinfo-entity-row'
+          - entity: climate.home
+          - entity: input_boolean.livingroom_air_conditioner
+            initial_state: 'off'
+            type: 'custom:toggle-lock-entity-row'
+          - entity: input_boolean.livingroom_fan
+            type: 'custom:toggle-lock-entity-row'
+          - entity: input_boolean.livingroom_tower_fan
+            type: 'custom:toggle-lock-entity-row'
+          - entity: sensor.bedroom_motion_sensor_temperature_measurement
+            secondary_info: >-
+              Humidity [[
+              sensor.bedroom_motion_sensor_relative_humidity_measurement.state
+              ]]%
+            type: 'custom:secondaryinfo-entity-row'
+          - entity: input_boolean.bedroom_air_conditioner
+            type: 'custom:toggle-lock-entity-row'
+          - entity: switch.bedroom_box_fan
+            type: 'custom:toggle-lock-entity-row'
+          - entity: input_boolean.bedroom_fan
+            type: 'custom:toggle-lock-entity-row'
+          - entity: input_boolean.bedroom_heater
+            initial_state: 'off'
+            type: 'custom:toggle-lock-entity-row'
+          - entity: sensor.bathroom_motion_sensor_temperature_measurement
+            secondary_info: >-
+              Humidity [[
+              sensor.bathroom_motion_sensor_relative_humidity_measurement.state
+              ]]%
+            type: 'custom:secondaryinfo-entity-row'
+          - entity: switch.switchmate
+            initial_state: 'off'
+            type: 'custom:toggle-lock-entity-row'
+          - entity: switch.bathroom_fan
+            initial_state: 'off'
+            type: 'custom:toggle-lock-entity-row'
+        show_header_toggle: false
+        state_color: true
+        title: Thermostat
+        type: entities
+      - entities:
+          - sensor.current_to_home
+          - sensor.current_to_work
+        show_header_toggle: false
+        title: Traffic
+        type: entities
+      - entities:
+          - sensor.current_activity
+          - input_select.harmony_harmony_hub
+        show_header_toggle: false
+        title: Harmony
+        type: entities
+      - entity_apparent_temp: sensor.dark_sky_apparent_temperature
+        entity_current_conditions: sensor.dark_sky_icon
+        entity_current_text: sensor.dark_sky_current_text
+        entity_daily_summary: sensor.dark_sky_daily_summary
+        entity_daytime_high: sensor.dark_sky_daytime_high_temperature_0d
+        entity_forecast_high_temp_1: sensor.dark_sky_daytime_high_temperature_1d
+        entity_forecast_high_temp_2: sensor.dark_sky_daytime_high_temperature_2d
+        entity_forecast_high_temp_3: sensor.dark_sky_daytime_high_temperature_3d
+        entity_forecast_high_temp_4: sensor.dark_sky_daytime_high_temperature_4d
+        entity_forecast_high_temp_5: sensor.dark_sky_daytime_high_temperature_5d
+        entity_forecast_icon_1: sensor.dark_sky_icon_1d
+        entity_forecast_icon_2: sensor.dark_sky_icon_2d
+        entity_forecast_icon_3: sensor.dark_sky_icon_3d
+        entity_forecast_icon_4: sensor.dark_sky_icon_4d
+        entity_forecast_icon_5: sensor.dark_sky_icon_5d
+        entity_forecast_low_temp_1: sensor.dark_sky_overnight_low_temperature_0d
+        entity_forecast_low_temp_2: sensor.dark_sky_overnight_low_temperature_1d
+        entity_forecast_low_temp_3: sensor.dark_sky_overnight_low_temperature_2d
+        entity_forecast_low_temp_4: sensor.dark_sky_overnight_low_temperature_3d
+        entity_forecast_low_temp_5: sensor.dark_sky_overnight_low_temperature_4d
+        entity_humidity: sensor.dark_sky_humidity
+        entity_pop: sensor.dark_sky_precip_probability
+        entity_pop_1: sensor.dark_sky_precip_probability_1d
+        entity_pop_2: sensor.dark_sky_precip_probability_2d
+        entity_pop_3: sensor.dark_sky_precip_probability_3d
+        entity_pop_4: sensor.dark_sky_precip_probability_4d
+        entity_pop_5: sensor.dark_sky_precip_probability_5d
+        entity_pop_intensity: sensor.dark_sky_precip_intensity
+        entity_pressure: sensor.dark_sky_pressure
+        entity_summary_1: sensor.dark_sky_summary_1d
+        entity_summary_2: sensor.dark_sky_summary_2d
+        entity_summary_3: sensor.dark_sky_summary_3d
+        entity_summary_4: sensor.dark_sky_summary_4d
+        entity_summary_5: sensor.dark_sky_summary_5d
+        entity_sun: sun.sun
+        entity_temperature: sensor.dark_sky_temperature
+        entity_visibility: sensor.dark_sky_visibility
+        entity_wind_bearing: sensor.dark_sky_wind_bearing
+        entity_wind_speed: sensor.dark_sky_wind_speed
+        locale: en
+        old_daily_format: false
+        show_beaufort: true
+        static_icons: false
+        time_format: 24
+        tooltip_bg_color: 'rgb( 75,155,239)'
+        tooltip_border_color: orange
+        tooltip_border_width: 3
+        tooltip_caret_size: 10
+        tooltip_fg_color: '#fff'
+        tooltip_left_offset: -12
+        tooltip_width: 100
+        tooltips: true
+        type: 'custom:dark-sky-weather-card'
+      - entities:
+          - entity: switch.livingroom_dab_rig
+            type: 'custom:toggle-lock-entity-row'
+          - entity: switch.bedroom_dab_rig
+            type: 'custom:toggle-lock-entity-row'
+        show_header_toggle: false
+        state_color: true
+        type: entities
+      - entities:
+          - entity: scene.wmgs7txi7onvuxy6
+          - entity: scene.mqpze2ag1zda1t9w
+          - entity: scene.o0toqluaa6b5qnaq
+          - entity: scene.6sm2mxy5uunrnbf4
+        type: entities
+      - entities:
+          - entity: sensor.bedroom_motion_sensor_relative_humidity_measurement
+            index: 0
+            name: Bedroom Humidity
+          - entity: sensor.livingroom_motion_sensor_relative_humidity_measurement
+            index: 1
+            name: Livingroom Humidity
+          - entity: sensor.bathroom_motion_sensor_relative_humidity_measurement
+            index: 2
+            name: Bathroom Humidity
+          - color: green
+            entity: sensor.dark_sky_humidity
+            index: 3
+            name: Outdoor Humidity
+        hours_to_show: 12
+        name: Humidity
+        points_per_hour: 1
+        type: 'custom:mini-graph-card'
+      - entities:
+          - entity: input_boolean.samsung_powerbot
+            initial_state: 'off'
+            type: 'custom:toggle-lock-entity-row'
+          - entity: sensor.robot_vacuum_robot_cleaner_movement
+        show_header_toggle: false
+        type: entities
+    icon: 'mdi:home'
+    id: default_view
+    title: Home
+  - badges: []
+    cards:
+      - entities:
+          - entity: light.dining_kitchen
+            type: 'custom:toggle-lock-entity-row'
+          - entity: light.dining_window
+            type: 'custom:toggle-lock-entity-row'
+          - entity: light.livingroom_tv_right
+            type: 'custom:toggle-lock-entity-row'
+          - entity: light.livingroom_tv_left
+            type: 'custom:toggle-lock-entity-row'
+          - entity: light.livingroom_back_left
+            type: 'custom:toggle-lock-entity-row'
+        title: Living Room
+        type: entities
+      - entities:
+          - entity: light.dining_kitchen
+            type: 'custom:toggle-lock-entity-row'
+          - entity: light.dining_window
+            type: 'custom:toggle-lock-entity-row'
+        title: Dining Room
+        type: entities
+      - entities:
+          - entity: light.bedroom_lamp_left
+            type: 'custom:toggle-lock-entity-row'
+          - entity: light.bedroom_lamp_right
+            type: 'custom:toggle-lock-entity-row'
+          - entity: light.bedroom_lamp_middle
+            type: 'custom:toggle-lock-entity-row'
+        title: Tyler Bedroom
+        type: entities
+      - entities:
+          - entity: input_boolean.lava_lamp
+            type: 'custom:toggle-lock-entity-row'
+        show_header_toggle: false
+        title: Accessory Lighting
+        type: entities
+      - entities:
+          - entity: light.bathroom
+            type: 'custom:toggle-lock-entity-row'
+        show_header_toggle: false
+        title: Bathroom Light
+        type: entities
+      - entities:
+          - entity: input_number.livingroom_lights
+          - entity: input_number.dining_room_lights
+          - entity: input_number.bedroom_lights
+          - entity: input_number.bathroom_light
+        show_header_toggle: false
+        title: Room Brightness
+        type: entities
+      - entities:
+          - entity: light.patio
+            type: 'custom:toggle-lock-entity-row'
+        show_header_toggle: false
+        title: Patio Light
+        type: entities
+    icon: 'mdi:lightbulb'
+    id: lights_view
+    title: lights_view
+  - badges: []
+    cards:
+      - card: vertical-stack
+        entities:
+          - entity: device_tracker.tylersiphone
+          - entity: sensor.current_to_home
+            icon: 'mdi:home'
+            name: Tyler To Apt
+          - entity: sensor.current_to_work
+            icon: 'mdi:car'
+            name: Tyler To Work
+        type: glance
+    icon: 'mdi:account-multiple'
+    panel: false
+    title: Locations
+  - badges: []
+    cards:
+      - entity_apparent_temp: sensor.dark_sky_apparent_temperature
+        entity_current_conditions: sensor.dark_sky_icon
+        entity_current_text: sensor.dark_sky_current_text
+        entity_daily_summary: sensor.dark_sky_daily_summary
+        entity_daytime_high: sensor.dark_sky_daytime_high_temperature_0d
+        entity_forecast_high_temp_1: sensor.dark_sky_daytime_high_temperature_1d
+        entity_forecast_high_temp_2: sensor.dark_sky_daytime_high_temperature_2d
+        entity_forecast_high_temp_3: sensor.dark_sky_daytime_high_temperature_3d
+        entity_forecast_high_temp_4: sensor.dark_sky_daytime_high_temperature_4d
+        entity_forecast_high_temp_5: sensor.dark_sky_daytime_high_temperature_5d
+        entity_forecast_icon_1: sensor.dark_sky_icon_1d
+        entity_forecast_icon_2: sensor.dark_sky_icon_2d
+        entity_forecast_icon_3: sensor.dark_sky_icon_3d
+        entity_forecast_icon_4: sensor.dark_sky_icon_4d
+        entity_forecast_icon_5: sensor.dark_sky_icon_5d
+        entity_forecast_low_temp_1: sensor.dark_sky_overnight_low_temperature_0d
+        entity_forecast_low_temp_2: sensor.dark_sky_overnight_low_temperature_1d
+        entity_forecast_low_temp_3: sensor.dark_sky_overnight_low_temperature_2d
+        entity_forecast_low_temp_4: sensor.dark_sky_overnight_low_temperature_3d
+        entity_forecast_low_temp_5: sensor.dark_sky_overnight_low_temperature_4d
+        entity_humidity: sensor.dark_sky_humidity
+        entity_pop: sensor.dark_sky_precip_probability
+        entity_pop_1: sensor.dark_sky_precip_probability_1d
+        entity_pop_2: sensor.dark_sky_precip_probability_2d
+        entity_pop_3: sensor.dark_sky_precip_probability_3d
+        entity_pop_4: sensor.dark_sky_precip_probability_4d
+        entity_pop_5: sensor.dark_sky_precip_probability_5d
+        entity_pop_intensity: sensor.dark_sky_precip_intensity
+        entity_pressure: sensor.dark_sky_pressure
+        entity_summary_1: sensor.dark_sky_summary_1d
+        entity_summary_2: sensor.dark_sky_summary_2d
+        entity_summary_3: sensor.dark_sky_summary_3d
+        entity_summary_4: sensor.dark_sky_summary_4d
+        entity_summary_5: sensor.dark_sky_summary_5d
+        entity_sun: sun.sun
+        entity_temperature: sensor.dark_sky_temperature
+        entity_visibility: sensor.dark_sky_visibility
+        entity_wind_bearing: sensor.dark_sky_wind_bearing
+        entity_wind_speed: sensor.dark_sky_wind_speed
+        locale: en
+        old_daily_format: false
+        show_beaufort: true
+        static_icons: false
+        time_format: 24
+        tooltip_bg_color: 'rgb( 75,155,239)'
+        tooltip_border_color: orange
+        tooltip_border_width: 3
+        tooltip_caret_size: 10
+        tooltip_fg_color: '#fff'
+        tooltip_left_offset: -12
+        tooltip_width: 100
+        tooltips: true
+        type: 'custom:dark-sky-weather-card'
+      - entities: null
+        entity: camera.weather
+        show_name: false
+        show_state: false
+        type: picture-entity
+      - type: iframe
+        url: 'https://embed.windy.com/embed2.html'
+      - entities:
+          - entity: sensor.avian_flu_symptoms
+          - entity: sensor.flu_symptoms
+          - entity: sensor.flu_like_symptoms
+          - entity: sensor.dengue_fever_symptoms
+          - entity: sensor.leptospirosis_symptoms
+          - entity: sensor.cdc_level
+          - entity: sensor.mold_indicator
+          - entity: sensor.us_coronavirus_confirmed
+          - entity: sensor.us_coronavirus_current
+          - entity: sensor.us_coronavirus_deaths
+          - entity: sensor.us_coronavirus_recovered
+        show_header_toggle: false
+        title: Cold & Flu
+        type: entities
+      - default_zoom: 10
+        geo_location_sources:
+          - usgs_earthquakes_feed
+          - wwlln
+        title: Quakes/Lightning
+        type: map
+      - entities:
+          - entity: sensor.pollen_level
+          - entity: sensor.u_s_air_pollution_level
+        show_header_toggle: false
+        title: Pollen Levels
+        type: entities
+      - entities:
+          elevation: sun.sun
+          max_elevation: sensor.max_elevation
+          moon: sensor.moon
+          moon_phase: sensor.moon
+          noon: sensor.solar_noon
+          sunrise: sensor.sunrise
+          sunset: sensor.sunset
+          time: sensor.time_utc
+        meridiem: true
+        name: Sunrise/Sunset
+        type: 'custom:sun-card'
+      - entities:
+          - entity: sun.sun
+          - entity: sensor.skin_type_3_safe_exposure_time
+        show_header_toggle: false
+        title: Time in Sun
+        type: entities
+    icon: 'mdi:weather-lightning-rainy'
+    id: weather_view
+    title: weather_view
+  - badges: []
+    cards:
+      - entities:
+          - script.bright_in_livingroom
+          - script.relax_in_livingroom
+          - script.night_entrance_in_livingroom
+          - script.dodgers_in_livingroom
+          - script.lakers_in_livingroom
+          - script.warriors_in_livingroom
+          - script.cavaliers_in_livingroom
+          - script.celtics_in_livingroom
+          - script.dim_in_livingroom
+          - script.christmas_in_livingroom
+          - script.halloween_in_livingroom
+          - script.saint_patricks_day_in_livingroom
+          - script.valentines_day_in_livingroom
+          - script.easter_in_livingroom
+          - script.thanksgiving_in_livingroom
+          - script.fourth_of_july_in_livingroom
+          - script.labor_day_in_livingroom
+          - script.veterans_day_in_livingroom
+          - script.memorial_day_in_livingroom
+        show_header_toggle: false
+        title: Livingroom Scenes
+        type: entities
+      - entities:
+          - entity: script.bright_in_bedroom
+          - entity: script.relax_in_bedroom
+          - entity: script.lava_lamp_in_bedroom
+          - entity: script.dodgers_in_bedroom
+          - entity: script.red_in_bedroom
+        show_header_toggle: false
+        title: Bedroom Scenes
+        type: entities
+      - entities:
+          - entity: sensor.holidays_calendar
+          - entity: input_select.holiday
+          - entity: input_boolean.livingroom_holidays
+            type: 'custom:toggle-lock-entity-row'
+        show_header_toggle: false
+        title: Holiday Lighting
+        type: entities
+    icon: 'mdi:theme-light-dark'
+    id: scenes_view
+    title: Automation Override
+  - badges: []
+    cards:
+      - entities:
+          - entity: input_boolean.lights_on_in_evening
+            type: 'custom:toggle-lock-entity-row'
+          - entity: input_boolean.lights_off_home_empty
+            type: 'custom:toggle-lock-entity-row'
+          - entity: input_boolean.bathroom_light_motion
+            type: 'custom:toggle-lock-entity-row'
+          - entity: input_boolean.bedroom_light_motion
+            type: 'custom:toggle-lock-entity-row'
+          - entity: input_boolean.livingroom_light_motion
+            type: 'custom:toggle-lock-entity-row'
+          - entity: input_boolean.bathroom_heater_mode
+            type: 'custom:toggle-lock-entity-row'
+          - entity: input_boolean.dab_rigs
+            type: 'custom:toggle-lock-entity-row'
+          - entity: input_boolean.fansandheater
+            type: 'custom:toggle-lock-entity-row'
+          - entity: input_boolean.patio_motion_sensor
+            type: 'custom:toggle-lock-entity-row'
+          - entity: input_boolean.livingroom_window_sensor
+            type: 'custom:toggle-lock-entity-row'
+          - entity: input_boolean.sliding_door_sensor
+            type: 'custom:toggle-lock-entity-row'
+        show_header_toggle: false
+        title: Automation Override
+        type: entities
+      - entities:
+          - entity: input_boolean.tyler_in_bedroom_bright
+            type: 'custom:toggle-lock-entity-row'
+          - entity: input_boolean.tyler_in_bedroom_relax
+            type: 'custom:toggle-lock-entity-row'
+          - entity: input_boolean.tyler_in_bedroom_lava_lamp
+            type: 'custom:toggle-lock-entity-row'
+          - entity: input_boolean.tyler_in_bedroom_dodgers
+            type: 'custom:toggle-lock-entity-row'
+        show_header_toggle: false
+        title: Sensor Override
+        type: entities
+      - entities:
+          - entity: input_boolean.kill_livingroom
+            type: 'custom:toggle-lock-entity-row'
+          - entity: input_boolean.kill_all
+            type: 'custom:toggle-lock-entity-row'
+        show_header_toggle: false
+        title: Kill Modes
+        type: entities
+    icon: 'mdi:robot'
+    id: automation_override_view
+    title: Automation Override
+  - badges: []
+    cards:
+      - entities:
+          - entity: switch.bedroom_tv
+        show_header_toggle: false
+        type: entities
+      - entity: media_player.bedroom_tv
+        type: media-control
+      - entity: media_player.bedroom_3
+        type: media-control
+      - entity: media_player.roku_bedroom
+        type: media-control
+      - entity: media_player.livingroom_tv
+        type: media-control
+      - entities:
+          - sensor.sleepysostoney
+          - sensor.xboxapi_current
+        show_header_toggle: false
+        title: Xbox Status
+        type: entities
+      - entity: media_player.chris_tv
+        type: media-control
+      - entities:
+          - entity: sensor.steam_76561198935964396
+            secondary_info: 'Playing: [[ sensor.steam_tyler_playing.state ]]'
+            type: 'custom:secondaryinfo-entity-row'
+          - entity: sensor.steam_76561198000002056
+            secondary_info: 'Playing: [[ sensor.steam_ryan_playing.state ]]'
+            type: 'custom:secondaryinfo-entity-row'
+          - entity: sensor.steam_76561197992123896
+            secondary_info: 'Playing: [[ sensor.steam_ian_playing.state ]]'
+            type: 'custom:secondaryinfo-entity-row'
+        type: entities
+      - entity: media_player.living_room_apple_tv
+        type: media-control
+      - artwork: cover
+        entity: media_player.spotify_tyler_terzigni
+        hide:
+          power_state: false
+          source: true
+          volume: false
+        icon: 'mdi:spotify'
+        type: 'custom:mini-media-player'
+      - entity: media_player.firetv
+        type: media-control
+      - client_id: 4b782948981f489fb0859ac09a6252c0
+        type: 'custom:spotify-card'
+      - entities:
+          - entity: sensor.nhl_sensor
+        show_header_toggle: false
+        title: Sports
+        type: entities
+    icon: 'mdi:television-guide'
+    id: media_players_view
+    title: Media Players
+  - badges: []
+    cards:
+      - aspect_ratio: 50%
+        camera_view: live
+        entity: camera.bedroom_camera
+        show_name: false
+        show_state: false
+        type: picture-entity
+      - camera_view: live
+        entity: camera.front_door
+        show_name: false
+        show_state: false
+        type: picture-entity
+      - entities:
+          - entity: sensor.ring_battery
+          - entity: sensor.front_door_last_ding
+          - entity: sensor.front_door_last_motion
+          - entity: sensor.front_door_volume
+        type: entities
+    icon: 'mdi:cctv'
+    panel: false
+    title: ''
+  - badges: []
+    cards:
+      - entities:
+          - entity: sensor.usps_mail
+          - entity: sensor.usps_packages
+          - entity: sensor.ups
+          - entity: sensor.deliveries_today
+          - entity: sensor.packages_in_transit
+        show_header_toggle: false
+        title: Deliveries
+        type: entities
+      - entity: camera.usps_mail
+        id: 0e7d2aeff9cb8ab4bc21
+        show_name: false
+        show_state: false
+        type: picture-entity
+    icon: 'mdi:truck-delivery'
+    id: shipping_view
+    title: Shipping View
+  - badges: []
+    cards:
+      - cards:
+          - entities:
+              - entity: sensor.ha_uptime
+              - entity: sensor.last_boot
+            type: entities
+          - align: center
+            animation: 'on'
+            attribute: false
+            background_style: false
+            card_style: false
+            charge_entity: false
+            color: var(--primary-color)
+            delay: 5000
+            direction: right
+            entities:
+              - entity: sensor.disk_use_percent_home
+            entity: sensor.disk_use_percent_home
+            height: 30px
+            icon: false
+            icon_position: 'off'
+            icon_style: false
+            indicator: 'off'
+            max: 100
+            min: 0
+            padding: 4px
+            rounding: 3px
+            saturation: 50%
+            severity:
+              - color: green
+                value: 60
+              - color: orange
+                value: 85
+              - color: red
+                value: 100
+            show_value: true
+            speed: 1000
+            tap_action: info
+            target: false
+            title: Disk Use %
+            title_position: left
+            title_style: false
+            type: 'custom:bar-card'
+            unit_of_measurement: false
+            value_style: false
+            visibility: false
+            width: 70%
+          - align: center
+            animation: 'on'
+            attribute: false
+            background_style: false
+            card_style: false
+            charge_entity: false
+            color: var(--primary-color)
+            delay: 5000
+            direction: right
+            entities:
+              - entity: sensor.processor_use
+            entity: sensor.processor_use
+            height: 30px
+            icon: false
+            icon_position: 'off'
+            icon_style: false
+            indicator: 'off'
+            max: 100
+            min: 0
+            padding: 4px
+            rounding: 3px
+            saturation: 50%
+            severity:
+              - color: green
+                value: 60
+              - color: orange
+                value: 85
+              - color: red
+                value: 100
+            show_value: true
+            speed: 1000
+            tap_action: info
+            target: false
+            title: Processor Use
+            title_position: left
+            title_style: false
+            type: 'custom:bar-card'
+            unit_of_measurement: false
+            value_style: false
+            visibility: false
+            width: 70%
+          - align: center
+            animation: 'on'
+            attribute: false
+            background_style: false
+            card_style: false
+            charge_entity: false
+            color: var(--primary-color)
+            delay: 5000
+            direction: right
+            entities:
+              - entity: sensor.memory_use
+            entity: sensor.memory_use
+            height: 30px
+            icon: false
+            icon_position: 'off'
+            icon_style: false
+            indicator: 'off'
+            max: 8000
+            min: 0
+            padding: 4px
+            rounding: 3px
+            saturation: 50%
+            severity:
+              - color: green
+                value: 1800
+              - color: orange
+                value: 2500
+              - color: red
+                value: 2700
+            show_value: true
+            speed: 1000
+            tap_action: info
+            target: false
+            title: Memory Use
+            title_position: left
+            title_style: false
+            type: 'custom:bar-card'
+            unit_of_measurement: false
+            value_style: false
+            visibility: false
+            width: 70%
+          - align: center
+            animation: 'on'
+            attribute: false
+            background_style: false
+            card_style: false
+            charge_entity: false
+            color: var(--primary-color)
+            delay: 5000
+            direction: right
+            entities:
+              - entity: sensor.disk_use_home
+            entity: sensor.disk_use_home
+            height: 30px
+            icon: false
+            icon_position: 'off'
+            icon_style: false
+            indicator: 'off'
+            max: 221.4
+            min: 0
+            padding: 4px
+            rounding: 3px
+            saturation: 50%
+            severity:
+              - color: green
+                value: 19
+              - color: orange
+                value: 23
+              - color: red
+                value: 25
+            show_value: true
+            speed: 1000
+            tap_action: info
+            target: false
+            title: Free Disk Space
+            title_position: left
+            title_style: false
+            type: 'custom:bar-card'
+            unit_of_measurement: false
+            value_style: false
+            visibility: false
+            width: 70%
+        type: vertical-stack
+      - cards:
+          - entities:
+              - type: section
+              - entity: sensor.speedtest_ping
+              - entity: sensor.speedtest_download
+              - entity: sensor.speedtest_upload
+              - type: section
+            show_header_toggle: false
+            type: entities
+          - entities:
+              - entity: input_select.speedtest_graph
+            type: entities
+          - card:
+              entities:
+                - entity: sensor.speedtest_download
+                  name: Speedtest Down
+                - entity: sensor.speedtest_upload
+                  name: Speedtest Up
+              hours_to_show: 1
+              title: Speedtest (1h)
+              type: history-graph
+            conditions:
+              - entity: input_select.speedtest_graph
+                state: Hour
+            type: conditional
+          - card:
+              entities:
+                - entity: sensor.speedtest_download
+                  name: Speedtest Down
+                - entity: sensor.speedtest_upload
+                  name: Speedtest Up
+              hours_to_show: 24
+              title: Speedtest (Day)
+              type: history-graph
+            conditions:
+              - entity: input_select.speedtest_graph
+                state: Day
+            type: conditional
+          - card:
+              entities:
+                - entity: sensor.speedtest_download
+                  name: Speedtest Down
+                - entity: sensor.speedtest_upload
+                  name: Speedtest Up
+              hours_to_show: 168
+              title: Speedtest (Week)
+              type: history-graph
+            conditions:
+              - entity: input_select.speedtest_graph
+                state: Week
+            type: conditional
+          - card:
+              entities:
+                - entity: sensor.speedtest_download
+                  name: Speedtest Down
+                - entity: sensor.speedtest_upload
+                  name: Speedtest Up
+              hours_to_show: 720
+              title: Speedtest (Month)
+              type: history-graph
+            conditions:
+              - entity: input_select.speedtest_graph
+                state: Month
+            type: conditional
+        type: 'custom:vertical-stack-in-card'
+      - CalEventIcon1Color: red
+        CalEventIcon1Filter: birthday
+        CalEventIcon2: 'mdi:human-female-boy'
+        CalEventIcon2Filter: Mother
+        CalEventIcon3: 'mdi:currency-usd'
+        CalEventIcon3Color: green
+        CalEventIcon3Filter: 'waste,bills,rent,pay'
+        defaultMode: 2
+        enableModeChange: true
+        entities:
+          - entity: calendar.addressbookcontacts
+            type: >-
+              icon1,icon2,icon3,icon4,icon5,icon6,icon7,icon8,icon8,icon9,icon10,icon11
+          - entity: calendar.holidays_in_united_states
+            type: >-
+              icon1,icon2,icon3,icon4,icon5,icon6,icon7,icon8,icon8,icon9,icon10,icon11
+          - entity: calendar.tylerterzigni_gmail_com
+            type: >-
+              icon1,icon2,icon3,icon4,icon5,icon6,icon7,icon8,icon8,icon9,icon10,icon11
+        maxDaysToShow: 14
+        title: Calendar
+        type: 'custom:atomic-calendar'
+      - elements:
+          - entity: sensor.untappd_last_check_in_sleepysostoney
+            style:
+              left: 8px
+              top: 24px
+              transform: none
+            type: state-icon
+          - entity: sensor.untappd_beer
+            style:
+              background-color: 'rgb(4, 4, 4, 0.6)'
+              border-color: Yellow
+              border-left-style: solid
+              border-top-right-radius: 8px
+              color: 'rgb(255, 255, 255)'
+              font-family: Trebuchet MS
+              font-size: 90%
+              font-weight: bold
+              left: 52px
+              padding: 5px
+              pointer-events: none
+              top: 8%
+              transform: none
+              width: 300px
+            type: state-label
+          - entity: sensor.untappd_last_badge_sleepysostoney
+            style:
+              left: 8px
+              top: 69px
+              transform: none
+            type: state-icon
+          - entity: sensor.untappd_badge
+            style:
+              background-color: 'rgb(4, 4, 4, 0.6)'
+              border-bottom-right-radius: 5px
+              border-color: Orange
+              border-left-style: solid
+              color: 'rgb(255, 255, 255)'
+              font-family: Trebuchet MS
+              font-size: 90%
+              font-weight: bold
+              left: 52px
+              padding: 5px
+              pointer-events: none
+              top: 63px
+              transform: none
+              width: 300px
+            type: state-label
+          - entity: sensor.untappd_checked
+            style:
+              bottom: 0px
+              left: 8px
+              transform: none
+              z-index: 2
+            type: state-icon
+          - entity: sensor.untappd_checked
+            style:
+              '-webkit-text-stroke': '0.2px rgb(0, 0, 0, 0.6)'
+              border-bottom-style: solid
+              border-color: LightSalmon
+              bottom: 0px
+              color: 'rgb(255, 255, 255)'
+              font-family: Trebuchet MS
+              font-size: 90%
+              font-weight: bold
+              left: 0px
+              padding-bottom: 8px
+              padding-left: 36px
+              text-shadow: '0.1px 0.1px rgb(0, 0, 0, 0.6)'
+              transform: none
+            type: state-label
+          - entity: sensor.untappd_followings
+            style:
+              bottom: 3px
+              left: 78px
+              transform: none
+              z-index: 2
+            type: state-icon
+          - entity: sensor.untappd_followings
+            style:
+              '-webkit-text-stroke': '0.2px rgb(0, 0, 0, 0.6)'
+              border-bottom-style: solid
+              border-color: OrangeRed
+              bottom: 0px
+              color: 'rgb(255, 255, 255)'
+              font-family: Trebuchet MS
+              font-size: 90%
+              font-weight: bold
+              left: 74px
+              padding-bottom: 8px
+              padding-left: 39px
+              text-shadow: '0.1px 0.1px rgb(0, 0, 0, 0.6)'
+              transform: none
+            type: state-label
+          - entity: sensor.untappd_total_badges
+            style:
+              bottom: 0px
+              left: 148px
+              transform: none
+              z-index: 2
+            type: state-icon
+          - entity: sensor.untappd_total_badges
+            style:
+              '-webkit-text-stroke': '0.2px rgb(0, 0, 0, 0.6)'
+              border-bottom-style: solid
+              border-color: FireBrick
+              bottom: 0px
+              color: 'rgb(255, 255, 255)'
+              font-family: Trebuchet MS
+              font-size: 90%
+              font-weight: bold
+              left: 141px
+              padding-bottom: 8px
+              padding-left: 36px
+              text-shadow: '0.1px 0.1px rgb(0, 0, 0, 0.6)'
+              transform: none
+            type: state-label
+          - entity: sensor.untappd_total_beers
+            style:
+              bottom: 0px
+              left: 228px
+              transform: none
+              z-index: 2
+            type: state-icon
+          - entity: sensor.untappd_total_beers
+            style:
+              '-webkit-text-stroke': '0.2px rgb(0, 0, 0, 0.6)'
+              border-bottom-style: solid
+              border-color: Maroon
+              bottom: 0px
+              color: 'rgb(255, 255, 255)'
+              font-family: Trebuchet MS
+              font-size: 90%
+              font-weight: bold
+              left: 215px
+              padding-bottom: 8px
+              padding-left: 45px
+              text-shadow: '0.1px 0.1px rgb(0, 0, 0, 0.6)'
+              transform: none
+            type: state-label
+        image: /local/images/beer.jpeg
+        type: picture-elements
+      - entities:
+          - entity: sensor.random_brewdog
+        show_header_toggle: false
+        type: entities
+      - entity: media_player.livingroom
+        hide:
+          controls: true
+          power: true
+          source: true
+          volume: false
+        icon: 'mdi:bullhorn'
+        tts:
+          platform: alexa
+        type: 'custom:mini-media-player'
+      - entity: media_player.bathroom_echo_dot
+        hide:
+          controls: true
+          power: true
+          source: true
+          volume: false
+        icon: 'mdi:bullhorn'
+        tts:
+          platform: alexa
+        type: 'custom:mini-media-player'
+      - entities:
+          - entity: sensor.philips_rwl020_426a0608_power
+          - entity: sensor.samjin_button_648e0c01_power
+          - entity: sensor.battery_level
+        show_header_toggle: false
+        title: Battery Life
+        type: entities
+      - entity: media_player.bedroom_echo_show
+        hide:
+          controls: true
+          power: true
+          source: true
+          volume: false
+        icon: 'mdi:bullhorn'
+        tts:
+          platform: alexa
+        type: 'custom:mini-media-player'
+      - entities:
+          - entity: switch.bedroom_pc
+            type: 'custom:toggle-lock-entity-row'
+          - entity: binary_sensor.bedroom_pc_ping
+            secondary_info: last-changed
+          - entity: switch.livingroom_pc
+            type: 'custom:toggle-lock-entity-row'
+          - entity: binary_sensor.livingroom_pc_ping
+            secondary_info: last-changed
+        show_header_toggle: false
+        state_color: true
+        type: entities
+    icon: 'mdi:information-outline'
+    id: misc_info_view
+    title: Misc Information
+  - badges: []
+    cards:
+      - config:
+          image: /local/custom_ui/floorplan/floorplan.svg?v=1.1.14
+          rules:
+            - entities:
+                - sensor.dark_sky_temperature
+                - sensor.bathroom_motion_sensor_temperature_measurement
+                - sensor.bedroom_motion_sensor_temperature_measurement
+                - sensor.livingroom_motion_sensor_temperature_measurement
+                - sensor.bedroom_motion_sensor_relative_humidity_measurement
+                - sensor.bathroom_motion_sensor_relative_humidity_measurement
+                - sensor.livingroom_motion_sensor_relative_humidity_measurement
+                - camera.front_door
+                - camera.local_file
+                - sensor.dark_sky_humidity
+                - sensor.dark_sky_precip_probability
+                - sensor.weather_summary1
+                - sensor.weather_summary2
+                - light.dining_kitchen
+                - light.dining_window
+                - light.livingroom_back_left
+                - light.livingroom_tv_left
+                - light.livingroom_tv_right
+                - light.bedroom_lamp_left
+                - light.bedroom_lamp_middle
+                - light.bedroom_lamp_right
+                - light.bathroom_light
+                - light.chris_bedroom_light
+                - sensor.dodgers_light_red
+                - switch.dodgers_light
+                - sensor.dodgers_light_blue
+                - climate.home
+                - input_boolean.bedroom_heater
+                - sensor.livingroom_heater
+                - switch.livingroom_dab_rig
+                - switch.bedroom_dab_rig
+                - input_boolean.samsung_powerbot
+                - input_boolean.toggle_livingroom_air_conditioner
+                - input_boolean.bedroom_air_conditioner
+                - camera.usps_mail
+                - media_player.livingroom_tv
+                - media_player.samsung_tv_remote
+                - media_player.bedroom_3
+                - media_player.chris_tv
+                - input_boolean.bedroom_television
+                - switch.bedroom_tv
+                - sensor.sleepysostoney
+                - switch.bedroom_box_fan
+                - switch.livingroom_fan
+                - zwave.aeotec_z_stick_gen5
+                - input_select.harmony_harmony_hub
+                - sensor.current_activity1
+                - sensor.current_activity2
+                - sensor.current_activity3
+                - sensor.front_door_sensor
+                - switch.lava_lamp
+                - switch.bathroom_fan
+              states:
+                - class: light-off
+                  state: 'off'
+                - class: light-on
+                  state: 'on'
+                - class: dodgers-light-on-red
+                  state: 'on'
+                - class: dodgers-light-off-red
+                  state: 'off'
+                - class: dodgers-light-on-blue
+                  state: 'on'
+                - class: dodgers-light-off-blue
+                  state: 'off'
+                - class: vacuum-on
+                  state: 'on'
+                - class: vacuum-off
+                  state: 'off'
+                - class: ac-on
+                  state: 'on'
+                - class: ac-off
+                  state: 'off'
+                - class: heat-on
+                  state: 'on'
+                - class: heat-off
+                  state: 'off'
+                - class: media-on
+                  state: 'on'
+                - class: media-off
+                  state: 'off'
+                - class: fan-on
+                  state: 'on'
+                - class: fan-off
+                  state: 'off'
+                - class: door-closed
+                  state: Closed
+                - class: door-open
+                  state: Open
+          stylesheet: /local/custom_ui/floorplan/floorplan.css?v=1.1.14
+        icon: 'mdi:floor-plan'
+        id: system
+        title: Floorplan
+        type: 'custom:floorplan-card'
+    icon: 'mdi:floor-plan'
+    panel: false
+    title: Floorplan
+  - badges: []
+    cards:
+      - entities:
+          - entity: sensor.iss_next_rise
+        show_header_toggle: false
+        title: International Space Station
+        type: entities
+      - entity: camera.iss
+        show_name: false
+        show_state: false
+        type: picture-entity
+      - entities:
+          - sensor.moon_phase
+        show_header_toggle: false
+        title: Moon
+        type: entities
+    icon: 'mdi:earth'
+    id: fun_view
+    title: fun_view
+  - badges: []
+    cards:
+      - card:
+          entity: timer.laundry_wash_28
+          type: 'custom:timer-card'
+        style:
+          background-image: url("/local/images/tylr.jpg")
+          background-size: 100% 110px
+        type: 'custom:card-modder'
+      - card:
+          entity: timer.laundry_dry_48
+          type: 'custom:timer-card'
+        style:
+          background-image: url("/local/images/tylr.jpg")
+          background-size: 100% 110px
+        type: 'custom:card-modder'
+      - card:
+          entity: timer.laundry_wash_43
+          type: 'custom:timer-card'
+        style:
+          background-image: url("/local/images/tylr.jpg")
+          background-size: 100% 110px
+        type: 'custom:card-modder'
+    icon: 'mdi:washing-machine'
+    title: Laundry

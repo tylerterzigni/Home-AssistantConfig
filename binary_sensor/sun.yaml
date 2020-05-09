@@ -1,0 +1,3 @@
+  - platform: sun2
+    monitored_conditions:
+      - elevation

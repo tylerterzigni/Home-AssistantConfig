@@ -99,16 +99,19 @@
       - sensor.bathroom_multi_sensor_luminance
       - sensor.bathroom_multi_sensor_sourcenodeid
       - sensor.bathroom_multi_sensor_ultraviolet
+      - sensor.bedroom_appletv_history
       - sensor.bedroom_multi_sensor_alarm_level
       - sensor.bedroom_multi_sensor_alarm_type
       - sensor.bedroom_multi_sensor_burglar
       - sensor.bedroom_multi_sensor_luminance
       - sensor.bedroom_multi_sensor_sourcenodeid
       - sensor.bedroom_multi_sensor_ultraviolet2
+      - sensor.dark_sky_alt_wind
       - sensor.current_activity1
       - sensor.current_activity2
       - sensor.current_activity3
       - sensor.date
+      - sensor.livingroom_appletv_history
       - sensor.livingroom_multi_sensor_alarm_level
       - sensor.livingroom_multi_sensor_alarm_type
       - sensor.livingroom_multi_sensor_burglar
@@ -127,6 +130,8 @@
       - sensor.battery_iphone
       - sensor.fedex
       - sensor.date
+      - sensor.date_time
+      - sensor.date_time_iso
       - sensor.deliveries_today
       - sensor.holidays_calendar
       - sensor.iss_next_rise  

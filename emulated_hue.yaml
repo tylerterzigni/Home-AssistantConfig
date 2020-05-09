@@ -29,3 +29,15 @@
     script.tyler_in_bedroom_lava_lamp:
       name: "Tyler in Bedroom Lava Lamp"
       hidden: false
+    input_boolean.bedroom_light_motion:
+      name: "Bedroom Motion Sensor"
+      hidden: false
+    input_boolean.livingroom_light_motion:
+      name: "Livingroom Motion Sensor"
+      hidden: false
+    input_boolean.livingroom_tower_fan:
+      name: "Livingroom Tower Fan"
+      hidden: false
+    input_boolean.bedroom_fan:
+      name: "Bedroom Fan"
+      hidden: false

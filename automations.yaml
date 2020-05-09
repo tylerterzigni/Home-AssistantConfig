@@ -11,8 +11,8 @@
       entity_id: input_boolean.lights_off_home_empty
       state: 'on'  
     action:
-      service: homeassistant.turn_off
-      entity_id: group.all_lights
+      service: light.turn_off
+      entity_id: all
       data:
         transition: 100
         
@@ -55,7 +55,7 @@
       platform: state
       entity_id:  binary_sensor.bedroom_pc_ping
       to: 'off'
-      for: '00:03:00'
+      for: '00:06:00'
     condition:
       condition: state
       entity_id: switch.bedroom_pc
@@ -72,7 +72,7 @@
       platform: state
       entity_id:  binary_sensor.livingroom_pc_ping
       to: 'off'
-      for: '00:03:00'
+      for: '00:05:00'
     condition:
       condition: state
       entity_id: switch.livingroom_pc
@@ -110,7 +110,7 @@
       # with a '-' to enter multiple
       - platform: sun
         event: sunset
-        offset: "-00:45:00"
+        offset: "-002:30:00"
     condition:
       condition: and
       conditions:
@@ -149,7 +149,7 @@
           entity_id: input_boolean.lights_on_in_evening
           state: 'on'
         - condition: time
-          after: '16:00:00'
+          after: '16:30:00'
         - condition: state
           entity_id: 'group.livingroom_lights'
           state: 'off'
@@ -200,14 +200,14 @@
 # Bathroom Brightness Slider   
   - alias: "Bathroom Brightness"
     initial_state: 'on'
-    id: diningslider
+    id: bathroomslider
     trigger:
       - platform: state
         entity_id: input_number.bathroom_light
     action:
       - service: light.turn_on
         data_template:
-          entity_id: light.bathroom_light
+          entity_id: light.bathroom
           brightness: '{{ states.input_number.bathroom_light.state | int }}'
 
 # Toggle Bedroom A/C On
@@ -268,7 +268,7 @@
       entity_id: input_boolean.bedroom_box_fan
       to: 'on'
     action:
-      service: homeassistant.turn_on
+      service: switch.turn_on
       entity_id: switch.bedroom_box_fan
 
 # Toggle Bedroom Box Fan Off
@@ -280,7 +280,7 @@
       entity_id: input_boolean.bedroom_box_fan
       to: 'off'
     action:
-      service: homeassistant.turn_off
+      service: switch.turn_off
       entity_id: switch.bedroom_box_fan
       
 # Toggle Bedroom Fan On
@@ -334,11 +334,36 @@
     action:
       service: homeassistant.turn_off
       entity_id: switch.livingroom_air_conditioner
+      
+# Toggle Livingroom Tower Fan On
+  - alias: 'Livingroom Tower Fan On'
+    initial_state: 'on'
+    id: livingroomtowerfanon
+    trigger:
+      platform: state
+      entity_id: input_boolean.livingroom_tower_fan
+      to: 'on'
+    action:
+      service: homeassistant.turn_on
+      entity_id: script.livingroom_tower_fan_on
+
+
+# Toggle Livingroom Tower Fan Off
+  - alias: 'Livingroom Tower Fan Off'
+    initial_state: 'on'
+    id: livingroomtowerfanoff
+    trigger:
+      platform: state
+      entity_id: input_boolean.livingroom_tower_fan
+      to: 'on'
+    action:
+      service: homeassistant.turn_on
+      entity_id: script.livingroom_tower_fan_off
 
 # Toggle Bedroom Box Fan Booleon On
   - alias: 'Bedroom Box Fan Booleon On'
     initial_state: 'on'
-    id: togglebedroomboxfanon
+    id: togglebedroomboxfanbooleonon
     trigger:
       platform: state
       entity_id: switch.bedroom_box_fan
@@ -350,7 +375,7 @@
 # Toggle Bedroom Box Fan Booleon Off
   - alias: 'Bedroom Box Fan Booleon Off'
     initial_state: 'on'
-    id: togglebedroomboxfanoff 
+    id: togglebedroomboxfanbooleonoff 
     trigger:
       platform: state
       entity_id: switch.bedroom_box_fan
@@ -387,7 +412,7 @@
 # Toggle Bedroom Fan Booleon On
   - alias: 'Bedroom Fan Booleon On'
     initial_state: 'on'
-    id: togglebedroomfanon
+    id: togglebedroomfanbooleonon
     trigger:
       platform: state
       entity_id: switch.bedroom_fan
@@ -399,7 +424,7 @@
 # Toggle Bedroom Fan Booleon Off
   - alias: 'Bedroom Fan Booleon Off'
     initial_state: 'on'
-    id: togglebedroomfanoff 
+    id: togglebedroomfanbooleonoff 
     trigger:
       platform: state
       entity_id: switch.bedroom_fan
@@ -518,6 +543,32 @@
         entity_id: scene.bright_in_bedroom
       - service: homeassistant.turn_off
         entity_id: input_boolean.bedroom_light_motion
+        
+# Livingroom Bright On
+  - alias: 'Livingroom Button Bright On'
+    initial_state: 'on'
+    id: livingroombuttonbrighton
+    trigger:
+      platform: state
+      entity_id: input_boolean.livingroom_button_bright
+      to: 'on'
+    action:
+      - service: homeassistant.turn_on
+        entity_id: scene.bright_in_livingroom
+      - service: homeassistant.turn_off
+        entity_id: input_boolean.livingroom_light_motion
+        
+# Toggle Livingroom Bright On
+  - alias: 'Livingroom Button Bright Off'
+    initial_state: 'on'
+    id: livingroombuttonbrightoff
+    trigger:
+      platform: state
+      entity_id: input_boolean.livingroom_button_bright
+      to: 'off'
+    action:
+      - service: homeassistant.turn_on
+        entity_id: input_boolean.livingroom_light_motion
         
 # Turn On Dash Bedroom Dabs
   - alias: 'Dash Bedroom Dabs On'
@@ -772,8 +823,8 @@
       condition: and
       conditions:
         - condition: time
-          after: '16:00:00'
-          before: '19:30:00'
+          after: '16:30:00'
+          before: '19:29:59'
         - condition: state
           entity_id: input_boolean.bedroom_light_motion
           state: 'on'
@@ -799,7 +850,7 @@
       condition: and
       conditions:
         - condition: time
-          after: '19:30:01'
+          after: '19:30:00'
           before: '21:30:00'
         - condition: state
           entity_id: input_boolean.bedroom_light_motion
@@ -815,9 +866,9 @@
       entity_id: scene.lava_lamp_in_bedroom
 
       # Bedroom Motion Sensor On Red Late Night
-  - alias: Turn on bedroom light red when there is movement late late night
+  - alias: Turn on bedroom light red when there is movement late night
     initial_state: 'on'
-    id: bedroommotionsensoronlatenight
+    id: bedroommotionsensorredonlatenight
     trigger:
       platform: state
       entity_id: binary_sensor.bedroom_motion_sensor_motion
@@ -840,33 +891,7 @@
     action:
       service: homeassistant.turn_on
       entity_id: scene.red_in_bedroom      
-        # # Dog Walking Mode
-  # - alias: Turn on dog walking mode
-    # initial_state: 'off'
-    # id: dogwalkingmode
-    # trigger:
-      # platform: state
-      # entity_id: input_boolean.dog_walking_mode
-      # to: 'on'
-    # condition:
-      # condition: and
-      # conditions:
-        # - condition: time
-          # after: '20:10:00'
-          # before: '04:59:59'
-        # - condition: state
-          # entity_id: input_boolean.bedroom_light_motion
-          # state: 'on'
-        # - condition: state
-          # entity_id: 'group.bedroomdevices'
-          # state: 'home'
-        # - condition: state
-          # entity_id: 'group.bedroom_lights'
-          # state: 'off'
-    # action:
-      # service: homeassistant.turn_on
-      # entity_id: scene.lava_lamp_in_bedroom
-
+      
 # Bedroom Motion Sensor Off
   - alias: Turn off bedroom light 2 minutes after last movement
     initial_state: 'on'
@@ -876,7 +901,7 @@
       entity_id: binary_sensor.bedroom_motion_sensor_motion
       to: 'off'
       for:
-        minutes: 1
+        minutes: 2
     condition:
       condition: and
       conditions:
@@ -885,7 +910,10 @@
           before: '09:00:00'
         - condition: state
           entity_id: input_boolean.bedroom_light_motion
-          state: 'on'     
+          state: 'on'
+        - condition: state
+          entity_id: 'media_player.bedroom_tv'
+          state: 'off'          
     action:
       - service: homeassistant.turn_off
         entity_id: group.bedroom_lights
@@ -901,14 +929,14 @@
     id: livingroommotiononearly
     trigger:
       - platform: state
-        entity_id: binary_sensor.livingroom_motion_sensor_motion
+        entity_id: sensor.motion_in_livingroom
         to: 'on'
     condition:
       condition: and
       conditions:
         - condition: time
           after: '05:00:01'
-          before: '06:00:00'
+          before: '07:00:00'
         - condition: state
           entity_id: input_boolean.livingroom_light_motion
           state: 'on'
@@ -931,7 +959,7 @@
     id: livingroommotiononlate
     trigger:
       - platform: state
-        entity_id: binary_sensor.livingroom_motion_sensor_motion
+        entity_id: sensor.motion_in_livingroom
         to: 'on'
     condition:
       condition: and
@@ -961,13 +989,13 @@
     id: livingroommotiononearlynight
     trigger:
       - platform: state
-        entity_id: binary_sensor.livingroom_motion_sensor_motion
+        entity_id: sensor.motion_in_livingroom
         to: 'on'
     condition:
       condition: and
       conditions:
         - condition: time
-          after: '16:00:00'
+          after: '16:30:00'
           before: '21:30:00'
         - condition: state
           entity_id: input_boolean.livingroom_light_motion
@@ -991,7 +1019,7 @@
     id: livingroommotiononmidnight
     trigger:
       - platform: state
-        entity_id: binary_sensor.livingroom_motion_sensor_motion
+        entity_id: sensor.motion_in_livingroom
         to: 'on'
     condition:
       condition: and
@@ -1050,7 +1078,7 @@
     id: livingroommotionoff
     trigger:
       platform: state
-      entity_id: binary_sensor.livingroom_motion_sensor_motion
+      entity_id: sensor.motion_in_livingroom
       to: 'off'
       for:
         minutes: 2
@@ -1092,10 +1120,10 @@
       service: homeassistant.turn_off
       entity_id: switch.bedroom_dab_rig
 
-# Bathroom Motion Sensor Light On        
-  - alias: Turn on bathroom light when there is movement
+# Bathroom Motion Sensor Light On Day
+  - alias: Turn on bathroom light when there is movement Day
     initial_state: 'on'
-    id: bathroomsensoron
+    id: bathroomsensoronday
     trigger:
       platform: state
       entity_id: binary_sensor.bathroom_motion_sensor_motion
@@ -1103,9 +1131,9 @@
     condition:
       condition: and
       conditions:
-        # - condition: time
-          # after: '16:00:00'
-          # before: '10:30:00'
+        - condition: time
+          after: '06:00:00'
+          before: '20:29:59'
         - condition: state
           entity_id: input_boolean.bathroom_light_motion
           state: 'on'
@@ -1114,7 +1142,89 @@
           state: 'home'          
     action:
       service: homeassistant.turn_on
-      entity_id: light.bathroom_light
+      entity_id: scene.dim_in_bathroom
+      
+# Bathroom Motion Sensor Light On Night Awake
+  - alias: Turn on bathroom light when there is movement Night Awake
+    initial_state: 'on'
+    id: bathroomsensoronnightawake
+    trigger:
+      platform: state
+      entity_id: binary_sensor.bathroom_motion_sensor_motion
+      to: 'on'
+    condition:
+      condition: and
+      conditions:
+        - condition: time
+          after: '20:30:00'
+          before: '23:00:00'
+        - condition: state
+          entity_id: input_boolean.bathroom_light_motion
+          state: 'on'
+        - condition: state
+          entity_id: 'group.bedroomdevices'
+          state: 'home'
+        - condition: state
+          entity_id: 'media_player.bedroom_tv'
+          state: 'on'
+        - condition: state
+          entity_id: 'group.bathroom_night_red_light'
+          state: 'on'
+    action:
+      service: homeassistant.turn_on
+      entity_id: scene.dim_in_bathroom
+      
+      
+# Bathroom Motion Sensor Light On Night Sleep
+  - alias: Turn on bathroom light when there is movement Night Sleep
+    initial_state: 'on'
+    id: bathroomsensoronnightsleep
+    trigger:
+      platform: state
+      entity_id: binary_sensor.bathroom_motion_sensor_motion
+      to: 'on'
+    condition:
+      condition: and
+      conditions:
+        - condition: time
+          after: '20:30:00'
+          before: '23:00:00'
+        - condition: state
+          entity_id: input_boolean.bathroom_light_motion
+          state: 'on'  
+        - condition: state
+          entity_id: 'group.bedroomdevices'
+          state: 'home'
+        - condition: state
+          entity_id: 'group.bathroom_night_red_light'
+          state: 'off'         
+    action:
+      service: homeassistant.turn_on
+      entity_id: scene.red_in_bathroom
+      
+# Bathroom Motion Sensor Light On Late Night Sleep
+  - alias: Turn on bathroom light when there is movement Night Sleep
+    initial_state: 'on'
+    id: bathroomsensoronlatenightsleep
+    trigger:
+      platform: state
+      entity_id: binary_sensor.bathroom_motion_sensor_motion
+      to: 'on'
+    condition:
+      condition: and
+      conditions:
+        - condition: time
+          after: '23:00:01'
+          before: '05:59:59'
+        - condition: state
+          entity_id: input_boolean.bathroom_light_motion
+          state: 'on'  
+        - condition: state
+          entity_id: 'group.bedroomdevices'
+          state: 'home'
+    action:
+      service: homeassistant.turn_on
+      entity_id: scene.red_in_bathroom
 
 # Bathroom Motion Sensor Light Off
   - alias: Turn off bathroom light 1 minutes after last movement
@@ -1134,7 +1244,7 @@
           state: 'on'      
     action:
       service: homeassistant.turn_off
-      entity_id: light.bathroom_light
+      entity_id: light.bathroom
 
 # Bathroom Light Off if Main Light On
   - alias: Turn off Bathroom Light Off if Main Light On
@@ -1148,11 +1258,11 @@
       for: '00:00:05'
     condition:
       condition: state
-      entity_id: light.bathroom_light
+      entity_id: light.bathroom
       state: 'on'
     action:
       service: homeassistant.turn_off
-      entity_id: light.bathroom_light
+      entity_id: light.bathroom
       
 # Morning Shower Heater
   - alias: Turn on heater after humidity above 73
@@ -1242,7 +1352,7 @@
       service: homeassistant.turn_on
       entity_id: switch.bedroom_heater
       
-# Turn off Bedroom A/C Power if Bedroom Heater Power Turns On       
+# Turn off Bedroom Heater Power if Bedroom Heater Power Turns On       
   - alias: Turn off Bedroom A/C Power if Bedroom Heater Power Turns On
     initial_state: 'on'
     id: BedACoffIFbedheaterpoweron
@@ -1257,13 +1367,13 @@
           entity_id: switch.bedroom_air_conditioner_power
           state: 'on'
     action:
-      service: homeassistant.turn_off
+      service: switch.turn_off
       entity_id: switch.bedroom_air_conditioner_power
 
 # Turn off Bedroom A/C Power if Bedroom Heater Power Turns On       
   - alias: Turn off Bedroom Heater Power if Bedroom A/C Power Turns On
     initial_state: 'on'
-    id: BedACoffIFbedheaterpoweron
+    id: BedAConIFbedheaterpoweroff
     trigger:
       platform: state
       entity_id: switch.bedroom_air_conditioner_power
@@ -1271,9 +1381,9 @@
     condition:
       condition: and
       conditions:
-        - condition: state
-          entity_id: switch.bedroom_heater_2
-          state: 'on'
+        # - condition: state
+          # entity_id: switch.bedroom_heater_2
+          # state: 'on'
     action:
       service: homeassistant.turn_off
       entity_id: switch.bedroom_heater_2
@@ -1284,20 +1394,20 @@
     id: patiosensoron
     trigger:
       platform: state
-      entity_id: binary_sensor.ring_front_door_motion
+      entity_id: binary_sensor.front_door_motion
       to: 'on'
     condition:
       condition: and
       conditions:
         - condition: time
-          after: '17:30:00'
-          before: '06:00:00'
+          after: '19:20:00'
+          before: '06:20:00'
         - condition: state
           entity_id: input_boolean.patio_motion_sensor
           state: 'on'
-        - condition: state
-          entity_id: 'group.bedroomdevices'
-          state: 'home'
+        # - condition: state
+          # entity_id: 'group.bedroomdevices'
+          # state: 'home'
         - condition: state
           entity_id: light.patio
           state: 'off'
@@ -1319,8 +1429,8 @@
       condition: and
       conditions:
         - condition: time
-          after: '17:30:00'
-          before: '06:00:00'
+          after: '19:20:00'
+          before: '06:20:00'
         - condition: state
           entity_id: input_boolean.patio_motion_sensor
           state: 'on'   
@@ -1412,7 +1522,93 @@
     action:
      -  service: homeassistant.turn_on
         entity_id: input_boolean.chris_home
+
+#TURN OFF DIFFUSERS WHEN CHRIS GETS HOME        
+  - alias: Turn Off Diffusers when Chris Gets Home
+    initial_state: 'on'
+    id: chrishomediffusers
+    trigger:
+      platform: state
+      entity_id: input_boolean.chris_home
+      to: 'on'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: 'group.bedroomdevices'
+          state: 'not_home'
+    action:
+     -  service: scene.turn_on
+        entity_id: scene.o0toqluaa6b5qnaq
+     -  service: scene.turn_on
+        entity_id: scene.6sm2mxy5uunrnbf4
         
+#TURN OFF EVERYTHING IN LIVINGROOM WHEN CHRIS GETS HOME        
+  - alias: Chris Home Kill Livingroom
+    initial_state: 'on'
+    id: chrishomeeverythinglivingroom
+    trigger:
+      platform: state
+      entity_id: input_boolean.chris_home
+      to: 'on'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: input_boolean.chris_home_everything_off_livingroom
+          state: 'on'
+    action:
+     -  service: scene.turn_on
+        entity_id: scene.6sm2mxy5uunrnbf4
+     -  service: homeassistant.turn_off
+        entity_id: switch.livingroom_fan
+     -  service: climate.turn_off
+        entity_id: climate.home
+     -  service: homeassistant.turn_off
+        entity_id: switch.livingroom_air_conditioner
+     -  service: homeassistant.turn_off
+        entity_id: switch.livingroom_tower_fan
+        
+#TURN OFF EVERYTHING WHEN CHRIS GETS HOME        
+  - alias: Chris Home Kill All
+    initial_state: 'on'
+    id: chrishomeeverything
+    trigger:
+      platform: state
+      entity_id: input_boolean.chris_home
+      to: 'on' 
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: input_boolean.chris_home_everything_off
+          state: 'on'
+        - condition: state
+          entity_id: 'group.bedroomdevices'
+          state: 'away'
+    action:
+     -  service: scene.turn_on
+        entity_id: scene.o0toqluaa6b5qnaq
+     -  service: scene.turn_on
+        entity_id: scene.6sm2mxy5uunrnbf4
+     -  service: homeassistant.turn_off
+        entity_id: switch.livingroom_fan
+     -  service: homeassistant.turn_off
+        entity_id: switch.bathroom_fan
+     -  service: climate.turn_off
+        entity_id: climate.home
+     -  service: homeassistant.turn_off
+        entity_id: switch.bedroom_fan
+     -  service: homeassistant.turn_off
+        entity_id: switch.bedroom_heater_2
+     -  service: homeassistant.turn_off
+        entity_id: switch.bedroom_box_fan
+     -  service: homeassistant.turn_off
+        entity_id: switch.bedroom_air_conditioner_power
+     -  service: homeassistant.turn_off
+        entity_id: switch.bathroom_fan
+     -  service: homeassistant.turn_off
+        entity_id: switch.livingroom_air_conditioner
 ### Theme ###
   - alias: Set Theme
     initial_state: 'on'
@@ -1653,7 +1849,7 @@
         ##########################################################
   - alias: Holiday - Christmas Lighting
     initial_state: 'on'
-    id: xmas1
+    id: xmas3
     trigger:
       - platform: sun
         event: 'sunrise'
@@ -1701,7 +1897,7 @@
           color_name: green
 
   - alias: Holiday - Christmas Lighting Rotate on the Hour
-    id: xmas2
+    id: xmas4
     initial_state: 'on'
     trigger:
       - platform: time_pattern
@@ -1753,7 +1949,7 @@
 
   - alias: Holiday - Christmas Lighting Rotate 5 mins after the Hour
     initial_state: 'on'
-    id: xmas3
+    id: xmas5
     trigger:
       - platform: time_pattern
         minutes: 5
@@ -1804,7 +2000,7 @@
 
   - alias: Holiday - Christmas Lighting Rotate 10 Mins after the Hour
     initial_state: 'on'
-    id: xmas4
+    id: xmas6
     trigger:
       - platform: time_pattern
         minutes: 10
@@ -1904,7 +2100,7 @@
 
   - alias: Holiday - Christmas Lighting Rotate 20 Mins after the Hour
     initial_state: 'on'
-    id: xmas4
+    id: xmas7
     trigger:
       - platform: time_pattern
         minutes: 20
@@ -1953,7 +2149,7 @@
 
   - alias: Holiday - Christmas Lighting Rotate 25 Mins After the Hour
     initial_state: 'on'
-    id: xmas5
+    id: xmas8
     trigger:
       - platform: time_pattern
         minutes: 25
@@ -2004,7 +2200,7 @@
 
   - alias: Holiday - Christmas Lighting Rotate 30 Mins after the Hour
     initial_state: 'on'
-    id: xmas4
+    id: xmas9
     trigger:
       - platform: time_pattern
         minutes: 30
@@ -2053,7 +2249,7 @@
 
   - alias: Holiday - Christmas Lighting Rotate 35 Mins After the Hour
     initial_state: 'on'
-    id: xmas5
+    id: xmas10
     trigger:
       - platform: time_pattern
         minutes: 35
@@ -2104,7 +2300,7 @@
 
   - alias: Holiday - Christmas Lighting Rotate 40 Mins after the Hour
     initial_state: 'on'
-    id: xmas4
+    id: xmas11
     trigger:
       - platform: time_pattern
         minutes: 40
@@ -2153,7 +2349,7 @@
 
   - alias: Holiday - Christmas Lighting Rotate 45 Mins After the Hour
     initial_state: 'on'
-    id: xmas5
+    id: xmas12
     trigger:
       - platform: time_pattern
         minutes: 45
@@ -2204,7 +2400,7 @@
 
   - alias: Holiday - Christmas Lighting Rotate 50 Mins after the Hour
     initial_state: 'on'
-    id: xmas4
+    id: xmas13
     trigger:
       - platform: time_pattern
         minutes: 50
@@ -2253,7 +2449,7 @@
 
   - alias: Holiday - Christmas Lighting Rotate 55 Mins After the Hour
     initial_state: 'on'
-    id: xmas5
+    id: xmas14
     trigger:
       - platform: time_pattern
         minutes: 55
@@ -2374,7 +2570,7 @@
           rgb_color: [255,85,7]
 
   - alias: Holiday - Halloween Lighting Rotate on the Hour
-    id: xmas2
+    id: halloween2
     initial_state: 'on'
     trigger:
       - platform: time_pattern
@@ -2429,7 +2625,7 @@
 
   - alias: Holiday - Halloween Lighting Rotate 5 mins after the Hour
     initial_state: 'on'
-    id: xmas3
+    id: halloween3
     trigger:
       - platform: time_pattern
         minutes: 5
@@ -2483,7 +2679,7 @@
 
   - alias: Holiday - Halloween Lighting Rotate 10 Mins after the Hour
     initial_state: 'on'
-    id: xmas4
+    id: halloween4
     trigger:
       - platform: time_pattern
         minutes: 10
@@ -2537,7 +2733,7 @@
 
   - alias: Holiday - Halloween Lighting Rotate 15 Mins After the Hour
     initial_state: 'on'
-    id: xmas5
+    id: halloween5
     trigger:
       - platform: time_pattern
         minutes: 15
@@ -2591,7 +2787,7 @@
 
   - alias: Holiday - Halloween Lighting Rotate 20 Mins after the Hour
     initial_state: 'on'
-    id: xmas4
+    id: halloween6
     trigger:
       - platform: time_pattern
         minutes: 20
@@ -2645,7 +2841,7 @@
 
   - alias: Holiday - Halloween Lighting Rotate 25 Mins After the Hour
     initial_state: 'on'
-    id: xmas5
+    id: halloween7
     trigger:
       - platform: time_pattern
         minutes: 25
@@ -2699,7 +2895,7 @@
           
   - alias: Holiday - Halloween Lighting Rotate 30 Mins after the Hour
     initial_state: 'on'
-    id: xmas4
+    id: halloween8
     trigger:
       - platform: time_pattern
         minutes: 30
@@ -2753,7 +2949,7 @@
 
   - alias: Holiday - Halloween Lighting Rotate 35 Mins After the Hour
     initial_state: 'on'
-    id: xmas5
+    id: halloween9
     trigger:
       - platform: time_pattern
         minutes: 35
@@ -2807,7 +3003,7 @@
           
   - alias: Holiday - Halloween Lighting Rotate 40 Mins after the Hour
     initial_state: 'on'
-    id: xmas4
+    id: halloween10
     trigger:
       - platform: time_pattern
         minutes: 40
@@ -2861,7 +3057,7 @@
 
   - alias: Holiday - Halloween Lighting Rotate 45 Mins After the Hour
     initial_state: 'on'
-    id: xmas5
+    id: halloween11
     trigger:
       - platform: time_pattern
         minutes: 45
@@ -2915,7 +3111,7 @@
        
   - alias: Holiday - Halloween Lighting Rotate 50 Mins after the Hour
     initial_state: 'on'
-    id: xmas4
+    id: halloween12
     trigger:
       - platform: time_pattern
         minutes: 50
@@ -2969,7 +3165,7 @@
 
   - alias: Holiday - Halloween Lighting Rotate 55 Mins After the Hour
     initial_state: 'on'
-    id: xmas5
+    id: halloween13
     trigger:
       - platform: time_pattern
         minutes: 55
@@ -3133,7 +3329,7 @@
         entity_id: input_boolean.livingroom_holidays
         state: 'on'
     action:
-      - service: group.livingroom_lights
+      - service: light.turn_on
         entity_id: light.dining_kitchen
         data:
           transition: 60
@@ -3144,7 +3340,7 @@
         data:
           transition: 60
           brightness: 255
-          color_name: "hot pink"
+          color_name: "red"
       - service: light.turn_on
         entity_id: light.livingroom_back_left
         data:
@@ -3156,7 +3352,7 @@
         data:
           transition: 60
           brightness: 255
-          color_name: "hot pink"
+          color_name: "red"
       - service: light.turn_on
         entity_id: light.livingroom_tv_right
         data:
@@ -3237,6 +3433,57 @@
           color_name: indigo
 
 ##########################################################
+## Cinco De Mayo Lighting
+##########################################################
+  - alias: Holiday - Cinco De Mayo Lighting
+    initial_state: 'on'
+    id: cinco_de_mayo
+    trigger:
+      - platform: sun
+        event: 'sunset'
+        offset: '-00:15:00'
+    condition:
+      - condition: state
+        entity_id: input_select.holiday
+        state: 'Cinco de Mayo'
+      - condition: state
+        entity_id: 'group.bedroomdevices'
+        state: 'home'
+      - condition: state
+        entity_id: input_boolean.livingroom_holidays
+        state: 'on'
+    action:
+      - service: light.turn_on
+        entity_id: light.dining_kitchen
+        data:
+          transition: 60
+          brightness: 255
+          color_name: green
+      - service: light.turn_on
+        entity_id: light.dining_window
+        data:
+          transition: 60
+          color_name: green
+      - service: light.turn_on
+        entity_id: light.livingroom_back_left
+        data:
+          transition: 60
+          brightness: 255
+          color_name: red
+      - service: light.turn_on
+        entity_id: light.livingroom_tv_left
+        data:
+          transition: 60
+          brightness: 255
+          color_name: white
+      - service: light.turn_on
+        entity_id: light.livingroom_tv_right
+        data:
+          transition: 60
+          brightness: 255
+          color_name: white
+
+##########################################################
 ## Enable Thanksgiving Lighting
 ##########################################################
   - alias: Holiday - Enable Thanksgiving Lighting
@@ -3262,7 +3509,7 @@
 ##########################################################
   - alias: Holiday - Thanksgiving Lighting
     initial_state: 'on'
-    id: thanksgiving
+    id: thanksgiving1
     trigger:
       - platform: sun
         event: 'sunset'
@@ -3566,7 +3813,7 @@
     action:
       service: notify.mobile_app_tylers_iphone
       data:
-        message: 'Warning - SSL certificate expires in 21 days and has not been automatically renewed'
+        message: 'Warning - SSL certificate expires in 21 days'
 
 #SSL Auto Renew
   - alias: 'Auto Renew SSL Cert'
@@ -3612,10 +3859,7 @@
           state: "off"
         - condition: state
           entity_id: sensor.overnight_low_60
-          state: 'below'
-        - condition: state
-          entity_id: device_tracker.chris
-          state: 'not_home'         
+          state: 'below'     
     action:
       service: homeassistant.turn_on
       entity_id: switch.bedroom_heater_2
@@ -3729,8 +3973,8 @@
           entity_id: media_player.livingroom_tv
           state: 'off'
         - condition: time
-          after: '20:00:00'
-          before: '05:30:00'
+          after: '21:00:00'
+          before: '05:40:00'
         - condition: state
           entity_id: group.livingroom_lights
           state: 'off'
@@ -3745,12 +3989,17 @@
        data_template: 
          entity_id: media_player.bedroom_echo_show
          volume_level: > 
-             0.2
-     - delay: '00:00:02'
+             0.1
+     # - delay: '00:00:01'
      - service: script.turn_on
        data:
          entity_id: script.front_door_alert_alexa
-
+     # - delay: '00:00:02'
+     - service: media_player.volume_set
+       data_template: 
+         entity_id: media_player.bedroom_echo_show
+         volume_level: > 
+             0.3
   - alias: Cheers
     initial_state: 'on'
     trigger:
@@ -3766,28 +4015,328 @@
         data_template:
           message: "Cheers! {{ states.sensor.untappd_last_check_in_sleepysostoney.attributes.beer }} was just rated a {{ states.sensor.untappd_last_check_in_sleepysostoney.attributes.score }} "
           
-  - id: Livingroom Button Toggle Sensor
-    alias: Livingroom Button Toggle Sensor
-    trigger:
-    - event_data:
-        command: pushed
-        device_ieee: 28:6D:97:00:01:0C:8E:64
-      event_type: zha_event
-      platform: event
+ # # Ring Battery Notify iPhone app low battery     
+  - alias: iOS Notify when Ring low battery
+    initial_state: 'on'
+    id: ringlowbattery
+    trigger:  
+      platform: state
+      entity_id: device_tracker.tylers_iphone
+      to: 'home'
+    condition:
+      condition: state
+      entity_id: sensor.ring_low_battery_alert
+      state: 'low battery'
     action:
-      - service: homeassistant.toggle
-        entity_id: input_boolean.livingroom_light_motion
-      
-  # - id: Livingroom Button Sensor Off Lights On
-    # alias: Livingroom Button Sensor Off Lights On
+      - delay: '00:05:00'
+      - service: notify.mobile_app_tylers_iphone
+        data:
+          message: 'Change Ring Battery'
+          
+ # # Livingroom Window Open Notify iPhone app @ 9 PM
+  - alias: iOS Notify when Livingroom Window open after 9 PM
+    initial_state: 'on'
+    id: livingroom_window_sensor_open_notify_@_9
+    trigger:  
+      platform: time
+      at: '21:00:00'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: sensor.livingroom_window_sensor
+          state: 'Open'
+        - condition: state
+          entity_id: input_boolean.livingroom_window_sensor
+          state: 'on'
+    action:
+      - service: notify.mobile_app_tylers_iphone
+        data:
+          message: 'Livingroom Window is Open'
+
+ # # Sliding Door Open Notify iPhone app @ 9 PM
+  - alias: iOS Notify when Sliding Door open after 9 PM
+    initial_state: 'on'
+    id: sliding_door_sensor_open_notify_@_9
+    trigger:  
+      platform: time
+      at: '21:00:00'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: sensor.sliding_door_sensor
+          state: 'Open'
+        - condition: state
+          entity_id: input_boolean.sliding_door_sensor
+          state: 'on'
+    action:
+      - service: notify.mobile_app_tylers_iphone
+        data:
+          message: 'Sliding Door is Open'
+          
+ # # Sliding Door Open Notify iPhone if colder outside
+  - alias: iOS Notify when Sliding Door Open and Colder Outside
+    initial_state: 'on'
+    id: sliding_door_sensor_open_notify_if_colder_outside
+    trigger:  
+      platform: state
+      entity_id: sensor.outsidelessthanlivingroomtemperature
+      to: 'on'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: sensor.sliding_door_sensor
+          state: 'Open'
+    action:
+      - service: notify.mobile_app_tylers_iphone
+        data:
+          message: 'Sliding Door is Open and its Getting Cold'
+          
+ # # Livingroom Window Open Notify iPhone if colder outside
+  - alias: iOS Notify when Livingroom Window Open and Colder Outside
+    initial_state: 'on'
+    id: livingroom_window_sensor_open_notify_if_colder_outside
+    trigger:  
+      platform: state
+      entity_id: sensor.outsidelessthanlivingroomtemperature
+      to: 'on'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: sensor.livingroom_window_sensor
+          state: 'Open'
+    action:
+      - service: notify.mobile_app_tylers_iphone
+        data:
+          message: 'Livingroom Window is Open and its Getting Cold'
+          
+ # # Bedroom Window Open Notify iPhone if colder outside
+  - alias: iOS Notify when Bedroom Window Open and Colder Outside
+    initial_state: 'on'
+    id: bedroom_window_sensor_open_notify_if_colder_outside
+    trigger:  
+      platform: state
+      entity_id: sensor.outsidelessthanbedroomtemperature
+      to: 'on'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: sensor.bedroom_window_sensor
+          state: 'Open'
+    action:
+      - service: notify.mobile_app_tylers_iphone
+        data:
+          message: 'Bedroom Window is Open and its Getting Cold'
+          
+ # # Sliding Door Open Notify iPhone if warmer outside
+  - alias: iOS Notify when Sliding Door Open and warmer Outside
+    initial_state: 'on'
+    id: sliding_door_sensor_open_notify_if_warmer_outside
+    trigger:  
+      platform: state
+      entity_id: sensor.outsidemorethanlivingroomtemperature
+      to: 'on'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: sensor.sliding_door_sensor
+          state: 'Open'
+    action:
+      - service: notify.mobile_app_tylers_iphone
+        data:
+          message: 'Sliding Door is Open and its Getting Warm'
+          
+ # # Livingroom Window Open Notify iPhone if warmer outside
+  - alias: iOS Notify when Livingroom Window Open and warmer Outside
+    initial_state: 'on'
+    id: livingroom_window_sensor_open_notify_if_warmer_outside
+    trigger:  
+      platform: state
+      entity_id: sensor.outsidemorethanlivingroomtemperature
+      to: 'on'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: sensor.livingroom_window_sensor
+          state: 'Open'
+    action:
+      - service: notify.mobile_app_tylers_iphone
+        data:
+          message: 'Livingroom Window is Open and its Getting Warm'
+          
+ # # Bedroom Window Open Notify iPhone if warmer outside
+  - alias: iOS Notify when Bedroom Window Open and warmer Outside
+    initial_state: 'on'
+    id: bedroom_window_sensor_open_notify_if_warmer_outside
+    trigger:  
+      platform: state
+      entity_id: sensor.outsidemorethanbedroomtemperature
+      to: 'on'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: sensor.bedroom_window_sensor
+          state: 'Open'
+    action:
+      - service: notify.mobile_app_tylers_iphone
+        data:
+          message: 'Bedroom Window is Open and its Getting Warm'
+          
+ # #Bedroom Window Open Notify iPhone app
+  - alias: iOS Notify when Bedroom Window Open
+    initial_state: 'on'
+    id: bedroom_window_sensor_open_notify
+    trigger:  
+      platform: state
+      entity_id: sensor.bedroom_window_sensor
+      to: 'Open'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: device_tracker.tylers_iphone
+          state: 'not_home'
+        - condition: state
+          entity_id: input_boolean.bedroom_window_sensor
+          state: 'on'
+    action:
+      - service: notify.mobile_app_tylers_iphone
+        data:
+          message: 'Bedroom Window was Opened'
+          
+ # #Livingroom Window Open Notify iPhone app
+  - alias: iOS Notify when Livingroom Window Open
+    initial_state: 'on'
+    id: livingroom_window_sensor_open_notify
+    trigger:  
+      platform: state
+      entity_id: sensor.livingroom_window_sensor
+      to: 'Open'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: device_tracker.tylers_iphone
+          state: 'not_home'
+        - condition: state
+          entity_id: input_boolean.livingroom_window_sensor
+          state: 'on'
+    action:
+      - service: notify.mobile_app_tylers_iphone
+        data:
+          message: 'Livingroom Window was Opened'
+
+ # # Sliding Door Open Notify iPhone app   
+  - alias: iOS Notify when Sliding Door Open
+    initial_state: 'on'
+    id: sliding_door_sensor_open_notify
+    trigger:  
+      platform: state
+      entity_id: sensor.sliding_door_sensor
+      to: 'Open'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: device_tracker.tylers_iphone
+          state: 'not_home'
+        - condition: state
+          entity_id: input_boolean.sliding_door_sensor
+          state: 'on'
+    action:
+      - service: notify.mobile_app_tylers_iphone
+        data:
+          message: 'Sliding Door was Opened'
+
+## Livingroom Switch On Disable Motion Bright
+  - alias: Livingroom Switch On Disable Motion Bright
+    id: LivingroomSwitchOnDisableMotionBright
+    trigger:
+      platform: event
+      event_type: zha_event
+      event_data:
+        device_ieee: '00:17:88:01:08:06:6a:42'
+        command: 'on'
+    action:
+      service: homeassistant.turn_on
+      entity_id: input_boolean.livingroom_button_bright
+
+## Livingroom Switch Off Enable Motion      
+  - alias: Livingroom Switch Off Enable Motion
+    id: LivingroomSwitchOnEnableMotion
+    trigger:
+      platform: event
+      event_type: zha_event
+      event_data:
+        device_ieee: '00:17:88:01:08:06:6a:42'
+        command: 'off_with_effect'
+    action:
+      - service: homeassistant.turn_off
+        entity_id: input_boolean.livingroom_button_bright
+        
+  # - alias: Livingroom Switch Hold Off Turn On Motion
+    # id: LivingroomSwitchHoldOffTurnOnMotion
     # trigger:
-    # - event_data:
-        # command: double
-        # device_ieee: 28:6D:97:00:01:0C:8E:64
-      # event_type: zha_event
       # platform: event
+      # event_type: zha_event
+      # event_data:
+        # device_ieee: '00:17:88:01:08:06:6a:42'
+        # command: 'off_with_effect'
     # action:
       # - service: homeassistant.turn_off
         # entity_id: input_boolean.livingroom_light_motion
+        
+  # - alias: Livingroom Switch Hold On Turn On Motion
+    # id: LivingroomSwitchHoldOffTurnOnMotion
+    # trigger:
+      # platform: event
+      # event_type: zha_event
+      # event_data:
+        # device_ieee: '00:17:88:01:08:06:6a:42'
+        # command: 'off_with_effect'
+    # action:
       # - service: homeassistant.turn_on
-        # entity_id: scene.bright_in_livingroom
+        # entity_id: input_boolean.livingroom_light_motion
+
+  - alias: Livingroom Button Toggle Motion Sensor
+    id: LivingroomButtonToggleMotionSensor
+    trigger:
+      platform: event
+      event_type: zha_event
+      event_data:
+        device_ieee: '28:6d:97:00:01:0c:8e:64'
+        command: button_single
+    action:
+      service: homeassistant.toggle
+      entity_id: input_boolean.livingroom_light_motion
+      
+  - alias: Livingroom Button TV Concentrate
+    id: LivingroomButtonTVConcentrate
+    trigger:
+      platform: event
+      event_type: zha_event
+      event_data:
+        device_ieee: '28:6d:97:00:01:0c:8e:64'
+        command: button_hold
+    action:
+      service: homeassistant.turn_on
+      entity_id: scene.tv_concentrate_in_livingroom
+      
+  - alias: Livingroom Button Double Bright No Motion
+    id: LivingroomButtonDoubleBrightNoMotion
+    trigger:
+      platform: event
+      event_type: zha_event
+      event_data:
+        device_ieee: '28:6d:97:00:01:0c:8e:64'
+        command: button_double
+    action:
+      service: homeassistant.toggle
+      entity_id: input_boolean.livingroom_button_bright

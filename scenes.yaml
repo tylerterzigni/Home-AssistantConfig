@@ -28,16 +28,34 @@
      light.bedroom_lamp_right:
        state: on
        rgb_color: [255, 69, 6]
-       brightness: 50
+       brightness: 81
      light.bedroom_lamp_left:
        state: on
        rgb_color: [255, 69, 6]
-       brightness: 50
+       brightness: 81
      light.bedroom_lamp_middle:
        state: on
        rgb_color: [255, 69, 6]
-       brightness: 50       
+       brightness: 81       
 
+#####  Tyler Bathroom red #####
+
+ - name: red_in_bathroom
+   entities:
+     light.bathroom:
+       state: on
+       rgb_color: [255, 69, 6]
+       brightness: 100
+
+#####  Tyler Bathroom Dim #####
+
+ - name: dim_in_bathroom
+   entities:
+     light.bathroom:
+       state: on
+       color_temp: 345
+       brightness: 65  
+      
 #####  Tyler Bedroom Lava Lamp #####
 
  - name: lava_lamp_in_bedroom
@@ -92,6 +110,21 @@
        rgb_color: [255, 205, 120]
        brightness: 254
 
+##### Cinco De Mayo in Bedroom#####       
+ - name: cinco_de_mayo_in_bedroom
+   entities:
+     light.bedroom_lamp_right:
+       state: on
+       brightness: 255
+       color_name: green
+     light.bedroom_lamp_left:
+       state: on
+       brightness: 255
+       color_name: red
+     light.bedroom_lamp_middle:
+       state: on
+       brightness: 255
+       color_name: white
 
 #####  Relax in Livingroom #####
 
@@ -168,6 +201,24 @@
        rgb_color: [255, 205, 120]
        brightness: 254      
        
+#####  Livingroom Bright #####
+
+ - name: tv_concentrate_in_livingroom
+   entities:
+     light.dining_kitchen:
+       state: off
+     light.dining_window:
+       state: off
+     light.livingroom_back_left:
+       state: off
+     light.livingroom_tv_right:
+       state: on
+       rgb_color: [246, 255, 254]
+       brightness: 108
+     light.livingroom_tv_left:
+       state: on
+       rgb_color: [246, 255, 254]
+       brightness: 108     
 #####  Livingroom Dodgers #####
 
  - name: dodgers_in_livingroom
@@ -526,6 +577,29 @@
        state: on
        brightness: 255
        color_name: blue
+     light.livingroom_back_left:
+       state: on
+       brightness: 255
+       color_name: red
+     light.livingroom_tv_left:
+       state: on
+       brightness: 255
+       color_name: white
+     light.livingroom_tv_right:
+       state: on
+       brightness: 255
+       color_name: white
+
+ - name: cinco_de_mayo_in_livingroom
+   entities:
+     light.dining_kitchen:
+       state: on
+       brightness: 255
+       color_name: green
+     light.dining_window:
+       state: on
+       brightness: 255
+       color_name: green
      light.livingroom_back_left:
        state: on
        brightness: 255

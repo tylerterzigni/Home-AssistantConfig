@@ -175,3 +175,31 @@ front_door_alert_alexa_toggle:
 morning_tyler:
   name: Good Morning Tyler
   initial: off
+  
+kill_all:
+  name: Kill All
+  initial: off
+  
+kill_livingroom:
+  name: Kill Livingroom
+  initial: off
+  
+livingroom_tower_fan:
+  name: Livingroom Tower Fan
+  initial: off
+  
+livingroom_button_bright:
+  name: Livingroom Button Bright
+  initial: off
+  
+sliding_door_sensor:
+  name: Sliding Door Sensor
+  initial: on
+  
+livingroom_window_sensor:
+  name: Livingroom Window Sensor
+  initial: on
+  
+bedroom_window_sensor:
+  name: Bedroom Window Sensor
+  initial: on

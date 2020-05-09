@@ -1,4 +1,4 @@
-# Dark Sky Weather
+    # Dark Sky Weather
 - platform: darksky
   api_key: !secret darksky_api_key
   forecast:
@@ -60,13 +60,12 @@
                       {% set winddir = ['North','North-Northeast','Northeast','East-Northeast','East','East-Southeast','Southeast','South-Southeast','South','South-Southwest','Southwest','West-Southwest','West','West-Northwest','Northwest','North-Northwest','North'] %}
                       {{ states('sensor.dark_sky_wind_speed') | round }} mi/h from the {{ winddir[((states('sensor.dark_sky_wind_bearing') | float / 360)*16) | round]}}
 
-# - platform: fedex
-  # name: fedex
-  # username: !secret fedex_username
-  # password: !secret fedex_password
-  # scan_interval:
-    # minutes: 10
-
+- platform: sun2
+  monitored_conditions:
+    - sunrise
+    - sunset
+    - max_elevation
+    - solar_noon
 - platform: moon
 
 - platform: template
@@ -145,67 +144,7 @@
           {% endif %}
         {% endmacro %}
         {{delivered(states.sensor.ups)|int + delivered(states.sensor.fedex)|int}}
-    
-# - platform: template
-  # sensors:
-    # battery_iphone:
-      # unit_of_measurement: '%'
-      # value_template: >-
-          # {%- if states.sensor.tylers_iphone_battery_level.attributes.state %}
-              # {{ states.sensor.tylers_iphone_battery_level.attributes.state|round }}
-          # {% else %}
-              # {{ states.sensor.tylers_iphone_battery_level.state }}
-          # {%- endif %}
-      # icon_template: >
-          # {% set battery_level = states.sensor.tylers_iphone_battery_level.state|default(0)|int %}
-          # {% set battery_round = (battery_level / 10) |int * 10 %}
-          # {% if battery_round >= 100 %}
-            # mdi:battery
-          # {% elif battery_round > 0 %}
-            # mdi:battery-{{ battery_round }}
-          # {% else %}
-            # mdi:battery-alert
-          # {% endif %}
-# - platform: template
-  # sensors:
-    # battery_ipad:
-      # unit_of_measurement: '%'
-      # value_template: >-
-          # {%- if states.sensor.tylers_ipad_battery_level.state %}
-              # {{ states.sensor.tylers_ipad_battery_level.state|round }}
-          # {% else %}
-              # {{ states.sensor.tylers_ipad_battery_level.state }}
-          # {%- endif %}
-      # icon_template: >
-          # {% set battery_level = states.sensor.tylers_ipad_battery_level.state|default(0)|int %}
-          # {% set battery_round = (battery_level / 10) |int * 10 %}
-          # {% if battery_round >= 100 %}
-            # mdi:battery
-          # {% elif battery_round > 0 %}
-            # mdi:battery-{{ battery_round }}
-          # {% else %}
-            # mdi:battery-alert
-          # {% endif %}
-# - platform: template
-  # sensors:
-    # battery_ipad_mini:
-      # unit_of_measurement: '%'
-      # value_template: >-
-          # {%- if states.sensor.tylers_ipad_mini_battery_level.state %}
-              # {{ states.sensor.tylers_ipad_mini_battery_level.state|round }}
-          # {% else %}
-              # {{ states.sensor.tylers_ipad_mini_battery_level.state }}
-          # {%- endif %}
-      # icon_template: >
-          # {% set battery_level = states.sensor.tylers_ipad_mini_battery_level.state|default(0)|int %}
-          # {% set battery_round = (battery_level / 10) |int * 10 %}
-          # {% if battery_round >= 100 %}
-            # mdi:battery
-          # {% elif battery_round > 0 %}
-            # mdi:battery-{{ battery_round }}
-          # {% else %}
-            # mdi:battery-alert
-          # {% endif %}
+
 
 - platform: template
   sensors:
@@ -234,7 +173,7 @@
 - platform: template
   sensors:
     multisensor_6_motion_bedroom:
-      friendly_name: Bedroom Sensor
+      friendly_name: Bedroom
       value_template: >-
         {% if is_state("binary_sensor.bedroom_motion_sensor_motion", "on") %}
         Motion
@@ -251,7 +190,7 @@
 - platform: template
   sensors:
     multisensor_6_motion_livingroom:
-      friendly_name: Livingroom Sensor
+      friendly_name: Livingroom
       value_template: >-
         {% if is_state("binary_sensor.livingroom_motion_sensor_motion", "on") %}
         Motion
@@ -267,16 +206,16 @@
         
 - platform: template
   sensors:
-    dining_room_motion_sensor:
-      friendly_name: "Dining Room Motion Sensor"
+    diningroom_motion_sensor:
+      friendly_name: "Diningroom"
       value_template: >-
-        {% if is_state('binary_sensor.dining_room_motion_sensor_motion', 'on') %}
+        {% if is_state('binary_sensor.wyzesense_779e87f0', 'on') %}
           Motion
         {% else %}
           No Motion
         {% endif %}
       icon_template: >-
-        {% if is_state("binary_sensor.livingroom_motion_sensor_motion", "on") %}
+        {% if is_state("binary_sensor.wyzesense_779e87f0", "on") %}
           mdi:run-fast
         {% else %}
           mdi:run
@@ -285,7 +224,7 @@
 - platform: template
   sensors:
     multisensor_6_motion_bathroom:
-      friendly_name: Bathroom Sensor
+      friendly_name: Bathroom
       value_template: >-
         {% if is_state("binary_sensor.bathroom_motion_sensor_motion", "on") %}
         Motion
@@ -304,16 +243,50 @@
   sensors:
     front_door_sensor:
       value_template: '{% if is_state("binary_sensor.front_door_contact", "off") %}Closed{% else %}Open{% endif %}'
-      friendly_name: 'Front Door Sensor'
+      friendly_name: 'Front Door'
       icon_template: >-
         {% if is_state("binary_sensor.front_door_contact", "off") %}
-          mdi:lock
+          mdi:door-closed
         {% else %}
-          mdi:lock-open-outline
+          mdi:door-open
         {% endif %}
         
+- platform: template
+  sensors:
+    sliding_door_sensor:
+      value_template: '{% if is_state("binary_sensor.wyzesense_779e0a32", "off") %}Closed{% else %}Open{% endif %}'
+      friendly_name: 'Sliding Door'
+      icon_template: >-
+        {% if is_state("binary_sensor.wyzesense_779e0a32", "off") %}
+          mdi:door-closed
+        {% else %}
+          mdi:door-open
+        {% endif %}
+        
+- platform: template
+  sensors:
+    livingroom_window_sensor:
+      value_template: '{% if is_state("binary_sensor.wyzesense_779e0a23", "off") %}Closed{% else %}Open{% endif %}'
+      friendly_name: 'Livingroom Window'
+      icon_template: >-
+        {% if is_state("binary_sensor.wyzesense_779e0a23", "off") %}
+          mdi:window-closed
+        {% else %}
+          mdi:window-open
+        {% endif %}
 
-
+- platform: template
+  sensors:
+    bedroom_window_sensor:
+      value_template: '{% if is_state("binary_sensor.wyzesense_77881bdd", "off") %}Closed{% else %}Open{% endif %}'
+      friendly_name: 'Bedroom Window'
+      icon_template: >-
+        {% if is_state("binary_sensor.wyzesense_77881bdd", "off") %}
+          mdi:window-closed
+        {% else %}
+          mdi:window-open
+        {% endif %}
+        
 - platform: time_date
   display_options:
     - 'time'
@@ -400,6 +373,50 @@
                 
 - platform: template
   sensors:
+    outsidelessthanlivingroomtemperature:
+      friendly_name: "Outside Temp < Livingroom Temp"
+      value_template: >-
+                {% if (states.sensor.livingroom_motion_sensor_temperature_measurement.state > states.sensor.dark_sky_apparent_temperature.state) %}
+                   on
+                {% else %}
+                   off
+                {% endif %}
+                
+- platform: template
+  sensors:
+    outsidelessthanbedroomtemperature:
+      friendly_name: "Outside Temp < Bedroom Temp"
+      value_template: >-
+                {% if (states.sensor.bedroom_motion_sensor_temperature_measurement.state > states.sensor.dark_sky_apparent_temperature.state) %}
+                   on
+                {% else %}
+                   off
+                {% endif %}
+                
+- platform: template
+  sensors:
+    outsidemorethanlivingroomtemperature:
+      friendly_name: "Outside Temp > Livingroom Temp"
+      value_template: >-
+                {% if (states.sensor.livingroom_motion_sensor_temperature_measurement.state < states.sensor.dark_sky_apparent_temperature.state) %}
+                   on
+                {% else %}
+                   off
+                {% endif %}
+                
+- platform: template
+  sensors:
+    outsidemorethanbedroomtemperature:
+      friendly_name: "Outside Temp > Bedroom Temp"
+      value_template: >-
+                {% if (states.sensor.bedroom_motion_sensor_temperature_measurement.state < states.sensor.dark_sky_apparent_temperature.state) %}
+                   on
+                {% else %}
+                   off
+                {% endif %}
+                
+- platform: template
+  sensors:
     bathroom_humidity_73:
       friendly_name: "Bathroom Humidity Above 73"
       value_template: >-
@@ -447,6 +464,85 @@
                 {% else %}
                    charged
                 {% endif %}
+                
+- platform: template
+  sensors:
+    ring_low_battery_alert:
+      friendly_name: "Ring Low Battery Alert"
+      value_template: >-
+                {% if (states.sensor.ring_battery.state|float < 25) %}
+                   low battery
+                {% else %}
+                   charged
+                {% endif %}
+                
+- platform: template
+  sensors:
+    bedroom_window_battery_alert:
+      friendly_name: "Bedroom Window Low Battery Alert"
+      value_template: >-
+                {% if (states.binary_sensor.wyzesense_77881bdd.attributes.battery_level|float < 15) %}
+                   low battery
+                {% else %}
+                   charged
+                {% endif %}
+                
+- platform: template
+  sensors:
+    diningroom_window_battery_alert:
+      friendly_name: "Diningroom Window Low Battery Alert"
+      value_template: >-
+                {% if (states.binary_sensor.wyzesense_779e0a23.attributes.battery_level|float < 15) %}
+                   low battery
+                {% else %}
+                   charged
+                {% endif %}
+                
+- platform: template
+  sensors:
+    sliding_door_battery_alert:
+      friendly_name: "Sliding Door Low Battery Alert"
+      value_template: >-
+                {% if (states.binary_sensor.wyzesense_779e0a32.attributes.battery_level|float < 15) %}
+                   low battery
+                {% else %}
+                   charged
+                {% endif %}
+
+- platform: template
+  sensors:
+    dining_motion_battery_alert:
+      friendly_name: "Diningroom Motion Low Battery Alert"
+      value_template: >-
+                {% if (states.binary_sensor.wyzesense_779e87f0.attributes.battery_level|float < 15) %}
+                   low battery
+                {% else %}
+                   charged
+                {% endif %}
+                
+- platform: template
+  sensors:
+    bedroom_window_sensor_battery:
+      friendly_name: "Bedroom Window"
+      value_template: "{{ states.binary_sensor.wyzesense_77881bdd.attributes.battery_level }}"
+      
+- platform: template
+  sensors:
+    diningroom_window_sensor_battery:
+      friendly_name: "Diningroom Window"
+      value_template: "{{ states.binary_sensor.wyzesense_779e0a23.attributes.battery_level }}"
+      
+- platform: template
+  sensors:
+    sliding_door_sensor_battery:
+      friendly_name: "Sliding Door"
+      value_template: "{{ states.binary_sensor.wyzesense_779e0a32.attributes.battery_level }}"
+      
+- platform: template
+  sensors:
+    dining_motion_sensor_battery:
+      friendly_name: "Diningroom Motion"
+      value_template: "{{ states.binary_sensor.wyzesense_779e87f0.attributes.battery_level }}"
                 
 - platform: mqtt
   name: 'USPS Mail'
@@ -496,16 +592,6 @@
           Charging
         {% endif %}
 
-    
-- platform: airvisual
-  api_key: !secret airvisual_api_key
-  monitored_conditions:
-    - us
-  show_on_map: false
-  scan_interval: 600
-  # Configure by latitude/longitude:
-  latitude: !secret home_latitude
-  longitude: !secret home_longitude
     
 # Pollen
 - platform: rest
@@ -636,7 +722,7 @@
      entity_picture_template: >
           /local/images/badge.png
 ### RING ###
-- platform: ring
+# - platform: ring
 
 ###Home Assistant Uptime ###
 - platform: uptime
@@ -700,4 +786,54 @@
     
 - platform: nhl_api
   team_id: 26
+
+- platform: template 
+  sensors:
+    motion_in_livingroom:
+     value_template: >-
+       {%- if is_state("binary_sensor.livingroom_motion_sensor_motion", "on")
+       or is_state("binary_sensor.wyzesense_779e87f0", "on")
+         -%}
+       on
+       {%- else -%}
+       off
+       {%- endif %}
+       
+- platform: rest
+  name: CA Covid Stats
+  resource: https://covidtracking.com/api/states?state=CA
+  json_attributes:
+    - positive
+    - negative
+    - pending
+    - hospitalized
+    - death
+    - total
+  value_template: '{{ value_json.state }}'
+  scan_interval: 120
   
+- platform: template
+  sensors:
+    covid_postive_ca:
+      friendly_name: 'Covid Positive CA'
+      value_template: '{{ states.sensor.ca_covid_stats.attributes["positive"] }}'
+    covid_negative_ca:
+      friendly_name: 'Covid Negative CA'
+      value_template: '{{ states.sensor.ca_covid_stats.attributes["negative"] }}'
+    covid_pending_ca:
+      friendly_name: 'Covid Pending CA'
+      value_template: '{{ states.sensor.ca_covid_stats.attributes["pending"] }}'
+    covid_hospitalized_ca:
+      friendly_name: 'Covid Hospitalized CA'
+      value_template: '{{ states.sensor.ca_covid_stats.attributes["hospitalized"] }}'
+    covid_death_ca:
+      friendly_name: 'Covid Deaths CA'
+      value_template: '{{ states.sensor.ca_covid_stats.attributes["death"] }}'
+    covid_total_ca:
+      friendly_name: 'Covid Total CA'
+      value_template: '{{ states.sensor.ca_covid_stats.attributes["total"] }}'
+      
+- platform: template 
+  sensors: 
+    outside_temp_offset: 
+      value_template: '{{ states.sensor.dark_sky_apparent_temperature.state | float - 1.5 }}'

@@ -1,5 +1,5 @@
 default_view:
-  view: true
+#  view: true
   name: Home
   icon: mdi:home
   entities:
@@ -13,7 +13,7 @@ default_view:
   - group.samsung_powerbot
 
 lights_view:
-  view: true
+#  view: true
   icon: mdi:lightbulb
   entities:
   - group.living_room_lights
@@ -24,7 +24,7 @@ lights_view:
   - group.room_numbers
   
 weather_view:
-  view: true
+ # view: true
   icon: mdi:weather-lightning-rainy
   entities:  
   - group.weather
@@ -36,7 +36,6 @@ weather_view:
 scenes_view:
   name: Automation Override
   icon: mdi:theme-light-dark
-  view: true
   entities:
   - group.livingroom_scenes
   - group.bedroom_scenes
@@ -45,13 +44,13 @@ scenes_view:
 automation_override_view:
   name: Automation Override
   icon: mdi:robot
-  view: true
+ # view: true
   entities:
   - group.automation_override
 
 media_players_view:
   name: Media Players
-  view: true
+  #view: true
   icon: mdi:television-guide
   entities:
   - group.bedroom_tv_controls
@@ -63,14 +62,14 @@ media_players_view:
   - media_player.firetv
 shipping_view:
   name: Shipping View
-  view: true
+#  view: true
   icon: mdi:truck-delivery
   entities:
   - group.shipping
 
 misc_info_view:
   name: Misc Information
-  view: true
+ # view: true
   icon: mdi:information-outline
   entities:
   - group.battery_info
@@ -80,20 +79,20 @@ misc_info_view:
 
 zones_view:
   name: Zones
-  view: true
+ # view: true
   icon: mdi:floor-plan
   entities:
   - group.zones
 
 fun_view:
-  view: true
+ # view: true
   icon: mdi:earth
   entities:
   - group.iss
   - group.moon
 
 livingroom_lights:
-  view: false
+#  view: false
   name: Living Room
   entities:
   - light.dining_kitchen
@@ -104,14 +103,14 @@ livingroom_lights:
 
   
 dining_room_lights:
-  view: false
+ # view: false
   name: Dining Room
   entities:
   - light.dining_kitchen
   - light.dining_window
 
 bedroom_lights:
-  view: false
+ # view: false
   name: Tyler Bedroom
   entities:
   - light.bedroom_lamp_left
@@ -119,19 +118,19 @@ bedroom_lights:
   - light.bedroom_lamp_middle
 
 more_lights:
-  view: false
+ # view: false
   name: Accessory Lighting
   entities:
   - input_boolean.lava_lamp 
   
 bathroom_lights:
-  view: false
+ # view: false
   name: Bathroom Light
   entities:
   - light.bathroom_light
   
 room_numbers:
-  view: false
+#  view: false
   name: Room Brightness
   entities:
   - input_number.living_room_lights  
@@ -140,7 +139,7 @@ room_numbers:
   - input_number.bathroom_light
 
 all_lights:
-  view: false
+#  view: false
   name: All Lights
   entities:
   - light.bedroom_lamp_left
@@ -155,29 +154,29 @@ all_lights:
 
 homedevices:
   name: Who's Home
-  view: false
+#  view: false
   icon: mdi:home-map-marker
   entities:
   - device_tracker.debbies_iphone_lan
-  - device_tracker.stevenmrsiphone_lan
   - device_tracker.samiam_10
   - device_tracker.tylers_iphone
   - device_tracker.chris
+  - device_tracker.this_is_phone
 bedroomdevices:
   name: Bedroom Devices
-  view: false
+#  view: false
   entities:
   - device_tracker.tylers_iphone
 roommatedevices:
   name: Roommate Devices
-  view: false
+#  view: false
   entities:
-  - device_tracker.tylers_iphone
   - device_tracker.chris
-
+  - device_tracker.this_is_phone
+  - device_tracker.tylers_iphone
 travel:
   name: Traffic
-  view: false
+#  view: false
   entities:
   # - sensor.home_to_work
   # - sensor.work_to_home
@@ -186,8 +185,8 @@ travel:
 
 bedroom_scenes:
   name: Bedroom Scenes
-  control: hidden
-  view: false
+  #control: hidden
+ # view: false
   entities:
   - script.relax_in_bedroom
   - script.lava_lamp_in_bedroom
@@ -196,8 +195,8 @@ bedroom_scenes:
 
 livingroom_scenes:
   name: Livingroom Scenes
-  control: hidden
-  view: false
+ # control: hidden
+ # view: false
   entities:
   - script.relax_in_livingroom
   - script.bright_in_livingroom
@@ -220,7 +219,7 @@ livingroom_scenes:
   - script.memorial_day_in_livingroom
   
 automation_override:
-  view: false
+#  view: false
   name: Automation Override
   entities:
   - input_boolean.lights_on_in_evening
@@ -234,7 +233,7 @@ automation_override:
   - input_boolean.dab_rigs
   
 bedroom_sensor_override:
-  view: false
+ # view: false
   name: Bedroom Sensor Override
   entities:
   - input_boolean.tyler_in_bedroom_bright
@@ -248,9 +247,9 @@ bedroom_sensor_override:
  
 temperature:
   name: Thermostat
-  view: false
+#  view: false
   icon: mdi:thermometer
-  control: hidden
+ # control: hidden
   entities:
   - sensor.livingroom_multi_sensor_temperature
   - climate.home
@@ -265,15 +264,15 @@ temperature:
   
 livingroom_harmony:
   name: Harmony
-  view: false
+#  view: false
   entities:
   - sensor.current_activity
   - input_select.harmony_harmony_hub
 
 bedroom_tv_controls:
   name: Bedroom TV
-  view: false
-  control: hidden
+ # view: false
+#  control: hidden
   entities:
   - switch.bedroom_tv
   - media_player.samsung_tv_remote
@@ -287,7 +286,7 @@ bedroom_tv_controls:
   - media_player.bedroom_apple_tv_7
 livingroom_tv_controls:
   name: Livingroom TV Controls
-  view: false
+ # view: false
   entities:
   - media_player.livingroom_tv
   - media_player.living_room_apple_tv
@@ -295,14 +294,14 @@ livingroom_tv_controls:
   
 xbox_controls:
   name: Xbox Status
-  view: false
+ # view: false
   entities:
   - sensor.sleepysostoney
   - sensor.xboxapi_current
 
 shipping:
   name: Deliveries
-  view: false
+ # view: false
   entities:
   - sensor.usps_mail
   - sensor.usps_packages
@@ -314,13 +313,13 @@ shipping:
 
 weather_map:
   name: Weather Map
-  view: false
+ # view: false
   entities:
   - camera.weather
   
 weather:
   name: Weather Summary
-  view: false
+#  view: false
   entities:
   - sun.sun
   - sensor.weather_summary
@@ -334,7 +333,7 @@ weather:
 
 battery_info:
   name: Battery
-  view: false
+ # view: false
   entities:
   - sensor.battery_iphone
   - sensor.battery_ipad
@@ -342,7 +341,7 @@ battery_info:
 
 speed_test:
   name: Speed Test
-  view: false
+#  view: false
   entities:
   - sensor.speedtest_ping
   - sensor.speedtest_download
@@ -350,27 +349,27 @@ speed_test:
   
 links:
   name: Links
-  view: false
+#  view: false
   entities:
   - weblink.router_internal
   - weblink.router_external
 
 iss:
   name: International Space Station
-  view: false
+ # view: false
   entities:
   - sensor.iss_next_rise
   - camera.iss
 
 moon:  
   name: Moon
-  view: false
+#  view: false
   entities:
   - sensor.moon_phase
   
 holiday_modes:
   name: Holiday Lighting
-  view: false
+#  view: false
   entities:
   - sensor.holidays_calendar
   - input_select.holiday
@@ -381,41 +380,31 @@ calendars:
 
 zones:
   name: Zones
-  view: false
+ # view: false
   entities:
   - binary_sensor.floorplan
 
-motion_detection:
-  name: Motion Detection
-  view: false
-  entities:
-  - sensor.front_door_sensor  
-  - sensor.multisensor_6_motion_bedroom
-  - sensor.multisensor_6_motion_livingroom 
-  - sensor.multisensor_6_motion_bathroom
-  
 samsung_powerbot:
   name:  Samsung Powerbot
-  view: false
+ # view: false
   entities:
   - input_boolean.samsung_powerbot
-  
 wake_on_lan:
   name:  Wake on LAN
-  view: false
+ # view: false
   entities:
   -  switch.wake_on_lan
   
 open_uv_time_in_sun:
   name: Time in Sun
-  view: false
+#  view: false
   entities:
   - sensor.skin_type_3_safe_exposure_time
   - sensor.skin_type_4_safe_exposure_time
   
 cold_and_flu:
   name: Cold & Flu
-  view: false
+ # view: false
   entities:
   - sensor.cold_flu_percentage
   - sensor.cold_flu_risk
@@ -423,29 +412,30 @@ cold_and_flu:
 
 pollen_levels:
   name: Pollen Levels
-  view: false
+ # view: false
   entities:
   - sensor.pollen_percentage
   - sensor.pollen_level
 
 dab_rigs:
   name: Dab Rigs
-  view: false
+ # view: false
   entities:
   - switch.livingroom_dab_rig
   - switch.bedroom_dab_rig
   
 fansandheater:
   name: Fans and Heater
-  view: false
+#  view: false
   entities:
   - switch.bedroom_box_fan
   - switch.livingroom_fan
   - switch.bedroom_heater_2
   - switch.bathroom_fan
+  - switch.bedroom_fan
   
 date_and_time:
-   view: yes
+ #  view: yes
    icon: mdi:home 
    entities:
      - group.date_time
@@ -458,10 +448,24 @@ date_time:
     - sensor.time_date
     - sensor.time_utc
     - sensor.beat
-    
-livingroom_motion_sensors:
-  view: false
-  name: Livingroom Motion Sensors
+
+tvdevices:
+  name: TV Devices
+#  view: false
   entities:
-  - binary_sensor.livingroom_motion_sensor_motion
-  - binary_sensor.dining_room_motion_sensor_motion
+  - media_player.bedroom_tv
+  - media_player.livingroom_tv
+  
+bathroom_night_red_light:
+  name: Bathroom Night Red Light
+#  view: false
+  entities:
+  - media_player.bedroom_tv
+  - media_player.livingroom_tv
+  - group.bedroom_lights
+# livingroom_motion_sensors:
+ # # view: false
+  # name: Livingroom Motion Sensors
+  # entities:
+  # - binary_sensor.livingroom_motion_sensor_motion
+  # - binary_sensor.dining_room_motion_sensor_motion

@@ -8,10 +8,12 @@ harmony_harmony_hub:
   name: Living Room TV
   options:
     - PowerOff
+    - Watch Streaming TV
     - Watch AppleTV
     - Watch Vudu
     - Watch Netflix
     - Play Xbox
+    - Toggle Livingroom Tower Fan
   initial: PowerOff
   icon: mdi:monitor
   

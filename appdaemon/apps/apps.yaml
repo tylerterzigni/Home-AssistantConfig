@@ -1,0 +1,10 @@
+livingroommotionbutton:
+  module: stbutton
+  class: STButton
+  device_ieee: "28:6D:97:00:01:0C:8E:64"
+  tap_action: toggle
+  tap_device: input_boolean.livingroom_light_motion
+  # hold_action: toggle
+  # hold_device: group.bedroom_lights
+  # double_action: toggle
+  # double_device: light.bar

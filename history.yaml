@@ -138,6 +138,9 @@
       - sensor.cold_flu_percentage
       - sensor.cold_flu_risk
       - sensor.date
+      - sensor.date_time
+      - sensor.date_time_iso
+      - sensor.front_door_last_activity
       - sensor.livingroom_multi_sensor_alarm_level
       - sensor.livingroom_multi_sensor_alarm_type
       - sensor.livingroom_multi_sensor_burglar
@@ -160,7 +163,8 @@
       - sensor.deliveries_today
       - sensor.holidays_calendar
       - sensor.home_to_work
-      - sensor.iss_next_rise  
+      - sensor.iss_next_rise
+      - sensor.last_alexa
       - sensor.mail_mail
       - sensor.mail_packages
       - sensor.moon
@@ -181,8 +185,10 @@
       - sensor.tyler_to_work
       - sensor.tylers_ipad_mini_battery_level
       - sensor.tylers_ipad_mini_battery_state
+      - sensor.tylers_iphone_activity
       - sensor.tylers_iphone_battery_level
       - sensor.tylers_iphone_battery_state
+      - sensor.tylers_iphone_last_update_trigger
       - sensor.tylers_ipad_battery_state
       - sensor.tylers_ipad_battery_level
       - sensor.usps_mail
